@@ -24,6 +24,7 @@ public class Login extends Application {
     private Scene scene;
     private LoginController loginController;
 
+
     private ArrayList<User> database;
 
     StringBuilder jsonFile;
@@ -32,6 +33,8 @@ public class Login extends Application {
 
 
     /*
+    Authorization Levels
+
     Employee : 1
     HR Employee : 3
     Director : 5
@@ -63,6 +66,15 @@ public class Login extends Application {
     }
 
     /**
+     * Returns jsonFilePath
+     * @return jsonFilePath
+     */
+    public String getJsonFilePath()
+    {
+        return jsonFilePath;
+    }
+
+    /**
      * Populates the Access Combo Box from loginController.
      * Reads JSON file and inputs data into the "database" ArrayList.
      */
@@ -75,6 +87,18 @@ public class Login extends Application {
 
     }
 
+    public boolean checkIfJSONFileExists()
+    {
+        File jsonFile = new File(jsonFilePath);
+        if(jsonFile.exists() && !jsonFile.isDirectory())
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
+
     /**
      * Reads a file and writes it to jsonFile
      */
@@ -82,20 +106,27 @@ public class Login extends Application {
     {
         String line = "";
 
-        try {
-            FileReader fileReader = new FileReader(jsonFilePath);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+        if(checkIfJSONFileExists())
+        {
             try {
-                while((line = bufferedReader.readLine()) != null)
-                {
-                    jsonFile.append(line);
+                FileReader fileReader = new FileReader(jsonFilePath);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                try {
+                    while((line = bufferedReader.readLine()) != null)
+                    {
+                        jsonFile.append(line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        }else
+        {
+            System.out.println("File not found");
         }
+
 
     }
 
@@ -118,6 +149,7 @@ public class Login extends Application {
             User user = new User(name, password, authorization);
             database.add(user);
         }
+
 
     }
 
@@ -169,7 +201,6 @@ public class Login extends Application {
         {
             loginController.showIncorrectUsernameOrPasswordAlert();
         }
-
 
 
     }

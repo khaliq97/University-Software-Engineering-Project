@@ -133,7 +133,7 @@ public class LoginController {
     /**
      * Adds authorization levels to comboBoxAccess control
      */
-    public void populateAccessComboBox()
+    public int populateAccessComboBox()
     {
         List<String> accessListItems = new ArrayList<String>();
         accessListItems.add("Employee");
@@ -145,6 +145,7 @@ public class LoginController {
         ObservableList observableList = FXCollections.observableList(accessListItems);
         comboBoxAccess.setItems(observableList);
 
+        return comboBoxAccess.getItems().size();
 
     }
 }
