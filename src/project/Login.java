@@ -7,25 +7,29 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.stream.Stream;
 
+/**
+ * Created by Osama Khaliq
+ * Version (17/02/2016)
+ * Login window functions
+ * Responsible for reading User information and populating the User Database
+ * As well Login and Logout functions
+ */
 public class Login extends Application {
 
     private Parent root;
     private FXMLLoader fxmlLoader;
     private Scene scene;
     private LoginController loginController;
+
     private ArrayList<User> database;
 
-    private ArrayList<String> arrayListJsonFile;
     StringBuilder jsonFile;
-    private final String fileName = "info.json";
+
+    private final String jsonFilePath = "info.json";
+
 
     /*
     Employee : 1
@@ -35,13 +39,16 @@ public class Login extends Application {
     Reviewer: 2
      */
 
-
+    /**
+     * Initializes variables and loads "Login" Window
+     * @param primaryStage Window stage
+     * @throws Exception Stage exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
         loginController = new LoginController(this);
         database = new ArrayList<>();
-        arrayListJsonFile = new ArrayList<>();
         jsonFile =  new StringBuilder();
 
         fxmlLoader.setController(loginController);
@@ -55,6 +62,10 @@ public class Login extends Application {
         initialize();
     }
 
+    /**
+     * Populates the Access Combo Box from loginController.
+     * Reads JSON file and inputs data into the "database" ArrayList.
+     */
     public void initialize()
     {
         loginController.populateAccessComboBox();
@@ -64,16 +75,20 @@ public class Login extends Application {
 
     }
 
+    /**
+     * Reads a file and writes it to jsonFile
+     */
     public void readJSONFile()
     {
         String line = "";
+
         try {
-            FileReader fileReader = new FileReader(fileName);
+            FileReader fileReader = new FileReader(jsonFilePath);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             try {
                 while((line = bufferedReader.readLine()) != null)
                 {
-                    arrayListJsonFile.add(line);
+                    jsonFile.append(line);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -82,55 +97,79 @@ public class Login extends Application {
             e.printStackTrace();
         }
 
-        for(String jsonLine: arrayListJsonFile)
-        {
-            jsonFile.append(jsonLine);
-        }
     }
 
+    /**
+     * Parses JSON file as Array.
+     * Stores each Username, Password and Authorization in variables
+     * Creates new User with these attributes
+     * Adds it to database ArrayList
+     */
     public void populateDatabase()
     {
         JSONArray items  = new JSONArray(jsonFile.toString());
-        for(Object o: items)
+        for(Object object: items)
         {
-            JSONObject jsonItem = (JSONObject) o;
+            JSONObject jsonItem = (JSONObject) object;
             String name = jsonItem.getString("name");
             String password = jsonItem.getString("password");
             int authorization = jsonItem.getInt("auth");
 
             User user = new User(name, password, authorization);
-            System.out.println(user.getUsername() + " | Auth: " + authorization);
             database.add(user);
         }
 
     }
 
+    /**
+     * Finds the given Username in database ArrayList
+     * Checks user password against GUI input
+     * Checks authorization level againt GUI input
+     * If successful, login success is shown otherwise appropriate error messages are showed
+     * @param username Username from txtFieldUsername
+     * @param password Password from txtFieldPassword
+     * @param authorization Authorization from comboBoxAccess
+     */
     public void login(String username, String password, int authorization)
     {
 
+        boolean userFound = false;
+        User potentialUser = null;
         for(User user: database)
         {
-            if(user.getUsername().equals(username))
+            if(!userFound)
             {
-                if(user.getPassword().equals(password))
+                if(user.getUsername().equals(username))
                 {
-                    if(user.getAuthorization() == authorization || user.getAuthorization() > authorization)
-                    {
-                        System.out.println("Login Success");
-                    }else
-                    {
-                        System.out.println("Authorization failure");
-                    }
+                    potentialUser = user;
+                    userFound = true;
+                }
+            }
 
+        }
+
+        if(userFound)
+        {
+            if(potentialUser.getPassword().equals(password))
+            {
+                if(potentialUser.getAuthorization() == authorization || potentialUser.getAuthorization() > authorization)
+                {
+                    loginController.showLoginSuccess();
                 }else
                 {
-                    System.out.println("Incorrect Password");
+                    loginController.showAuthorizationFailureAlert();
                 }
+
             }else
             {
-                System.out.println("Username does not exist");
+                loginController.showIncorrectUsernameOrPasswordAlert();
+
             }
+        }else
+        {
+            loginController.showIncorrectUsernameOrPasswordAlert();
         }
+
 
 
     }
@@ -139,7 +178,6 @@ public class Login extends Application {
     {
 
     }
-
 
     public static void main(String[] args) {
         launch(args);
