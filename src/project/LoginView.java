@@ -20,11 +20,10 @@ import java.util.ArrayList;
 public class LoginView extends Application {
 
     private Parent root;
+    private Stage primaryStage;
     private FXMLLoader fxmlLoader;
     private Scene scene;
     private LoginController loginController;
-
-    HomeView homeView = new HomeView();
 
     private ArrayList<User> database;
 
@@ -51,6 +50,7 @@ public class LoginView extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        this.primaryStage = primaryStage;
         loginController = new LoginController(this);
         database = new ArrayList<>();
         jsonFile =  new StringBuilder();
@@ -64,6 +64,16 @@ public class LoginView extends Application {
         primaryStage.show();
 
         initialize();
+    }
+
+    public void show()
+    {
+        primaryStage.show();
+    }
+
+    public void close()
+    {
+        primaryStage.close();
     }
 
     /**
@@ -163,7 +173,7 @@ public class LoginView extends Application {
      * @param password Password from txtFieldPassword
      * @param authorization Authorization from comboBoxAccess
      */
-    public void login(String username, String password, int authorization)
+    public boolean login(String username, String password, int authorization)
     {
 
         boolean userFound = false;
@@ -187,28 +197,33 @@ public class LoginView extends Application {
             {
                 if(potentialUser.getAuthorization() == authorization || potentialUser.getAuthorization() > authorization)
                 {
-                    loginController.showLoginSuccess();
+                    potentialUser.setLoggedIn(true);
+                    primaryStage.close();
+
+                    HomeView homeView = new HomeView(this, potentialUser);
                     homeView.show();
+
+                    System.out.println(potentialUser.getUsername() + " is logged in");
+                    return true;
+
                 }else
                 {
                     loginController.showAuthorizationFailureAlert();
+                    return false;
                 }
 
             }else
             {
                 loginController.showIncorrectUsernameOrPasswordAlert();
+                return false;
 
             }
         }else
         {
             loginController.showIncorrectUsernameOrPasswordAlert();
+            return false;
         }
 
-
-    }
-
-    public void logout()
-    {
 
     }
 

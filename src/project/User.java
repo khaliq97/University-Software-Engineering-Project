@@ -79,7 +79,4 @@ public class User {
         isLoggedIn = loggedIn;
     }
 
-
-
-
 }

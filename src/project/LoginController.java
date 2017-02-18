@@ -54,7 +54,13 @@ public class LoginController {
     @FXML
     public void onLoginButtonClick()
     {
-        loginView.login(txtFieldUserName.getText(), txtFieldPassword.getText(), selectedAuthorizationLevel);
+        if(loginView.login(txtFieldUserName.getText(), txtFieldPassword.getText(), selectedAuthorizationLevel))
+        {
+            txtFieldUserName.clear();
+            txtFieldPassword.clear();
+            selectedAuthorizationLevel = 1;
+            comboBoxAccess.setPromptText("Employee");
+        }
     }
 
     /**
@@ -117,15 +123,6 @@ public class LoginController {
         incorrectUsername.show();
     }
 
-    /**
-     * Shows Alert box for LoginView Success
-     */
-    public void showLoginSuccess()
-    {
-        Alert incorrectUsername = new Alert(Alert.AlertType.INFORMATION);
-        incorrectUsername.setHeaderText("LoginView Success");
-        incorrectUsername.show();
-    }
 
     /**
      * Adds authorization levels to comboBoxAccess control
