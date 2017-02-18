@@ -28,7 +28,7 @@
                   <TextField fx:id="txtFieldPassword" layoutX="96.0" layoutY="90.0" prefHeight="26.0" prefWidth="266.0" />
                   <Button fx:id="buttonLogin" layoutX="254.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" prefHeight="26.0" prefWidth="108.0" text="Login" />
                   <Label layoutX="154.0" layoutY="137.0" text="Access:" />
-                  <ComboBox fx:id="comboBoxAccess" layoutX="212.0" layoutY="132.0" prefWidth="150.0" />
+                  <ComboBox fx:id="comboBoxAccess" layoutX="212.0" layoutY="132.0" onAction="#onComboBoxAction" prefWidth="150.0" promptText="Employee" />
                </children>
             </AnchorPane>
          </center>
