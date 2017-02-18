@@ -1,14 +1,11 @@
 package project;
 
-import javafx.animation.StrokeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import javafx.*;
 import javafx.scene.control.ComboBox;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +13,14 @@ import java.util.List;
 /**
  * Created by Osama Khaliq
  * Version (17/02/2016)
- * Login Window controller Class
+ * LoginView Window controller Class
  * Responsible for button and ComboBox event handling
  * Shows Alert boxes
  */
 
 public class LoginController {
 
-    Login login;
+    private LoginView loginView;
 
     @FXML
     private TextField txtFieldUserName;
@@ -42,22 +39,22 @@ public class LoginController {
     /**
      * Constructor for LoginController
      * selectedAuthorizationLevel is default set to 1
-     * @param login
+     * @param loginView
      */
-    public LoginController(Login login)
+    public LoginController(LoginView loginView)
     {
-        this.login = login;
+        this.loginView = loginView;
         selectedAuthorizationLevel = 1;
     }
 
     /**
-     * Executes "login" function from Login
+     * Executes "loginView" function from LoginView
      * Passes values from Username, Password field and Authorisation
      */
     @FXML
     public void onLoginButtonClick()
     {
-        login.login(txtFieldUserName.getText(), txtFieldPassword.getText(), selectedAuthorizationLevel);
+        loginView.login(txtFieldUserName.getText(), txtFieldPassword.getText(), selectedAuthorizationLevel);
     }
 
     /**
@@ -121,12 +118,12 @@ public class LoginController {
     }
 
     /**
-     * Shows Alert box for Login Success
+     * Shows Alert box for LoginView Success
      */
     public void showLoginSuccess()
     {
         Alert incorrectUsername = new Alert(Alert.AlertType.INFORMATION);
-        incorrectUsername.setHeaderText("Login Success");
+        incorrectUsername.setHeaderText("LoginView Success");
         incorrectUsername.show();
     }
 

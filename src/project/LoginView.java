@@ -13,21 +13,22 @@ import java.util.ArrayList;
 /**
  * Created by Osama Khaliq
  * Version (17/02/2016)
- * Login window functions
+ * LoginView window functions
  * Responsible for reading User information and populating the User Database
- * As well Login and Logout functions
+ * As well LoginView and Logout functions
  */
-public class Login extends Application {
+public class LoginView extends Application {
 
     private Parent root;
     private FXMLLoader fxmlLoader;
     private Scene scene;
     private LoginController loginController;
 
+    HomeView homeView = new HomeView();
 
     private ArrayList<User> database;
 
-    StringBuilder jsonFile;
+    private StringBuilder jsonFile;
 
     private final String jsonFilePath = "info.json";
 
@@ -43,7 +44,7 @@ public class Login extends Application {
      */
 
     /**
-     * Initializes variables and loads "Login" Window
+     * Initializes variables and loads "LoginView" Window
      * @param primaryStage Window stage
      * @throws Exception Stage exception
      */
@@ -157,7 +158,7 @@ public class Login extends Application {
      * Finds the given Username in database ArrayList
      * Checks user password against GUI input
      * Checks authorization level againt GUI input
-     * If successful, login success is shown otherwise appropriate error messages are showed
+     * If successful, loginView success is shown otherwise appropriate error messages are showed
      * @param username Username from txtFieldUsername
      * @param password Password from txtFieldPassword
      * @param authorization Authorization from comboBoxAccess
@@ -187,6 +188,7 @@ public class Login extends Application {
                 if(potentialUser.getAuthorization() == authorization || potentialUser.getAuthorization() > authorization)
                 {
                     loginController.showLoginSuccess();
+                    homeView.show();
                 }else
                 {
                     loginController.showAuthorizationFailureAlert();
