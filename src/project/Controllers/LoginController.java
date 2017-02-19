@@ -110,15 +110,6 @@ public class LoginController {
         return selectedAuthorizationString;
     }
 
-    /**
-     * Returns the ComboBox control
-     * @return comboBoxAuthorizationLevels
-     */
-    public ComboBox<String> getComboBoxAuthorizationLevels()
-    {
-        return comboBoxAuthorizationLevels;
-    }
-
 
     /**
      * Returns txtFieldPassword control
