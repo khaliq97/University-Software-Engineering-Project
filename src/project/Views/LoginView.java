@@ -102,6 +102,10 @@ public class LoginView extends Application {
 
     }
 
+    /**
+     * Checks if a File exists
+     * @return
+     */
     public boolean checkIfJSONFileExists()
     {
         File jsonFile = new File(jsonFilePath);
@@ -172,11 +176,11 @@ public class LoginView extends Application {
     /**
      * Finds the given Username in database ArrayList
      * Checks user password against GUI input
-     * Checks authorization level againt GUI input
+     * Checks authorization level against GUI input
      * If successful, loginView success is shown otherwise appropriate error messages are showed
-     * @param username Username from txtFieldUsername
-     * @param password Password from txtFieldPassword
-     * @param authorization Authorization from comboBoxAccess
+     * @param username Username string from txtFieldUsername
+     * @param password Password string from txtFieldPassword
+     * @param authorization Authorization integer from comboBoxAuthorizationLevels
      */
     public boolean login(String username, String password, int authorization)
     {

@@ -54,19 +54,35 @@ public class HomeView
         this.loginView = loginView;
         this.user = user;
 
+        initialize();
+
     }
 
+    /**
+     * Initializes controls in Class
+     * Sets the text of the labelWelcome control
+     */
     public void initialize()
     {
         homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + getAuthorizationLevelFromInt(user.getAuthorization())));
     }
 
+    /**
+     * Logs out the user
+     * Sets the user to null
+     */
     public void logout()
     {
         user.setLoggedIn(false);
         user = null;
     }
 
+    /**
+     * Method takes in a level of access number
+     * Converts it to the Authorization String corresponding to that number
+     * @param value Authorization level
+     * @return Converted string
+     */
     public String getAuthorizationLevelFromInt(int value)
     {
 
