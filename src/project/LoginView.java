@@ -25,22 +25,13 @@ public class LoginView extends Application {
     private Scene scene;
     private LoginController loginController;
 
+    private AuthorizationServer authorizationServer;
+
     private ArrayList<User> database;
 
     private StringBuilder jsonFile;
 
     private final String jsonFilePath = "info.json";
-
-
-    /*
-    Authorization Levels
-
-    Employee : 1
-    HR Employee : 3
-    Director : 5
-    Manager: 4
-    Reviewer: 2
-     */
 
     /**
      * Initializes variables and loads "LoginView" Window
@@ -63,6 +54,8 @@ public class LoginView extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
+
+        authorizationServer = new AuthorizationServer(this);
 
         initialize();
     }
@@ -196,11 +189,9 @@ public class LoginView extends Application {
         {
             if(potentialUser.getPassword().equals(password))
             {
-                if(potentialUser.getAuthorization() == authorization || potentialUser.getAuthorization() > authorization)
+                if(authorizationServer.authUser(potentialUser, authorization))
                 {
-                    potentialUser.setLoggedIn(true);
                     primaryStage.close();
-
                     HomeView homeView = new HomeView(this, potentialUser);
                     homeView.show();
 

@@ -87,9 +87,7 @@ public class LoginController {
             case "Director":
                 selectedAuthorizationLevel = 5;
                 break;
-
         }
-
 
     }
 
