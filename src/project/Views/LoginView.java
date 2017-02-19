@@ -66,6 +66,14 @@ public class LoginView extends Application {
     }
 
     /**
+     * Returns loginController class
+     * @return loginController
+     */
+    public LoginController getLoginController()
+    {
+        return loginController;
+    }
+    /**
      * Loads the LoginView window
      */
     public void loadLoginView()
@@ -119,7 +127,7 @@ public class LoginView extends Application {
     }
 
     /**
-     * Reads a file and writes it to jsonFile
+     * Reads a file and writes it to jsonFile StringBuilder
      */
     public void readJSONFile()
     {

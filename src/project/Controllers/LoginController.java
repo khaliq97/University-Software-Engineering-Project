@@ -32,10 +32,13 @@ public class LoginController {
     @FXML
     private Button buttonLogin;
 
+
     @FXML
     private ComboBox<String> comboBoxAuthorizationLevels;
 
     private int selectedAuthorizationLevel;
+
+    private String selectedAuthorizationString;
 
     /**
      * Constructor for LoginController
@@ -46,6 +49,7 @@ public class LoginController {
     {
         this.loginView = loginView;
         selectedAuthorizationLevel = 1;
+        selectedAuthorizationString = "Employee";
     }
 
     /**
@@ -93,7 +97,28 @@ public class LoginController {
                 break;
         }
 
+        selectedAuthorizationString = comboBoxAuthorizationLevels.getSelectionModel().getSelectedItem();
+
     }
+
+    /**
+     * Return selectedAuthorizationString
+     * @return selectedAuthorizationString
+     */
+    public String getSelectedAuthorizationString()
+    {
+        return selectedAuthorizationString;
+    }
+
+    /**
+     * Returns the ComboBox control
+     * @return comboBoxAuthorizationLevels
+     */
+    public ComboBox<String> getComboBoxAuthorizationLevels()
+    {
+        return comboBoxAuthorizationLevels;
+    }
+
 
     /**
      * Returns txtFieldPassword control
