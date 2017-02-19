@@ -53,12 +53,45 @@ public class HomeView
 
         this.loginView = loginView;
         this.user = user;
+
+    }
+
+    public void initialize()
+    {
+        homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + getAuthorizationLevelFromInt(user.getAuthorization())));
     }
 
     public void logout()
     {
         user.setLoggedIn(false);
         user = null;
+    }
+
+    public String getAuthorizationLevelFromInt(int value)
+    {
+
+        String returnValue = "";
+        switch (value)
+        {
+            //Converts the String in ComboBox to the corresponding authorization number
+            case 1:
+                returnValue = "Employee";
+                break;
+            case 2:
+                returnValue =  "Reviewer";
+                break;
+            case 3:
+                returnValue = "HR Employee";
+                break;
+            case 4:
+                returnValue =  "Manager";
+                break;
+            case 5:
+                returnValue = "Director";
+                break;
+        }
+
+        return returnValue;
     }
 
     /**
