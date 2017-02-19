@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Osama Khaliq
- * Version (17/02/2016)
+ * Version (19/02/2016)
  * LoginView window functions
  * Responsible for reading User information and populating the User Database
  * As well LoginView and Logout functions
@@ -195,7 +195,6 @@ public class LoginView extends Application {
                     HomeView homeView = new HomeView(this, potentialUser);
                     homeView.show();
 
-                    System.out.println(potentialUser.getUsername() + " is logged in");
                     return true;
 
                 }else
