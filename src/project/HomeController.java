@@ -3,7 +3,9 @@ package project;
 import javafx.fxml.FXML;
 
 /**
- * Created by osamakhaliq on 18/02/17.
+ * Created by Osama Khaliq
+ * HomeView window controller class
+ * Responsible for control event handling
  */
 public class HomeController {
 

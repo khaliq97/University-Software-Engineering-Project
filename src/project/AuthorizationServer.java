@@ -1,7 +1,10 @@
 package project;
 
 /**
- * Created by osamakhaliq on 18/02/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * Responsible for authorizing the User and logs them in
+ * Takes a User object and inputted authorization level
  */
 public class AuthorizationServer {
 

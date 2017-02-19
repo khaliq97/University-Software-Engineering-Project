@@ -9,7 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Created by osamakhaliq on 18/02/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * HomeView window functions
+ * Window is shown when the user successfully logs in
  */
 public class HomeView
 {
@@ -24,6 +27,12 @@ public class HomeView
     private User user;
 
 
+    /**
+     * Constructor for HomeView class
+     * Passes in loginView and User
+     * @param loginView LoginView instance
+     * @param user User that has logged in
+     */
     public HomeView(LoginView loginView, User user)
     {
         fxmlLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
@@ -48,25 +57,38 @@ public class HomeView
     public void logout()
     {
         user.setLoggedIn(false);
-        System.out.println(user.getUsername() + " has logged out");
         user = null;
     }
 
+    /**
+     * Returns user
+     * @return User
+     */
     public User getUser()
     {
         return user;
     }
 
+    /**
+     * Sets the user from the parameter
+     * @param user User to set
+     */
     public void setUser(User user)
     {
         this.user = user;
     }
 
+    /**
+     * Method shows the stage
+     */
     public void show()
     {
         stage.show();
     }
 
+    /**
+     * Method closes the stage
+     */
     public void close()
     {
         stage.close();
