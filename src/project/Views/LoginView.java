@@ -35,7 +35,7 @@ public class LoginView extends Application {
 
     private StringBuilder jsonFile;
 
-    private final String jsonFilePath = "info.json";
+    private final String jsonFilePath = "database.json";
 
     /**
      * Initializes variables and loads "LoginView" Window
@@ -176,7 +176,6 @@ public class LoginView extends Application {
     /**
      * Finds the given Username in database ArrayList
      * Checks user password against GUI input
-     * Checks authorization level against GUI input
      * If successful, loginView success is shown otherwise appropriate error messages are showed
      * @param username Username string from txtFieldUsername
      * @param password Password string from txtFieldPassword

@@ -8,7 +8,7 @@ import project.Views.LoginView;
 /**
  * Created by Osama Khaliq
  * HomeView window controller class
- * Responsible for control event handling
+ * Responsible for HomeView window control event handling
  */
 public class HomeController {
 

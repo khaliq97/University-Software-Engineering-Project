@@ -7,12 +7,13 @@ package project.User;
  * User object class
  * Stores username, password and authorization of the given user
  * Has isLoggedIn to check weather the User is logged into the system
+ * isLoggedIn acts as the "session" variable
  */
 public class User {
 
     private String username;
 
-    private String password; //Crypt needed
+    private String password;
     private int authorization;
 
     private boolean isLoggedIn;

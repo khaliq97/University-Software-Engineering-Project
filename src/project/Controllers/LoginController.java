@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Osama Khaliq
  * Version (17/02/2016)
  * LoginView Window controller Class
- * Responsible for button and ComboBox event handling
+ * Responsible for LoginView window event handling
  * Shows Alert boxes
  */
 
@@ -49,7 +49,7 @@ public class LoginController {
     }
 
     /**
-     * Executes "loginView" function from LoginView
+     * Executes "login" function from LoginView
      * Passes values from Username, Password field and Authorisation
      */
     @FXML
