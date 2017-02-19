@@ -1,4 +1,4 @@
-package project;
+package project.Views;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import project.Authorization.AuthorizationServer;
+import project.Controllers.LoginController;
+import project.User.User;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -40,7 +44,7 @@ public class LoginView extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Login.fxml"));
         this.primaryStage = primaryStage;
         loginController = new LoginController(this);
         database = new ArrayList<>();
@@ -60,12 +64,18 @@ public class LoginView extends Application {
         initialize();
     }
 
-    public void show()
+    /**
+     * Loads the LoginView window
+     */
+    public void loadLoginView()
     {
         primaryStage.show();
     }
 
-    public void close()
+    /**
+     * Closes LoginView window
+     */
+    public void closeLoginView()
     {
         primaryStage.close();
     }
@@ -193,7 +203,7 @@ public class LoginView extends Application {
                 {
                     primaryStage.close();
                     HomeView homeView = new HomeView(this, potentialUser);
-                    homeView.show();
+                    homeView.loadHomeView();
 
                     return true;
 

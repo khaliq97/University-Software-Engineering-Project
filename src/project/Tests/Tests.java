@@ -1,5 +1,7 @@
-package project;
+package project.Tests;
 import org.junit.Test;
+import project.Views.LoginView;
+
 import static org.junit.Assert.*;
 
 /**
@@ -7,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class Tests
 {
-    LoginView loginView = new LoginView();
+    private LoginView loginView = new LoginView();
 
     @Test
     public void checkIfJSONFilePathLengthAboveZero()

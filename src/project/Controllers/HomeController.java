@@ -1,6 +1,8 @@
-package project;
+package project.Controllers;
 
 import javafx.fxml.FXML;
+import project.Views.HomeView;
+import project.Views.LoginView;
 
 /**
  * Created by Osama Khaliq
@@ -9,8 +11,8 @@ import javafx.fxml.FXML;
  */
 public class HomeController {
 
-    LoginView loginView;
-    HomeView homeView;
+    private LoginView loginView;
+    private HomeView homeView;
 
     public HomeController(HomeView homeView, LoginView loginView)
     {
@@ -22,8 +24,8 @@ public class HomeController {
     public void onLogoutButtonClick()
     {
         homeView.logout();
-        homeView.close();
-        loginView.show();
+        homeView.closeHomeView();
+        loginView.loadLoginView();
 
     }
 

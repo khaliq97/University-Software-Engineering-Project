@@ -1,4 +1,4 @@
-package project;
+package project.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javafx.scene.control.ComboBox;
+import project.Views.LoginView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +33,14 @@ public class LoginController {
     private Button buttonLogin;
 
     @FXML
-    private ComboBox<String> comboBoxAccess;
+    private ComboBox<String> comboBoxAuthorizationLevels;
 
     private int selectedAuthorizationLevel;
 
     /**
      * Constructor for LoginController
      * selectedAuthorizationLevel is default set to 1
-     * @param loginView
+     * @param loginView LoginView window
      */
     public LoginController(LoginView loginView)
     {
@@ -59,7 +60,9 @@ public class LoginController {
             txtFieldUserName.clear();
             txtFieldPassword.clear();
             selectedAuthorizationLevel = 1;
-            comboBoxAccess.getSelectionModel().selectFirst();
+
+            //Selects first item in the ComboBox
+            comboBoxAuthorizationLevels.getSelectionModel().selectFirst();
         }
     }
 
@@ -70,8 +73,9 @@ public class LoginController {
     @FXML
     public void onComboBoxAction()
     {
-        switch (comboBoxAccess.getSelectionModel().getSelectedItem())
+        switch (comboBoxAuthorizationLevels.getSelectionModel().getSelectedItem())
         {
+            //Converts the String in ComboBox to the corresponding authorization number
             case "Employee":
                 selectedAuthorizationLevel = 1;
                 break;
@@ -130,7 +134,6 @@ public class LoginController {
         incorrectUsername.show();
     }
 
-
     /**
      * Adds authorization levels to comboBoxAccess control
      */
@@ -144,9 +147,9 @@ public class LoginController {
         accessListItems.add("Manager");
 
         ObservableList observableList = FXCollections.observableList(accessListItems);
-        comboBoxAccess.setItems(observableList);
+        comboBoxAuthorizationLevels.setItems(observableList);
 
-        return comboBoxAccess.getItems().size();
+        return comboBoxAuthorizationLevels.getItems().size();
 
     }
 }

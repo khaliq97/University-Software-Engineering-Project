@@ -1,4 +1,7 @@
-package project;
+package project.Authorization;
+
+import project.User.User;
+import project.Views.LoginView;
 
 /**
  * Created by Osama Khaliq
@@ -8,11 +11,8 @@ package project;
  */
 public class AuthorizationServer {
 
-    LoginView loginView;
-
-
     /*
-    Authorization Levels
+    Authorization Levels reference
 
     Employee : 1
     HR Employee : 3
@@ -20,6 +20,9 @@ public class AuthorizationServer {
     Manager: 4
     Reviewer: 2
      */
+
+    private LoginView loginView;
+
 
     public AuthorizationServer(LoginView loginView)
     {

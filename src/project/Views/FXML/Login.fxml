@@ -29,9 +29,9 @@
                   <TextField fx:id="txtFieldUserName" layoutX="96.0" layoutY="42.0" prefHeight="26.0" prefWidth="266.0" />
                   <Button fx:id="buttonLogin" layoutX="254.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" prefHeight="26.0" prefWidth="108.0" text="Login" />
                   <Label layoutX="154.0" layoutY="137.0" text="Access:" />
-                  <ComboBox fx:id="comboBoxAccess" layoutX="212.0" layoutY="132.0" onAction="#onComboBoxAction" prefWidth="150.0" promptText="Employee" />
+                  <ComboBox fx:id="comboBoxAuthorizationLevels" layoutX="212.0" layoutY="132.0" onAction="#onComboBoxAction" prefWidth="150.0" promptText="Employee" />
                   <PasswordField fx:id="txtFieldPassword" layoutX="94.0" layoutY="90.0" prefHeight="26.0" prefWidth="269.0" />
-                  <Label layoutX="14.0" layoutY="185.0" text="Forgot Password?" underline="true">
+                  <Label layoutX="14.0" layoutY="177.0" text="Forgot Password?" underline="true">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

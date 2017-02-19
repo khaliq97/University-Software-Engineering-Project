@@ -1,10 +1,11 @@
-package project;
+package project.Views;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.Controllers.HomeController;
+import project.User.User;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 public class HomeView
 {
-    LoginView loginView;
+    private LoginView loginView;
 
     private Parent root;
     private Stage stage;
@@ -35,7 +36,7 @@ public class HomeView
      */
     public HomeView(LoginView loginView, User user)
     {
-        fxmlLoader = new FXMLLoader(getClass().getResource("Home.fxml"));
+        fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Home.fxml"));
         stage = new Stage();
         homeController = new HomeController(this, loginView);
 
@@ -79,17 +80,17 @@ public class HomeView
     }
 
     /**
-     * Method shows the stage
+     * Loads the HomeView window
      */
-    public void show()
+    public void loadHomeView()
     {
         stage.show();
     }
 
     /**
-     * Method closes the stage
+     * Loads the HomeView window
      */
-    public void close()
+    public void closeHomeView()
     {
         stage.close();
     }
