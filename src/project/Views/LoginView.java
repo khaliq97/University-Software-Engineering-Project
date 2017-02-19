@@ -98,7 +98,6 @@ public class LoginView extends Application {
         loginController.populateAccessComboBox();
 
         readJSONFile();
-        populateDatabase();
 
     }
 
@@ -137,12 +136,12 @@ public class LoginView extends Application {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+
+            populateDatabase();
         }else
         {
-            System.out.println("File not found");
+            System.out.println(jsonFilePath + " not found");
         }
-
-
     }
 
     /**
@@ -199,7 +198,7 @@ public class LoginView extends Application {
         {
             if(potentialUser.getPassword().equals(password))
             {
-                if(authorizationServer.authUser(potentialUser, authorization))
+                if(authorizationServer.authorizationCheck(potentialUser, authorization))
                 {
                     primaryStage.close();
                     HomeView homeView = new HomeView(this, potentialUser);
