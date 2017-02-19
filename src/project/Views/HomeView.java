@@ -64,7 +64,7 @@ public class HomeView
      */
     public void initialize()
     {
-        homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + getAuthorizationLevelFromInt(user.getAuthorization())));
+        homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
     }
 
     /**
