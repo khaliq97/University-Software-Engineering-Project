@@ -59,7 +59,7 @@ public class LoginController {
             txtFieldUserName.clear();
             txtFieldPassword.clear();
             selectedAuthorizationLevel = 1;
-            comboBoxAccess.setPromptText("Employee");
+            comboBoxAccess.getSelectionModel().selectFirst();
         }
     }
 
