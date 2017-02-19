@@ -135,6 +135,16 @@ public class LoginController {
     }
 
     /**
+     * Shows Alert box for missing JSON file
+     */
+    public void showMissingJSONFileAlert(String jsonFilePath)
+    {
+        Alert incorrectUsername = new Alert(Alert.AlertType.ERROR);
+        incorrectUsername.setHeaderText(jsonFilePath + " not found, application exiting");
+        incorrectUsername.show();
+    }
+
+    /**
      * Adds authorization levels to comboBoxAccess control
      */
     public int populateAccessComboBox()

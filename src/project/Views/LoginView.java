@@ -43,7 +43,8 @@ public class LoginView extends Application {
      * @throws Exception Stage exception
      */
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception
+    {
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Login.fxml"));
         this.primaryStage = primaryStage;
         loginController = new LoginController(this);
@@ -140,7 +141,8 @@ public class LoginView extends Application {
             populateDatabase();
         }else
         {
-            System.out.println(jsonFilePath + " not found");
+            loginController.showMissingJSONFileAlert(jsonFilePath);
+            closeLoginView();
         }
     }
 
