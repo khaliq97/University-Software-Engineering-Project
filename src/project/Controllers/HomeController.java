@@ -1,6 +1,7 @@
 package project.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import project.Views.HomeView;
 import project.Views.LoginView;
 
@@ -13,6 +14,9 @@ public class HomeController {
 
     private LoginView loginView;
     private HomeView homeView;
+
+    @FXML
+    private Label labelWelcome;
 
     public HomeController(HomeView homeView, LoginView loginView)
     {
@@ -27,6 +31,11 @@ public class HomeController {
         homeView.closeHomeView();
         loginView.loadLoginView();
 
+    }
+
+    public void setLabelWelcome(String value)
+    {
+        labelWelcome.setText(value);
     }
 
 }
