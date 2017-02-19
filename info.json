@@ -1,6 +1,9 @@
-[{"name":"Bob", "password": "pass", "auth": "5"},
-{"name":"Lewis", "password": "pass2", "auth": "1"},
-{"name": "Tom", "password": "pass3", "auth": "2"}]
+[{"id":"111111", "password": "pass", "auth": "1"},
+{"id": "111222",  "password": "pass2", "auth": "2"},
+{"id": "111333", "password": "pass3", "auth": "3"},
+{"id": "111444", "password": "pass4", "auth": "4"},
+{"id": "111555", "password": "pass5", "auth": "5"}]
+
 
 
 

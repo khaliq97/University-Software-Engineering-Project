@@ -147,7 +147,7 @@ public class LoginView extends Application {
         for(Object object: items)
         {
             JSONObject jsonItem = (JSONObject) object;
-            String name = jsonItem.getString("name");
+            String name = jsonItem.getString("id");
             String password = jsonItem.getString("password");
             int authorization = jsonItem.getInt("auth");
 
@@ -206,12 +206,14 @@ public class LoginView extends Application {
             }else
             {
                 loginController.showIncorrectUsernameOrPasswordAlert();
+                loginController.getTxtFieldPassword().clear();
                 return false;
 
             }
         }else
         {
             loginController.showIncorrectUsernameOrPasswordAlert();
+            loginController.getTxtFieldPassword().clear();
             return false;
         }
 
