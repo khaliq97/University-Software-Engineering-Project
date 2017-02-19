@@ -29,7 +29,7 @@ public class AuthorizationServer {
         this.loginView = loginView;
     }
 
-    public boolean authUser(User user, int authorization)
+    public boolean authorizationCheck(User user, int authorization)
     {
         if(user.getAuthorization() == authorization || user.getAuthorization() > authorization)
         {
