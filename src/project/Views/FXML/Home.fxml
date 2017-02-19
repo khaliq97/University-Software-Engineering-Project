@@ -14,7 +14,8 @@
           <Tab text="Home">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
+
+                  <children>
                         <Button fx:id="buttonLogout" layoutX="668.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#onLogoutButtonClick" text="Logout" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="668.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="455.0" />
                      </children>
                   </AnchorPane>
