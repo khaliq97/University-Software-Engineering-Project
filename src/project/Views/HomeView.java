@@ -78,39 +78,6 @@ public class HomeView
     }
 
     /**
-     * Method takes in a level of access number
-     * Converts it to the Authorization String corresponding to that number
-     * @param value Authorization level
-     * @return Converted string
-     */
-    public String getAuthorizationLevelFromInt(int value)
-    {
-
-        String returnValue = "";
-        switch (value)
-        {
-            //Converts the String in ComboBox to the corresponding authorization number
-            case 1:
-                returnValue = "Employee";
-                break;
-            case 2:
-                returnValue =  "Reviewer";
-                break;
-            case 3:
-                returnValue = "HR Employee";
-                break;
-            case 4:
-                returnValue =  "Manager";
-                break;
-            case 5:
-                returnValue = "Director";
-                break;
-        }
-
-        return returnValue;
-    }
-
-    /**
      * Returns user
      * @return User
      */
