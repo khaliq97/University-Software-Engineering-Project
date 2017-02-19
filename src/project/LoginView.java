@@ -62,6 +62,7 @@ public class LoginView extends Application {
         primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setResizable(false);
 
         initialize();
     }
