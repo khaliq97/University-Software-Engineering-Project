@@ -62,7 +62,7 @@ public class HomeView
      * Initializes controls in Class
      * Sets the text of the labelWelcome control
      */
-    public void initialize()
+    public void initialize()r
     {
         homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
     }
