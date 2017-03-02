@@ -36,7 +36,7 @@ public class HomeController {
     public void onLogoutButtonClick()
     {
         homeView.logout();
-        homeView.closeHomeView();
+        homeView.closeHomePageView();
         loginView.loadLoginView();
 
     }
