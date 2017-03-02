@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
+import project.HRDatabaseController;
+import project.PersonalDetail;
 import project.User.User;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ import java.io.IOException;
 public class HomeView
 {
     private LoginView loginView;
+
+    private HRDatabaseController hrDatabaseController;
 
     private Parent root;
     private Stage stage;
@@ -39,6 +43,7 @@ public class HomeView
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Home.fxml"));
         stage = new Stage();
         homeController = new HomeController(this, loginView);
+        hrDatabaseController = new HRDatabaseController();
 
         fxmlLoader.setController(homeController);
         try {
@@ -56,13 +61,15 @@ public class HomeView
 
         initialize();
 
+        hrDatabaseController.getHrDatabase().createPersonalDetail(new PersonalDetail());
+
     }
 
     /**
      * Initializes controls in Class
      * Sets the text of the labelWelcome control
      */
-    public void initialize()r
+    public void initialize()
     {
         homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
     }
@@ -98,7 +105,7 @@ public class HomeView
     /**
      * Loads the HomeView window
      */
-    public void loadHomeView()
+    public void loadHomePageView()
     {
         stage.show();
     }
@@ -106,7 +113,7 @@ public class HomeView
     /**
      * Loads the HomeView window
      */
-    public void closeHomeView()
+    public void closeHomePageView()
     {
         stage.close();
     }
