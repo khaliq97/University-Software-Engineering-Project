@@ -21,6 +21,9 @@ public class HomeView
 {
     private LoginView loginView;
 
+
+    private CreatePersonalDetailsView createPersonalDetailsView;
+
     private HRDatabaseController hrDatabaseController;
 
     private Parent root;
@@ -44,6 +47,8 @@ public class HomeView
         stage = new Stage();
         homeController = new HomeController(this, loginView);
         hrDatabaseController = new HRDatabaseController();
+
+        createPersonalDetailsView = new CreatePersonalDetailsView(this);
 
         fxmlLoader.setController(homeController);
         try {
@@ -100,6 +105,10 @@ public class HomeView
     public void setUser(User user)
     {
         this.user = user;
+    }
+
+    public CreatePersonalDetailsView getCreatePersonalDetailsView() {
+        return createPersonalDetailsView;
     }
 
     /**
