@@ -133,7 +133,7 @@ public class LoginController {
     /**
      * Displays Alert box for message "incorrect Username or Password"
      */
-    public void showIncorrectUsernameOrPasswordAlert()
+    public void loadForgotPasswordView()
     {
         Alert incorrectUsername = new Alert(Alert.AlertType.ERROR);
         incorrectUsername.setHeaderText("Incorrect Username or Password");
@@ -159,6 +159,8 @@ public class LoginController {
         incorrectUsername.setHeaderText(jsonFilePath + " not found, application exiting");
         incorrectUsername.show();
     }
+
+
 
     /**
      * Adds authorization levels to comboBoxAccess control
