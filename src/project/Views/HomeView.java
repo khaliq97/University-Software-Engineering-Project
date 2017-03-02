@@ -111,6 +111,11 @@ public class HomeView
         return createPersonalDetailsView;
     }
 
+    public HRDatabaseController getHrDatabaseController()
+    {
+        return hrDatabaseController;
+    }
+
     /**
      * Loads the HomeView window
      */
