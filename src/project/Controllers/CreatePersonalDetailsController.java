@@ -1,7 +1,9 @@
 package project.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import project.PersonalDetail;
 import project.Views.CreatePersonalDetailsView;
 
 /**
@@ -55,6 +57,29 @@ public class CreatePersonalDetailsController {
     @FXML
     public void onButtonCreateClick()
     {
+        PersonalDetail newPersonalDetail = new PersonalDetail();
 
+        newPersonalDetail.setSurname(txtFieldSurname.getText());
+        newPersonalDetail.setName(txtFieldName.getText());
+        newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
+        newPersonalDetail.setAddress(txtFieldAddress.getText());
+        newPersonalDetail.setTownCity(txtFieldAddress.getText());
+        newPersonalDetail.setCounty(txtFieldCounty.getText());
+        newPersonalDetail.setPostcode(txtFieldPostcode.getText());
+        newPersonalDetail.setTelephoneNumber(Integer.parseInt(txtFieldTelephoneNumber.getText()));
+        newPersonalDetail.setMobileNumber(Integer.parseInt(txtFieldMobileNumber.getText()));
+        newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
+        newPersonalDetail.setEmergencyContactNumber(Integer.parseInt(txtFieldEmergencyContactNumber.getText()));
+
+        createPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().createPersonalDetail(newPersonalDetail);
+        showSuccessfulPersonalDetailsCreationAlert();
+    }
+
+    public void showSuccessfulPersonalDetailsCreationAlert()
+    {
+
+        Alert successfulPersonalDetails = new Alert(Alert.AlertType.ERROR);
+        successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + createPersonalDetailsView.getHomeView().getUser().getUsername());
+        successfulPersonalDetails.show();
     }
 }
