@@ -1,6 +1,7 @@
 package project.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import project.Views.HomeView;
 import project.Views.LoginView;
@@ -17,6 +18,9 @@ public class HomeController {
 
     @FXML
     private Label labelWelcome;
+
+    @FXML
+    private Button buttonCreatePersonalDetail;
 
     /**
      * Class constructor
@@ -39,6 +43,12 @@ public class HomeController {
         homeView.closeHomePageView();
         loginView.loadLoginView();
 
+    }
+
+    @FXML
+    public void onButtonCreatePersonalDetailClick()
+    {
+        homeView.getCreatePersonalDetailsView().loadCreatePersonalDetailsView();
     }
 
     /**

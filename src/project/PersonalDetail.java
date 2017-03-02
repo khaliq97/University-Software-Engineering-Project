@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class PersonalDetail implements Serializable {
 
+
+    private int userName;
     private String surname;
     private String name;
     private Date DOB;
@@ -25,6 +27,14 @@ public class PersonalDetail implements Serializable {
     public PersonalDetail()
     {
 
+    }
+
+    public int getUserName() {
+        return userName;
+    }
+
+    public void setUserName(int userName) {
+        this.userName = userName;
     }
 
     public String getSurname() {
