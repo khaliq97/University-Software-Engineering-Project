@@ -215,7 +215,7 @@ public class LoginView extends Application {
                 {
                     primaryStage.close();
                     HomeView homeView = new HomeView(this, potentialUser);
-                    homeView.loadHomeView();
+                    homeView.loadHomePageView();
 
                     return true;
 
@@ -227,14 +227,14 @@ public class LoginView extends Application {
 
             }else
             {
-                loginController.showIncorrectUsernameOrPasswordAlert();
+                loginController.loadForgotPasswordView();
                 loginController.getTxtFieldPassword().clear();
                 return false;
 
             }
         }else
         {
-            loginController.showIncorrectUsernameOrPasswordAlert();
+            loginController.loadForgotPasswordView();
             loginController.getTxtFieldPassword().clear();
             return false;
         }
