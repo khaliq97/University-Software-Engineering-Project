@@ -1,7 +1,5 @@
 package project.User;
 
-
-
 /**
  * Created by osamakhaliq on 18/02/17.
  * User object class
