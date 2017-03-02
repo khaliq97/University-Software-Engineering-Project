@@ -1,9 +1,6 @@
 package project;
 
-import project.User.User;
-
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by osamakhaliq on 02/03/17.
@@ -14,10 +11,10 @@ public class PersonalDetail implements Serializable {
     private int userName;
     private String surname;
     private String name;
-    private Date DOB;
+    private String DOB;
     private String address;
     private String townCity;
-    private String country;
+    private String county;
     private String postcode;
     private int telephoneNumber;
     private int mobileNumber;
@@ -53,11 +50,11 @@ public class PersonalDetail implements Serializable {
         this.name = name;
     }
 
-    public Date getDOB() {
+    public String getDOB() {
         return DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
@@ -77,12 +74,12 @@ public class PersonalDetail implements Serializable {
         this.townCity = townCity;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCounty() {
+        return county;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCounty(String county) {
+        this.county = county;
     }
 
     public String getPostcode() {
