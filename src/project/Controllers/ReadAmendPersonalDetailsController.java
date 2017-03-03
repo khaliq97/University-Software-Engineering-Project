@@ -5,12 +5,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import project.Database.User.PersonalDetail;
-import project.Views.ReadPersonalDetailsView;
+import project.Views.ReadAmendPersonalDetailsView;
 
 /**
  * Created by osamakhaliq on 02/03/17.
  */
-public class ReadPersonalDetailsController {
+public class ReadAmendPersonalDetailsController {
 
 
     @FXML
@@ -52,19 +52,20 @@ public class ReadPersonalDetailsController {
     @FXML
     private TextField txtFieldEmergencyContactNumber;
 
-    ReadPersonalDetailsView readPersonalDetailsView;
+    ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
 
-    public ReadPersonalDetailsController(ReadPersonalDetailsView readPersonalDetailsView)
+    public ReadAmendPersonalDetailsController(ReadAmendPersonalDetailsView readAmendPersonalDetailsView)
     {
-        this.readPersonalDetailsView = readPersonalDetailsView;
+        this.readAmendPersonalDetailsView = readAmendPersonalDetailsView;
     }
 
     public void loadPersonalDetails(String userName)
     {
-        if(!readPersonalDetailsView.isAmendMode())
+        if(!readAmendPersonalDetailsView.isAmendMode())
         {
+            readAmendPersonalDetailsView.getStage().setTitle("Read Personal Details");
             buttonAmend.setDisable(true);
-            PersonalDetail personalDetail = readPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+            PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
 
             txtFieldSurname.setText(personalDetail.getSurname());
             txtFieldSurname.setEditable(false);
@@ -101,9 +102,10 @@ public class ReadPersonalDetailsController {
 
         }else
         {
+            readAmendPersonalDetailsView.getStage().setTitle("Amend Personal Details");
             buttonAmend.setDisable(false);
 
-            PersonalDetail personalDetail = readPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+            PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
 
             txtFieldSurname.setText(personalDetail.getSurname());
             txtFieldSurname.setEditable(true);
@@ -154,7 +156,7 @@ public class ReadPersonalDetailsController {
     {
         PersonalDetail newPersonalDetail = new PersonalDetail();
 
-        newPersonalDetail.setUserName(readPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        newPersonalDetail.setUserName(readAmendPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
         newPersonalDetail.setSurname(txtFieldSurname.getText());
         newPersonalDetail.setName(txtFieldName.getText());
         newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
@@ -168,27 +170,27 @@ public class ReadPersonalDetailsController {
         newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
 
         int index = 0;
-        for(PersonalDetail personalDetail: readPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails())
+        for(PersonalDetail personalDetail: readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails())
         {
             if(personalDetail.getUserName().equals(newPersonalDetail.getUserName()))
             {
-                readPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails().set(index, newPersonalDetail);
+                readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails().set(index, newPersonalDetail);
             }
             index++;
         }
 
-        readPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
-        readPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
+        readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
+        readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
 
         showSuccessfulPersonalDetailsAmendAlert();
-        readPersonalDetailsView.closeReadPersonalDetailsView();
+        readAmendPersonalDetailsView.closeReadPersonalDetailsView();
     }
 
     public void showSuccessfulPersonalDetailsAmendAlert()
     {
 
         Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
-        successfulPersonalDetails.setHeaderText("Personal Details amened successfully for " + readPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        successfulPersonalDetails.setHeaderText("Personal Details amened successfully for " + readAmendPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
         successfulPersonalDetails.show();
     }
 
@@ -240,7 +242,7 @@ public class ReadPersonalDetailsController {
         return txtFieldEmergencyContactNumber;
     }
 
-    public ReadPersonalDetailsView getReadPersonalDetailsView() {
-        return readPersonalDetailsView;
+    public ReadAmendPersonalDetailsView getReadAmendPersonalDetailsView() {
+        return readAmendPersonalDetailsView;
     }
 }

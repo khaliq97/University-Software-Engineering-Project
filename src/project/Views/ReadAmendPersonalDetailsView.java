@@ -4,15 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.Controllers.CreatePersonalDetailsController;
-import project.Controllers.ReadPersonalDetailsController;
+import project.Controllers.ReadAmendPersonalDetailsController;
 
 import java.io.IOException;
 
 /**
  * Created by osamakhaliq on 02/03/17.
  */
-public class ReadPersonalDetailsView {
+public class ReadAmendPersonalDetailsView {
     HomeView homeView;
 
     private Parent root;
@@ -22,17 +21,17 @@ public class ReadPersonalDetailsView {
 
     private boolean amendMode;
 
-    ReadPersonalDetailsController readPersonalDetailsController;
+    ReadAmendPersonalDetailsController readAmendPersonalDetailsController;
 
-    public ReadPersonalDetailsView(HomeView homeView)
+    public ReadAmendPersonalDetailsView(HomeView homeView)
     {
         this.homeView = homeView;
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/ReadPersonalDetails.fxml"));
         stage = new Stage();
-        readPersonalDetailsController = new ReadPersonalDetailsController(this);
+        readAmendPersonalDetailsController = new ReadAmendPersonalDetailsController(this);
         amendMode = false;
 
-        fxmlLoader.setController(readPersonalDetailsController);
+        fxmlLoader.setController(readAmendPersonalDetailsController);
         try {
             root = fxmlLoader.load();
         } catch (IOException e) {
@@ -51,6 +50,11 @@ public class ReadPersonalDetailsView {
         return homeView;
     }
 
+    public Stage getStage()
+    {
+        return stage;
+    }
+
     public boolean isAmendMode()
     {
         return amendMode;
@@ -62,9 +66,9 @@ public class ReadPersonalDetailsView {
     }
 
 
-    public ReadPersonalDetailsController getReadPersonalDetailsController()
+    public ReadAmendPersonalDetailsController getReadAmendPersonalDetailsController()
     {
-        return readPersonalDetailsController;
+        return readAmendPersonalDetailsController;
     }
 
     public void loadReadPersonalDetailsView()

@@ -26,7 +26,7 @@ public class HomeView
 
     private CreatePersonalDetailsView createPersonalDetailsView;
 
-    private ReadPersonalDetailsView readPersonalDetailsView;
+    private ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
 
     private HRDatabaseController hrDatabaseController;
 
@@ -54,7 +54,7 @@ public class HomeView
         this.userSession = userSession;
 
         createPersonalDetailsView = new CreatePersonalDetailsView(this);
-        readPersonalDetailsView = new ReadPersonalDetailsView(this);
+        readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this);
 
         fxmlLoader.setController(homeController);
         try {
@@ -81,16 +81,6 @@ public class HomeView
     public void initialize()
     {
         homeController.setLabelWelcome(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
-    }
-
-    /**
-     * Logs out the user
-     * Sets the user to null
-     */
-    public void logout()
-    {
-        userSession.getUser().setLoggedIn(false);
-        user = null;
     }
 
     public HomeController getHomeController()
@@ -129,8 +119,8 @@ public class HomeView
         return createPersonalDetailsView;
     }
 
-    public ReadPersonalDetailsView getReadPersonalDetailsView() {
-        return readPersonalDetailsView;
+    public ReadAmendPersonalDetailsView getReadAmendPersonalDetailsView() {
+        return readAmendPersonalDetailsView;
     }
 
     public HRDatabaseController getHrDatabaseController()
