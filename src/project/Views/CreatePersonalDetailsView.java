@@ -53,4 +53,9 @@ public class CreatePersonalDetailsView {
     {
         stage.show();
     }
+
+    public void closeCreatePersonalDetailsView()
+    {
+        stage.close();
+    }
 }
