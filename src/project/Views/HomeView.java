@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
+import project.Controllers.ReadPersonalDetailsController;
 import project.HRDatabaseController;
 import project.PersonalDetail;
 import project.User.User;
@@ -23,6 +24,9 @@ public class HomeView
 
 
     private CreatePersonalDetailsView createPersonalDetailsView;
+
+
+    private ReadPersonalDetailsView readPersonalDetailsView;
 
     private HRDatabaseController hrDatabaseController;
 
@@ -49,6 +53,7 @@ public class HomeView
         hrDatabaseController = new HRDatabaseController();
 
         createPersonalDetailsView = new CreatePersonalDetailsView(this);
+        readPersonalDetailsView = new ReadPersonalDetailsView(this);
 
         fxmlLoader.setController(homeController);
         try {
@@ -65,8 +70,6 @@ public class HomeView
         this.user = user;
 
         initialize();
-
-        hrDatabaseController.getHrDatabase().createPersonalDetail(new PersonalDetail());
 
     }
 
@@ -109,6 +112,10 @@ public class HomeView
 
     public CreatePersonalDetailsView getCreatePersonalDetailsView() {
         return createPersonalDetailsView;
+    }
+
+    public ReadPersonalDetailsView getReadPersonalDetailsView() {
+        return readPersonalDetailsView;
     }
 
     public HRDatabaseController getHrDatabaseController()
