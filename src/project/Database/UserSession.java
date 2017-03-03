@@ -12,11 +12,29 @@ public class UserSession {
     private AuthorizationServer authorizationServer;
 
 
-    public UserSession(Database database, AuthorizationServer authorizationServer)
+    private User user;
+
+    public UserSession()
     {
-        this.database = database;
-        this.authorizationServer = authorizationServer;
+        database = new Database();
+        authorizationServer = new AuthorizationServer();
     }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
+
+    public Database getDatabase()
+    {
+        return database;
+    }
+
     /**
      * Finds the given Username in database ArrayList
      * Checks user password against GUI input
@@ -49,30 +67,23 @@ public class UserSession {
             {
                 if(authorizationServer.authorizationCheck(potentialUser, authorization))
                 {
-                    primaryStage.close();
-                    HomeView homeView = new HomeView(this, potentialUser);
-                    homeView.loadHomePageView();
-
+                    user = potentialUser;
                     return "SUCCESS";
 
                 }else
                 {
-                    loginController.showAuthorizationFailureAlert();
-                    return "AUTH FAILURE";
+                    return "AUTH_FAILURE";
                 }
 
             }else
             {
-                loginController.loadForgotPasswordView();
-                loginController.getTxtFieldPassword().clear();
-                return "USER, PASS FAILURE";
+                return "USER_PASS_FAILURE";
 
             }
         }else
         {
-            loginController.loadForgotPasswordView();
-            loginController.getTxtFieldPassword().clear();
-            return "USER, PASS FAILURE";
+
+            return "USER_PASS_FAILURE";
         }
 
 
