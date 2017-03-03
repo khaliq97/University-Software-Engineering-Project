@@ -59,20 +59,23 @@ public class CreatePersonalDetailsController {
     {
         PersonalDetail newPersonalDetail = new PersonalDetail();
 
+        newPersonalDetail.setUserName(createPersonalDetailsView.getHomeView().getUser().getUsername());
         newPersonalDetail.setSurname(txtFieldSurname.getText());
         newPersonalDetail.setName(txtFieldName.getText());
         newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
         newPersonalDetail.setAddress(txtFieldAddress.getText());
-        newPersonalDetail.setTownCity(txtFieldAddress.getText());
+        newPersonalDetail.setTownCity(txtFieldTownCity.getText());
         newPersonalDetail.setCounty(txtFieldCounty.getText());
         newPersonalDetail.setPostcode(txtFieldPostcode.getText());
-        newPersonalDetail.setTelephoneNumber(Integer.parseInt(txtFieldTelephoneNumber.getText()));
-        newPersonalDetail.setMobileNumber(Integer.parseInt(txtFieldMobileNumber.getText()));
+        newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
+        newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
         newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
-        newPersonalDetail.setEmergencyContactNumber(Integer.parseInt(txtFieldEmergencyContactNumber.getText()));
+        newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
 
-        createPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().createPersonalDetail(newPersonalDetail);
+        createPersonalDetailsView.getHomeView().getHrDatabaseController().createPersonalDetail(newPersonalDetail);
+
         showSuccessfulPersonalDetailsCreationAlert();
+        createPersonalDetailsView.closeCreatePersonalDetailsView();
     }
 
     public void showSuccessfulPersonalDetailsCreationAlert()

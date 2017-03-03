@@ -18,30 +18,11 @@ public class HRDatabase implements Serializable{
         personalDetails = new ArrayList<>();
     }
 
-
-    public void createPersonalDetail(PersonalDetail personalDetail)
+    public ArrayList<PersonalDetail> getPersonalDetails()
     {
-        PersonalDetail personalDetailToAdd = new PersonalDetail();
-        personalDetails.add(personalDetailToAdd);
-
-        FileOutputStream fileOutputStream;
-        ObjectOutputStream objectOutputStream;
-        try {
-            fileOutputStream = new FileOutputStream(HR_DATABASE_FILE_PATH);
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-            objectOutputStream.writeObject(this);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        return personalDetails;
     }
 
-    public void getPersonalDetails(User user)
-    {
 
-    }
 
 }
