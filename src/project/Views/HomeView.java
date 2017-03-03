@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
 import project.Controllers.ReadPersonalDetailsController;
+import project.Database.UserSession;
 import project.HRDatabaseController;
 import project.PersonalDetail;
 import project.User.User;
@@ -23,8 +24,9 @@ public class HomeView
     private LoginView loginView;
 
 
-    private CreatePersonalDetailsView createPersonalDetailsView;
+    private UserSession userSession;
 
+    private CreatePersonalDetailsView createPersonalDetailsView;
 
     private ReadPersonalDetailsView readPersonalDetailsView;
 
@@ -43,14 +45,15 @@ public class HomeView
      * Constructor for HomeView class
      * Passes in loginView and User
      * @param loginView LoginView instance
-     * @param user User that has logged in
      */
-    public HomeView(LoginView loginView, User user)
+    public HomeView(LoginView loginView, UserSession userSession)
     {
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Home.fxml"));
         stage = new Stage();
         homeController = new HomeController(this, loginView);
         hrDatabaseController = new HRDatabaseController();
+
+        this.userSession = userSession;
 
         createPersonalDetailsView = new CreatePersonalDetailsView(this);
         readPersonalDetailsView = new ReadPersonalDetailsView(this);
@@ -79,7 +82,7 @@ public class HomeView
      */
     public void initialize()
     {
-        homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
+        homeController.setLabelWelcome(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
     }
 
     /**
@@ -90,6 +93,16 @@ public class HomeView
     {
         user.setLoggedIn(false);
         user = null;
+    }
+
+    public UserSession getUserSession()
+    {
+        return userSession;
+    }
+
+    public void setUserSession(UserSession userSession)
+    {
+        this.userSession = userSession;
     }
 
     /**
