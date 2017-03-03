@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class PersonalDetail implements Serializable {
 
 
-    private int userName;
+    private String userName;
     private String surname;
     private String name;
     private String DOB;
@@ -16,21 +16,21 @@ public class PersonalDetail implements Serializable {
     private String townCity;
     private String county;
     private String postcode;
-    private int telephoneNumber;
-    private int mobileNumber;
+    private String telephoneNumber;
+    private String mobileNumber;
     private String emergencyContact;
-    private int emergencyContactNumber;
+    private String emergencyContactNumber;
 
     public PersonalDetail()
     {
 
     }
 
-    public int getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(int userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
@@ -90,19 +90,19 @@ public class PersonalDetail implements Serializable {
         this.postcode = postcode;
     }
 
-    public int getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(int telephoneNumber) {
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public int getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(int mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
@@ -114,11 +114,11 @@ public class PersonalDetail implements Serializable {
         this.emergencyContact = emergencyContact;
     }
 
-    public int getEmergencyContactNumber() {
+    public String getEmergencyContactNumber() {
         return emergencyContactNumber;
     }
 
-    public void setEmergencyContactNumber(int emergencyContactNumber) {
+    public void setEmergencyContactNumber(String emergencyContactNumber) {
         this.emergencyContactNumber = emergencyContactNumber;
     }
 
