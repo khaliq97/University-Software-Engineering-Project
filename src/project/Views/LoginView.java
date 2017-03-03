@@ -7,9 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import project.Authorization.AuthorizationServer;
+import project.Database.AuthorizationServer;
 import project.Controllers.LoginController;
+import project.Database.Database;
+import project.Database.UserSession;
 import project.User.User;
+import sun.rmi.runtime.Log;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -23,19 +26,14 @@ import java.util.ArrayList;
  */
 public class LoginView extends Application {
 
+    private UserSession userSession;
+
     private Parent root;
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
     private Scene scene;
     private LoginController loginController;
 
-    private AuthorizationServer authorizationServer;
-
-    private ArrayList<User> database;
-
-    private StringBuilder jsonFile;
-
-    private final String jsonFilePath = "database.json";
 
     /**
      * Initializes variables and loads "LoginView" Window
@@ -45,22 +43,21 @@ public class LoginView extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception
     {
+
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Login.fxml"));
         this.primaryStage = primaryStage;
         loginController = new LoginController(this);
-        database = new ArrayList<>();
-        jsonFile =  new StringBuilder();
+
+        userSession = new UserSession();
 
         fxmlLoader.setController(loginController);
         root = fxmlLoader.load();
-
         scene = new Scene(root, 380, 210);
-        primaryStage.setTitle("Login");
+
+        primaryStage.setTitle("Database");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
-
-        authorizationServer = new AuthorizationServer(this);
 
         initialize();
     }
@@ -90,15 +87,6 @@ public class LoginView extends Application {
     }
 
     /**
-     * Returns jsonFilePath
-     * @return jsonFilePath
-     */
-    public String getJsonFilePath()
-    {
-        return jsonFilePath;
-    }
-
-    /**
      * Populates the Access Combo Box from loginController.
      * Reads JSON file and inputs data into the "database" ArrayList.
      */
@@ -106,140 +94,31 @@ public class LoginView extends Application {
     {
         loginController.populateAccessComboBox();
 
-        readJSONFile();
-
     }
 
-    /**
-     * Checks if a File exists
-     * @return
-     */
-    public boolean checkIfJSONFileExists()
-    {
-        File jsonFile = new File(jsonFilePath);
-        if(jsonFile.exists() && !jsonFile.isDirectory())
-        {
-            return true;
-        }else
-        {
-            return false;
-        }
-    }
-
-    /**
-     * Reads a file and writes it to jsonFile StringBuilder
-     */
-    public void readJSONFile()
-    {
-        String line = "";
-
-        if(checkIfJSONFileExists())
-        {
-            try {
-                FileReader fileReader = new FileReader(jsonFilePath);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-                try {
-                    while((line = bufferedReader.readLine()) != null)
-                    {
-                        jsonFile.append(line);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            populateDatabase();
-        }else
-        {
-            loginController.showMissingJSONFileAlert(jsonFilePath);
-            closeLoginView();
-        }
-    }
-
-    /**
-     * Parses JSON file as Array.
-     * Stores each Username, Password and Authorization in variables
-     * Creates new User with these attributes
-     * Adds it to database ArrayList
-     */
-    public void populateDatabase()
-    {
-        JSONArray items  = new JSONArray(jsonFile.toString());
-        for(Object object: items)
-        {
-            JSONObject jsonItem = (JSONObject) object;
-            String name = jsonItem.getString("id");
-            String password = jsonItem.getString("password");
-            int authorization = jsonItem.getInt("auth");
-
-            User user = new User(name, password, authorization);
-            database.add(user);
-        }
-
-
-    }
-
-    /**
-     * Finds the given Username in database ArrayList
-     * Checks user password against GUI input
-     * If successful, loginView success is shown otherwise appropriate error messages are showed
-     * @param username Username string from txtFieldUsername
-     * @param password Password string from txtFieldPassword
-     * @param authorization Authorization integer from comboBoxAuthorizationLevels
-     */
     public boolean login(String username, String password, int authorization)
     {
+        boolean returnBoolean = false;
+        String loginFlag = userSession.login(username, password,authorization);
 
-        boolean userFound = false;
-        User potentialUser = null;
-        for(User user: database)
+        if(loginFlag.equals("SUCCESS"))
         {
-            if(!userFound)
-            {
-                if(user.getUsername().equals(username))
-                {
-                    potentialUser = user;
-                    userFound = true;
-                }
-            }
+            primaryStage.close();
+            HomeView homeView = new HomeView(this, userSession);
+            homeView.loadHomePageView();
+            returnBoolean = true;
+        }else if(loginFlag.equals("AUTH_FAILURE"))
+        {
+            loginController.showAuthorizationFailureAlert();
+            returnBoolean =  false;
 
+        }else if(loginFlag.equals("USER_PASS_FAILURE"))
+        {
+            loginController.showIncorrectUsernameOrPasswordAlert();
+            returnBoolean = false;
         }
 
-        if(userFound)
-        {
-            if(potentialUser.getPassword().equals(password))
-            {
-                if(authorizationServer.authorizationCheck(potentialUser, authorization))
-                {
-                    primaryStage.close();
-                    HomeView homeView = new HomeView(this, potentialUser);
-                    homeView.loadHomePageView();
-
-                    return true;
-
-                }else
-                {
-                    loginController.showAuthorizationFailureAlert();
-                    return false;
-                }
-
-            }else
-            {
-                loginController.loadForgotPasswordView();
-                loginController.getTxtFieldPassword().clear();
-                return false;
-
-            }
-        }else
-        {
-            loginController.loadForgotPasswordView();
-            loginController.getTxtFieldPassword().clear();
-            return false;
-        }
-
-
+        return returnBoolean;
     }
 
     public static void main(String[] args) {
