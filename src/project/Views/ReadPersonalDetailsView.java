@@ -39,7 +39,7 @@ public class ReadPersonalDetailsView {
             e.printStackTrace();
         }
 
-        scene = new Scene(root, 414, 519);
+        scene = new Scene(root, 414, 568);
         stage.setTitle("Read Personal Details");
         stage.setResizable(false);
         stage.setScene(scene);
@@ -69,6 +69,7 @@ public class ReadPersonalDetailsView {
 
     public void loadReadPersonalDetailsView()
     {
+        amendMode = false;
         stage.show();
     }
 
