@@ -1,7 +1,5 @@
 package project;
 
-import project.User.User;
-
 import java.io.*;
 import java.util.ArrayList;
 

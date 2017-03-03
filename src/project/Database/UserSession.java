@@ -1,7 +1,6 @@
 package project.Database;
 
-import project.User.User;
-import project.Views.HomeView;
+import project.Database.User.User;
 
 /**
  * Created by osamakhaliq on 03/03/17.

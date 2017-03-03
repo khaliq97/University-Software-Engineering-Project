@@ -5,11 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
-import project.Controllers.ReadPersonalDetailsController;
 import project.Database.UserSession;
 import project.HRDatabaseController;
-import project.PersonalDetail;
-import project.User.User;
+import project.Database.User.User;
 
 import java.io.IOException;
 

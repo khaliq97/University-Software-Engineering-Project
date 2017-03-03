@@ -5,17 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import project.Database.AuthorizationServer;
 import project.Controllers.LoginController;
-import project.Database.Database;
 import project.Database.UserSession;
-import project.User.User;
-import sun.rmi.runtime.Log;
-
-import java.io.*;
-import java.util.ArrayList;
 
 /**
  * Created by Osama Khaliq

@@ -2,7 +2,7 @@ package project.Database;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import project.User.User;
+import project.Database.User.User;
 
 import java.io.*;
 import java.util.ArrayList;

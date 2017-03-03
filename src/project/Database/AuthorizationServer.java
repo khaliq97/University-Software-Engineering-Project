@@ -1,7 +1,6 @@
 package project.Database;
 
-import project.User.User;
-import project.Views.LoginView;
+import project.Database.User.User;
 
 /**
  * Created by Osama Khaliq
