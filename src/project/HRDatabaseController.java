@@ -46,11 +46,8 @@ public class HRDatabaseController{
 
     }
 
-    public void createPersonalDetail(PersonalDetail personalDetail)
+    public void writeToDatabase()
     {
-        PersonalDetail personalDetailToAdd = new PersonalDetail();
-        hrDatabase.getPersonalDetails().add(personalDetail);
-
         FileOutputStream fileOutputStream;
         ObjectOutputStream objectOutputStream;
         try {
@@ -63,7 +60,14 @@ public class HRDatabaseController{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    public void createPersonalDetail(PersonalDetail personalDetail)
+    {
+        PersonalDetail personalDetailToAdd = new PersonalDetail();
+        hrDatabase.getPersonalDetails().add(personalDetail);
+
+        writeToDatabase();
     }
 
     public PersonalDetail getPersonalDetails(String userName)
