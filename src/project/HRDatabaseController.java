@@ -13,7 +13,7 @@ public class HRDatabaseController{
     public HRDatabaseController()
     {
         hrDatabase = new HRDatabase(this);
-        //populateHRDatabase();
+        populateHRDatabase();
     }
 
     public HRDatabase getHrDatabase() {
@@ -34,7 +34,7 @@ public class HRDatabaseController{
             objectInputStream = new ObjectInputStream(fileInputStream);
 
             HRDatabase readHR_Database = (HRDatabase) objectInputStream.readObject();
-            hrDatabase = (HRDatabase) objectInputStream.readObject();
+            hrDatabase = readHR_Database;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -44,5 +44,40 @@ public class HRDatabaseController{
         }
 
 
+    }
+
+    public void createPersonalDetail(PersonalDetail personalDetail)
+    {
+        PersonalDetail personalDetailToAdd = new PersonalDetail();
+        hrDatabase.getPersonalDetails().add(personalDetail);
+
+        FileOutputStream fileOutputStream;
+        ObjectOutputStream objectOutputStream;
+        try {
+            fileOutputStream = new FileOutputStream(HR_DATABASE_FILE_PATH);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            objectOutputStream.writeObject(hrDatabase);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public PersonalDetail getPersonalDetails(String userName)
+    {
+        PersonalDetail personalDetailReturn = null;
+        for(PersonalDetail personalDetail: hrDatabase.getPersonalDetails())
+        {
+
+            if(personalDetail.getUserName().equals(userName))
+            {
+                personalDetailReturn = personalDetail;
+            }
+        }
+
+        return personalDetailReturn;
     }
 }
