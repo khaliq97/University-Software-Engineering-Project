@@ -22,6 +22,12 @@ public class HomeController {
     @FXML
     private Button buttonCreatePersonalDetail;
 
+    @FXML
+    private Button buttonAmendPersonalDetail;
+
+    @FXML
+    private Button buttonReadPersonalDetail;
+
     /**
      * Class constructor
      * @param homeView HomeView instance
@@ -31,6 +37,22 @@ public class HomeController {
     {
         this.homeView = homeView;
         this.loginView = loginView;
+    }
+
+    public void checkAuthorization(int auth)
+    {
+        buttonCreatePersonalDetail.setDisable(false);
+        buttonAmendPersonalDetail.setDisable(false);
+
+        if(auth == 1)
+        {
+            buttonCreatePersonalDetail.setDisable(true);
+            buttonAmendPersonalDetail.setDisable(true);
+        }else if(auth > 1)
+        {
+            buttonCreatePersonalDetail.setDisable(false);
+            buttonAmendPersonalDetail.setDisable(false);
+        }
     }
 
     /**
