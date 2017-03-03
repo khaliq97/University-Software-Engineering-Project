@@ -1,4 +1,4 @@
-package project.Authorization;
+package project.Database;
 
 import project.User.User;
 import project.Views.LoginView;
@@ -12,7 +12,7 @@ import project.Views.LoginView;
 public class AuthorizationServer {
 
     /*
-    Authorization Levels reference
+    Database Levels reference
 
     Employee : 1
     Reviewer: 2
@@ -21,23 +21,20 @@ public class AuthorizationServer {
     Manager: 4
      */
 
-    private LoginView loginView;
-
 
     /**
      * Class constructor
-     * @param loginView LoginView instance
      */
-    public AuthorizationServer(LoginView loginView)
+    public AuthorizationServer()
     {
-        this.loginView = loginView;
+
     }
 
     /**
      * Checks authorization level against the inputted authorization level
      * If autorization level matches against input or is higher then returns true
      * @param user User to authorise
-     * @param authorization Authorization level to check against
+     * @param authorization Database level to check against
      * @return boolean
      */
     public boolean authorizationCheck(User user, int authorization)
