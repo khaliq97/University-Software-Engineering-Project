@@ -51,6 +51,20 @@ public class HomeController {
         homeView.getCreatePersonalDetailsView().loadCreatePersonalDetailsView();
     }
 
+    @FXML
+    public void onButtonAmendPersonalDetailClick()
+    {
+
+    }
+
+    @FXML
+    public void onButtonReadPersonalDetailClick()
+    {
+        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUser().getUsername());
+        homeView.getReadPersonalDetailsView().loadReadPersonalDetailsView();
+    }
+
+
     /**
      * Sets the labelWelcome text
      * @param value Text to set
