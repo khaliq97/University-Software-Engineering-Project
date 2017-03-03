@@ -105,6 +105,7 @@ public class LoginView extends Application {
         {
             primaryStage.close();
             HomeView homeView = new HomeView(this, userSession);
+            homeView.getHomeController().checkAuthorization(authorization);
             homeView.loadHomePageView();
             returnBoolean = true;
         }else if(loginFlag.equals("AUTH_FAILURE"))

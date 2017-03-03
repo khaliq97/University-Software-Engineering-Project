@@ -91,10 +91,14 @@ public class HomeView
      */
     public void logout()
     {
-        user.setLoggedIn(false);
+        userSession.getUser().setLoggedIn(false);
         user = null;
     }
 
+    public HomeController getHomeController()
+    {
+        return homeController;
+    }
     public UserSession getUserSession()
     {
         return userSession;
