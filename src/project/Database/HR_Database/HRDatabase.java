@@ -1,4 +1,6 @@
-package project;
+package project.Database.HR_Database;
+
+import project.Database.User.PersonalDetail;
 
 import java.io.*;
 import java.util.ArrayList;

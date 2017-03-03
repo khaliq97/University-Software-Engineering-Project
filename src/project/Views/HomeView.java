@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
 import project.Database.UserSession;
-import project.HRDatabaseController;
+import project.Database.HR_Database.HRDatabaseController;
 import project.Database.User.User;
 
 import java.io.IOException;
