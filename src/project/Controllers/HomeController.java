@@ -54,14 +54,15 @@ public class HomeController {
     @FXML
     public void onButtonAmendPersonalDetailClick()
     {
-
+        homeView.getReadPersonalDetailsView().loadAmendPersonalDetailsView();
+        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
     @FXML
     public void onButtonReadPersonalDetailClick()
     {
-        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUser().getUsername());
         homeView.getReadPersonalDetailsView().loadReadPersonalDetailsView();
+        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
 

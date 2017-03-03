@@ -12,14 +12,6 @@ import static org.junit.Assert.*;
  */
 public class Tests
 {
-    private LoginView loginView = new LoginView();
-
-    @Test
-    public void checkIfJSONFilePathLengthAboveZero()
-    {
-
-        assertNotEquals("jsonFilePath string length must be above 0", 0, loginView.getJsonFilePath().length());
-    }
 
 
 }

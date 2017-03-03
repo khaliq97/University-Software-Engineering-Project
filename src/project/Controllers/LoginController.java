@@ -133,7 +133,7 @@ public class LoginController {
     /**
      * Displays Alert box for message "incorrect Username or Password"
      */
-    public void loadForgotPasswordView()
+    public void showIncorrectUsernameOrPasswordAlert()
     {
         Alert incorrectUsername = new Alert(Alert.AlertType.ERROR);
         incorrectUsername.setHeaderText("Incorrect Username or Password");
@@ -141,12 +141,12 @@ public class LoginController {
     }
 
     /**
-     * Shows Alert box for Authorization Failure
+     * Shows Alert box for Database Failure
      */
     public void showAuthorizationFailureAlert()
     {
         Alert incorrectUsername = new Alert(Alert.AlertType.ERROR);
-        incorrectUsername.setHeaderText("Authorization failure");
+        incorrectUsername.setHeaderText("Database failure");
         incorrectUsername.show();
     }
 

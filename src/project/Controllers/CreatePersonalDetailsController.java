@@ -81,7 +81,7 @@ public class CreatePersonalDetailsController {
     public void showSuccessfulPersonalDetailsCreationAlert()
     {
 
-        Alert successfulPersonalDetails = new Alert(Alert.AlertType.ERROR);
+        Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
         successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + createPersonalDetailsView.getHomeView().getUser().getUsername());
         successfulPersonalDetails.show();
     }

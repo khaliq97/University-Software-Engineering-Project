@@ -1,6 +1,8 @@
 package project.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import project.PersonalDetail;
 import project.Views.ReadPersonalDetailsView;
@@ -11,6 +13,8 @@ import project.Views.ReadPersonalDetailsView;
 public class ReadPersonalDetailsController {
 
 
+    @FXML
+    private Button buttonAmend;
 
     @FXML
     private TextField txtFieldUserName;
@@ -57,20 +61,135 @@ public class ReadPersonalDetailsController {
 
     public void loadPersonalDetails(String userName)
     {
-        PersonalDetail personalDetail = readPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+        if(!readPersonalDetailsView.isAmendMode())
+        {
+            buttonAmend.setDisable(true);
+            PersonalDetail personalDetail = readPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
 
-        txtFieldSurname.setText(personalDetail.getSurname());
-        txtFieldName.setText(personalDetail.getName());
-        txtFieldDateOfBirth.setText(personalDetail.getDOB());
-        txtFieldAddress.setText(personalDetail.getAddress());
-        txtFieldTownCity.setText(personalDetail.getTownCity());
-        txtFieldCounty.setText(personalDetail.getCounty());
-        txtFieldPostcode.setText(personalDetail.getPostcode());
-        txtFieldTelephoneNumber.setText(String.valueOf(personalDetail.getTelephoneNumber()));
-        txtFieldMobileNumber.setText(String.valueOf(personalDetail.getMobileNumber()));
-        txtFieldEmergencyContact.setText(personalDetail.getEmergencyContact());
-        txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
+            txtFieldSurname.setText(personalDetail.getSurname());
+            txtFieldSurname.setEditable(false);
 
+            txtFieldName.setText(personalDetail.getName());
+            txtFieldName.setEditable(false);
+
+            txtFieldDateOfBirth.setText(personalDetail.getDOB());
+            txtFieldDateOfBirth.setEditable(false);
+
+            txtFieldAddress.setText(personalDetail.getAddress());
+            txtFieldAddress.setEditable(false);
+
+            txtFieldTownCity.setText(personalDetail.getTownCity());
+            txtFieldTownCity.setEditable(false);
+
+            txtFieldCounty.setText(personalDetail.getCounty());
+            txtFieldCounty.setEditable(false);
+
+            txtFieldPostcode.setText(personalDetail.getPostcode());
+            txtFieldPostcode.setEditable(false);
+
+            txtFieldTelephoneNumber.setText(String.valueOf(personalDetail.getTelephoneNumber()));
+            txtFieldTelephoneNumber.setEditable(false);
+
+            txtFieldMobileNumber.setText(String.valueOf(personalDetail.getMobileNumber()));
+            txtFieldMobileNumber.setEditable(false);
+
+            txtFieldEmergencyContact.setText(personalDetail.getEmergencyContact());
+            txtFieldEmergencyContact.setEditable(false);
+
+            txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
+            txtFieldEmergencyContactNumber.setEditable(false);
+
+        }else
+        {
+            buttonAmend.setDisable(false);
+
+            PersonalDetail personalDetail = readPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+
+            txtFieldSurname.setText(personalDetail.getSurname());
+            txtFieldSurname.setEditable(true);
+
+            txtFieldName.setText(personalDetail.getName());
+            txtFieldName.setEditable(true);
+
+            txtFieldDateOfBirth.setText(personalDetail.getDOB());
+            txtFieldDateOfBirth.setEditable(true);
+
+            txtFieldAddress.setText(personalDetail.getAddress());
+            txtFieldAddress.setEditable(true);
+
+            txtFieldTownCity.setText(personalDetail.getTownCity());
+            txtFieldTownCity.setEditable(true);
+
+            txtFieldCounty.setText(personalDetail.getCounty());
+            txtFieldCounty.setEditable(true);
+
+            txtFieldPostcode.setText(personalDetail.getPostcode());
+            txtFieldPostcode.setEditable(true);
+
+            txtFieldTelephoneNumber.setText(String.valueOf(personalDetail.getTelephoneNumber()));
+            txtFieldTelephoneNumber.setEditable(true);
+
+            txtFieldMobileNumber.setText(String.valueOf(personalDetail.getMobileNumber()));
+            txtFieldMobileNumber.setEditable(true);
+
+            txtFieldEmergencyContact.setText(personalDetail.getEmergencyContact());
+            txtFieldEmergencyContact.setEditable(true);
+
+            txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
+            txtFieldEmergencyContactNumber.setEditable(true);
+
+        }
+
+
+    }
+
+    @FXML
+    public void onButtonLoadClick()
+    {
+
+    }
+
+    @FXML
+    public void onButtonAmendClick()
+    {
+        PersonalDetail newPersonalDetail = new PersonalDetail();
+
+        newPersonalDetail.setUserName(readPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        newPersonalDetail.setSurname(txtFieldSurname.getText());
+        newPersonalDetail.setName(txtFieldName.getText());
+        newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
+        newPersonalDetail.setAddress(txtFieldAddress.getText());
+        newPersonalDetail.setTownCity(txtFieldTownCity.getText());
+        newPersonalDetail.setCounty(txtFieldCounty.getText());
+        newPersonalDetail.setPostcode(txtFieldPostcode.getText());
+        newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
+        newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
+        newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
+        newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
+
+        int index = 0;
+        for(PersonalDetail personalDetail: readPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails())
+        {
+            if(personalDetail.getUserName().equals(newPersonalDetail.getUserName()))
+            {
+                readPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails().set(index, newPersonalDetail);
+            }
+            index++;
+        }
+
+        readPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
+        readPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
+
+        showSuccessfulPersonalDetailsAmendAlert();
+        readPersonalDetailsView.closeReadPersonalDetailsView();
+    }
+
+    public void showSuccessfulPersonalDetailsAmendAlert()
+    {
+
+        Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
+        successfulPersonalDetails.setHeaderText("Personal Details amened successfully for " + readPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        successfulPersonalDetails.show();
     }
 
     public TextField getTxtFieldUserName() {
