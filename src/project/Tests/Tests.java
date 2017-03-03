@@ -42,7 +42,33 @@ public class Tests
     {
         UserSession userSession = new UserSession();
 
-        assertEquals("Login should fail, when user is '111111', password is 'PASSWORD' and authorization is '1'", "USER_PASS_FAILURE", userSession.login("111111", "PASSWORD", 1));
+        assertEquals("Login should fail, when user is '111111', password is 'wrongPassword' and authorization is '1'", "USER_PASS_FAILURE", userSession.login("111111", "wrongPassword", 1));
+    }
+
+    @Test
+    public void isUserLoggedInTest()
+    {
+        UserSession userSession = new UserSession();
+        userSession.login("111111", "pass", 1);
+        assertNotNull("User should not be Null", userSession.getUser());
+    }
+
+    @Test
+    public void isUserLoggedIncorrectDetailsInTest()
+    {
+        UserSession userSession = new UserSession();
+        userSession.login("111111", "wrongPassword", 1);
+        assertNull("User should be Null", userSession.getUser());
+    }
+
+    @Test
+    public void hasUserLoggedOutTest()
+    {
+        UserSession userSession = new UserSession();
+        userSession.login("111111", "pass", 1);
+        userSession.logout();
+        assertEquals("User isLogged should be False", false,  userSession.getUser().isLoggedIn());
+
     }
 
 }
