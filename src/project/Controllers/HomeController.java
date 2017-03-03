@@ -61,7 +61,7 @@ public class HomeController {
     @FXML
     public void onLogoutButtonClick()
     {
-        homeView.logout();
+        homeView.getUserSession().logout();
         homeView.closeHomePageView();
         loginView.loadLoginView();
 
@@ -76,15 +76,15 @@ public class HomeController {
     @FXML
     public void onButtonAmendPersonalDetailClick()
     {
-        homeView.getReadPersonalDetailsView().loadAmendPersonalDetailsView();
-        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
+        homeView.getReadAmendPersonalDetailsView().loadAmendPersonalDetailsView();
+        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
     @FXML
     public void onButtonReadPersonalDetailClick()
     {
-        homeView.getReadPersonalDetailsView().loadReadPersonalDetailsView();
-        homeView.getReadPersonalDetailsView().getReadPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
+        homeView.getReadAmendPersonalDetailsView().loadReadPersonalDetailsView();
+        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
 

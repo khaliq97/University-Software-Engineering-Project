@@ -87,4 +87,13 @@ public class UserSession {
 
 
     }
+
+    /**
+     * Logs out the user
+     * Sets the user to null
+     */
+    public void logout()
+    {
+        user.setLoggedIn(false);
+    }
 }

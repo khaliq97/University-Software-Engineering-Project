@@ -59,7 +59,7 @@ public class CreatePersonalDetailsController {
     {
         PersonalDetail newPersonalDetail = new PersonalDetail();
 
-        newPersonalDetail.setUserName(createPersonalDetailsView.getHomeView().getUser().getUsername());
+        newPersonalDetail.setUserName(createPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
         newPersonalDetail.setSurname(txtFieldSurname.getText());
         newPersonalDetail.setName(txtFieldName.getText());
         newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
@@ -82,7 +82,7 @@ public class CreatePersonalDetailsController {
     {
 
         Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
-        successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + createPersonalDetailsView.getHomeView().getUser().getUsername());
+        successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + createPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
         successfulPersonalDetails.show();
     }
 }
