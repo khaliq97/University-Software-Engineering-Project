@@ -1,5 +1,6 @@
 package project.Database;
 
+import javafx.scene.control.Alert;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import project.Database.User.User;
@@ -99,8 +100,21 @@ public class Database {
             return true;
         }else
         {
+            showJSONFileDoesNotExistAlert();
+            System.exit(0);
             return false;
         }
+    }
+
+    /**
+     * Shows Alert Box if JSON file does not exist.
+     */
+    public void showJSONFileDoesNotExistAlert()
+    {
+
+        Alert jsonFileDoesNotExist = new Alert(Alert.AlertType.ERROR);
+        jsonFileDoesNotExist.setHeaderText(jsonFilePath + " does not exist, application exiting");
+        jsonFileDoesNotExist.show();
     }
 
     /**
