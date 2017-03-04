@@ -48,20 +48,19 @@ public class HomeController {
     {
 
 
-        if(auth != 3) {
-            buttonCreatePersonalDetail.setDisable(true);
-            buttonAmendPersonalDetail.setDisable(true);
-
-            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonView().setDisable(true);
-            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(false);
-            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
-        }else
-        {
-            buttonCreatePersonalDetail.setDisable(false);
-            buttonAmendPersonalDetail.setDisable(false);
+        if(auth == 3 || auth == 5) {
+            buttonCreatePersonalDetail.setDisable(false);;
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonView().setDisable(false);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(true);
+
+        }else
+        {
+            buttonCreatePersonalDetail.setDisable(true);
+            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonView().setDisable(true);
+            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(false);
         }
+
+
     }
 
     /**
@@ -96,6 +95,7 @@ public class HomeController {
     {
         homeView.getReadAmendPersonalDetailsView().loadAmendPersonalDetailsView();
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().checkMode();
+        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
     /**
@@ -108,6 +108,7 @@ public class HomeController {
     {
         homeView.getReadAmendPersonalDetailsView().loadReadPersonalDetailsView();
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().checkMode();
+        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
 
