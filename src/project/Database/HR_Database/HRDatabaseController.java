@@ -125,7 +125,7 @@ public class HRDatabaseController{
      * @param userName the user which the PersonalDetail object is gotten from
      * @return PersonalDetail object
      */
-    public PersonalDetail getPersonalDetails(String userName)
+    public PersonalDetail getPersonalDetail(String userName)
     {
         PersonalDetail personalDetailReturn = null;
         for(PersonalDetail personalDetail: hrDatabase.getPersonalDetails())
