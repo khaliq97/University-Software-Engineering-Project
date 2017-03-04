@@ -141,10 +141,10 @@ public class ReadAmendPersonalDetailsController {
      */
     public void loadPersonalDetails(String userName) {
 
-        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName) != null)
+        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetail(userName) != null)
         {
             if (!readAmendPersonalDetailsView.isAmendMode()) {
-                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(txtFieldUserName.getText());
+                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetail(txtFieldUserName.getText());
 
                 txtFieldSurname.setText(personalDetail.getSurname());
 
@@ -170,7 +170,7 @@ public class ReadAmendPersonalDetailsController {
 
             } else {
 
-                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetail(userName);
 
                 txtFieldSurname.setText(personalDetail.getSurname());
 
@@ -208,7 +208,7 @@ public class ReadAmendPersonalDetailsController {
      */
     public void amendPersonalDetail(String userName)
     {
-        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName) != null)
+        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetail(userName) != null)
         {
             PersonalDetail newPersonalDetail = new PersonalDetail();
 
