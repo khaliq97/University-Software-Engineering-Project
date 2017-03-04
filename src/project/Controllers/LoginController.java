@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by Osama Khaliq
- * Version (17/02/2016)
+ * Version (03/03/2016)
  * LoginView Window controller Class
  * Responsible for LoginView window event handling
  * Shows Alert boxes
@@ -146,7 +146,7 @@ public class LoginController {
     public void showAuthorizationFailureAlert()
     {
         Alert incorrectUsername = new Alert(Alert.AlertType.ERROR);
-        incorrectUsername.setHeaderText("Database failure");
+        incorrectUsername.setHeaderText("Authorization failure");
         incorrectUsername.show();
     }
 
