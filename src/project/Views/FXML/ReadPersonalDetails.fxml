@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label fx:id="labelWindowHeader" text="Personal Details" BorderPane.alignment="CENTER" />
+   </top>
+   <left>
+      <AnchorPane prefHeight="425.0" prefWidth="482.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="14.0" layoutY="70.0" prefHeight="411.0" prefWidth="209.0" spacing="25.0">
+               <children>
+                  <Label text="Surname:" />
+                  <Label text="Name:" />
+                  <Label text="Date of Birth:" />
+                  <Label text="Address:" />
+                  <Label text="Town/City:" />
+                  <Label text="County:" />
+                  <Label text="Postcode:" />
+                  <Label text="Telephone Number:" />
+                  <Label text="Mobile Number:" />
+                  <Label text="Emergency Contact:" />
+                  <Label text="Emergency Contact Number:" />
+               </children>
+            </VBox>
+            <TextField fx:id="txtFieldSurname" editable="false" layoutX="223.0" layoutY="70.0" />
+            <TextField fx:id="txtFieldName" editable="false" layoutX="223.0" layoutY="108.0" />
+            <TextField fx:id="txtFieldAddress" editable="false" layoutX="223.0" layoutY="184.0" />
+            <TextField fx:id="txtFieldTownCity" editable="false" layoutX="223.0" layoutY="228.0" />
+            <TextField fx:id="txtFieldCounty" editable="false" layoutX="223.0" layoutY="274.0" />
+            <TextField fx:id="txtFieldPostcode" editable="false" layoutX="223.0" layoutY="311.0" />
+            <TextField fx:id="txtFieldTelephoneNumber" editable="false" layoutX="223.0" layoutY="351.0" />
+            <TextField fx:id="txtFieldMobileNumber" editable="false" layoutX="223.0" layoutY="392.0" />
+            <TextField fx:id="txtFieldEmergencyContact" editable="false" layoutX="223.0" layoutY="434.0" />
+            <TextField fx:id="txtFieldEmergencyContactNumber" editable="false" layoutX="223.0" layoutY="478.0" />
+            <TextField fx:id="txtFieldDateOfBirth" editable="false" layoutX="223.0" layoutY="147.0" />
+            <Button fx:id="buttonAmend" disable="true" layoutX="305.0" layoutY="526.0" mnemonicParsing="false" onMouseClicked="#onButtonAmendClick" prefHeight="26.0" prefWidth="89.0" text="Amend" />
+            <Label layoutX="14.0" layoutY="28.0" text="Username:" />
+            <TextField fx:id="txtFieldUserName" editable="false" layoutX="109.0" layoutY="23.0" />
+            <Button fx:id="buttonView" layoutX="295.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#onButtonViewClick" text="View" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>
