@@ -3,7 +3,11 @@ package project.Database;
 import project.Database.User.User;
 
 /**
- * Created by osamakhaliq on 03/03/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * Class stores the database and authorizationServer
+ * Responsible for executing login() and logout() on server side
+ * Login and logout methods for User
  */
 public class UserSession {
 
@@ -13,22 +17,37 @@ public class UserSession {
 
     private User user;
 
+    /**
+     * Class constructor
+     */
     public UserSession()
     {
         database = new Database();
         authorizationServer = new AuthorizationServer();
     }
 
+    /**
+     * Returns user object
+     * @return user
+     */
     public User getUser()
     {
         return user;
     }
 
+    /**
+     * Sets user object
+     * @param user User object to set
+     */
     public void setUser(User user)
     {
         this.user = user;
     }
 
+    /**
+     * Returns database class
+     * @return database
+     */
     public Database getDatabase()
     {
         return database;
@@ -36,11 +55,11 @@ public class UserSession {
 
     /**
      * Finds the given Username in database ArrayList
-     * Checks user password against GUI input
-     * If successful, loginView success is shown otherwise appropriate error messages are showed
-     * @param username Username string from txtFieldUsername
-     * @param password Password string from txtFieldPassword
-     * @param authorization Database integer from comboBoxAuthorizationLevels
+     * Checks user, password and authorization against input
+     * If successful, returns "SUCCESS", otherwise returns the appropriate flags
+     * @param username Username string
+     * @param password Password string
+     * @param authorization Database integer
      */
     public String login(String username, String password, int authorization)
     {
@@ -90,7 +109,6 @@ public class UserSession {
 
     /**
      * Logs out the user
-     * Sets the user to null
      */
     public void logout()
     {

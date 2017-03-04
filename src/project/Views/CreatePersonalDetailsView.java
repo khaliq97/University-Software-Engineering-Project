@@ -10,7 +10,9 @@ import project.Controllers.HomeController;
 import java.io.IOException;
 
 /**
- * Created by osamakhaliq on 02/03/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * GUI class for CreatePersonalDetails
  */
 public class CreatePersonalDetailsView {
 
@@ -23,6 +25,11 @@ public class CreatePersonalDetailsView {
 
     CreatePersonalDetailsController createPersonalDetailsController;
 
+    /**
+     * Constructor for class
+     * Passes in homeView
+     * @param homeView homeView instance
+     */
     public CreatePersonalDetailsView(HomeView homeView)
     {
         this.homeView = homeView;
@@ -37,23 +44,33 @@ public class CreatePersonalDetailsView {
             e.printStackTrace();
         }
 
-        scene = new Scene(root, 414, 519);
+        scene = new Scene(root, 414, 583);
         stage.setTitle("Create Personal Details");
         stage.setResizable(false);
         stage.setScene(scene);
     }
 
 
+    /**
+     * Returns homeView class instance
+     * @return homeview
+     */
     public HomeView getHomeView()
     {
         return homeView;
     }
 
+    /**
+     * Shows the Window
+     */
     public void loadCreatePersonalDetailsView()
     {
         stage.show();
     }
 
+    /**
+     * Closes the window
+     */
     public void closeCreatePersonalDetailsView()
     {
         stage.close();

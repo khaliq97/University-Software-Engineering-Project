@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by Osama Khaliq
  * Version (19/02/2016)
- * HomeView window functions
+ * GUI class for HomeView
  * Window is shown when the user successfully logs in
  */
 public class HomeView

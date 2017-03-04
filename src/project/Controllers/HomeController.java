@@ -39,6 +39,11 @@ public class HomeController {
         this.loginView = loginView;
     }
 
+    /**
+     * Methods checks authorization level of user
+     * Determines what buttons to enable and disable based on level
+     * @param auth user autorization level
+     */
     public void checkAuthorization(int auth)
     {
         buttonCreatePersonalDetail.setDisable(false);
@@ -67,12 +72,21 @@ public class HomeController {
 
     }
 
+    /**
+     * Shows the CreatePersonalDetailsView window.
+     */
     @FXML
     public void onButtonCreatePersonalDetailClick()
     {
         homeView.getCreatePersonalDetailsView().loadCreatePersonalDetailsView();
     }
 
+
+    /**
+     * Shows the ReadAmendPersonalDetailsController window.
+     * ReadAmendPersonalDetailsController is set to Amend mode
+     * Passes username of logged in user.
+     */
     @FXML
     public void onButtonAmendPersonalDetailClick()
     {
@@ -80,6 +94,11 @@ public class HomeController {
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
+    /**
+     * Shows the ReadAmendPersonalDetailsController window.
+     * ReadAmendPersonalDetailsController is set to Read mode
+     * Passes username of logged in user.
+     */
     @FXML
     public void onButtonReadPersonalDetailClick()
     {

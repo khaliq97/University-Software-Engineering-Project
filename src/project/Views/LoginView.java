@@ -11,9 +11,8 @@ import project.Database.UserSession;
 /**
  * Created by Osama Khaliq
  * Version (19/02/2016)
- * LoginView window functions
- * Responsible for reading User information and populating the User Database
- * As well LoginView and Logout functions
+ * GUI class for LoginView
+ * Responsible for executing login() on GUI side
  */
 public class LoginView extends Application {
 
@@ -87,6 +86,15 @@ public class LoginView extends Application {
 
     }
 
+    /**
+     * Calls login() method from UserSession class to get loginFlag
+     * Shows the HomeView window if loginFlag is "SUCCESS"
+     * Otherwise shows the appropriate alerts depending on the flag
+     * @param username Username string from txtFieldUsername
+     * @param password Password string from txtFieldPassword
+     * @param authorization Database integer from comboBoxAuthorizationLevels
+     * @return returnBoolean status of login
+     */
     public boolean login(String username, String password, int authorization)
     {
         boolean returnBoolean = false;

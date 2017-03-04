@@ -3,7 +3,9 @@ package project.Database.User;
 import java.io.Serializable;
 
 /**
- * Created by osamakhaliq on 02/03/17.
+ * Created by Osama Khaliq
+ * Version (03/03/2016)
+ * PersonalDetail object Class
  */
 public class PersonalDetail implements Serializable {
 
@@ -21,10 +23,18 @@ public class PersonalDetail implements Serializable {
     private String emergencyContact;
     private String emergencyContactNumber;
 
+    /**
+     * Constructor class
+     * Empty
+     */
     public PersonalDetail()
     {
 
     }
+
+    /**
+     * Getter and Setter methods for all variables
+     */
 
     public String getUserName() {
         return userName;

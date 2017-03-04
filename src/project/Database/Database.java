@@ -8,7 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by osamakhaliq on 03/03/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * Class stores the database from the database.json JSON file
+ * Responsible for reading the file and populating the database ArrayList from JSON file
  */
 public class Database {
 
@@ -20,6 +23,9 @@ public class Database {
 
     private final String jsonFilePath = "database.json";
 
+    /**
+     * Class constructor
+     */
     public Database()
     {
         authorizationServer = new AuthorizationServer();
@@ -30,6 +36,9 @@ public class Database {
 
     }
 
+    /**
+     * Method initializes database
+     */
     public void initialize()
     {
         readJSONFile();
@@ -37,22 +46,16 @@ public class Database {
     }
 
     /**
-     * Returns jsonFilePath
-     * @return jsonFilePath
+     * Returns database ArrayList
+     * @return database
      */
-    public String getJsonFilePath()
-    {
-        return jsonFilePath;
-    }
-
-
     public ArrayList<User> getDatabase()
     {
         return database;
     }
 
     /**
-     * Checks if a File exists
+     * Checks if database.json JSON File exists
      * @return
      */
     public boolean checkIfJSONFileExists()

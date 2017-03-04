@@ -5,27 +5,38 @@ import project.Database.User.PersonalDetail;
 import java.io.*;
 
 /**
- * Created by osamakhaliq on 02/03/17.
+ * Created by Osama Khaliq
+ * Version (03/03/2016)
+ * Controller for the HRDatabase class
+ * Resposbible for storing the file path, populating the hrDatabase ArrayList, writing to the file,
+ * creating a PersonalDetail object and getting a PersonalDetail object.
  */
 public class HRDatabaseController{
 
     private final String HR_DATABASE_FILE_PATH = "HR_Database.txt";
     HRDatabase hrDatabase;
 
+    /**
+     * Constructor for Class
+     */
     public HRDatabaseController()
     {
         hrDatabase = new HRDatabase(this);
         populateHRDatabase();
     }
 
+    /**
+     * Returns hrDatabase class
+     * @return
+     */
     public HRDatabase getHrDatabase() {
         return hrDatabase;
     }
 
-    public void setHrDatabase(HRDatabase hrDatabase) {
-        this.hrDatabase = hrDatabase;
-    }
 
+    /**
+     * Reads the HR_Database.txt file and populates the hrDatabase ArrayList with its contents.
+     */
     public void populateHRDatabase()
     {
         FileInputStream fileInputStream;
@@ -48,6 +59,9 @@ public class HRDatabaseController{
 
     }
 
+    /**
+     * Writes the hrDatabase ArrayList to HR_Database.txt
+     */
     public void writeToDatabase()
     {
         FileOutputStream fileOutputStream;
@@ -64,6 +78,12 @@ public class HRDatabaseController{
         }
     }
 
+    /**
+     * Creates a new PersonalDetail object
+     * Adds it to hrDatabase
+     * Calls write method
+     * @param personalDetail personalDetail object
+     */
     public void createPersonalDetail(PersonalDetail personalDetail)
     {
         PersonalDetail personalDetailToAdd = new PersonalDetail();
@@ -72,6 +92,11 @@ public class HRDatabaseController{
         writeToDatabase();
     }
 
+    /**
+     * Gets PersonalDetail object from hrDatabase using userName as key
+     * @param userName the user which the PersonalDetail object is gotten from
+     * @return PersonalDetail object
+     */
     public PersonalDetail getPersonalDetails(String userName)
     {
         PersonalDetail personalDetailReturn = null;

@@ -9,7 +9,9 @@ import project.Controllers.ReadAmendPersonalDetailsController;
 import java.io.IOException;
 
 /**
- * Created by osamakhaliq on 02/03/17.
+ * Created by Osama Khaliq
+ * Version (19/02/2016)
+ * GUI class for ReadAmendPersonalDetails
  */
 public class ReadAmendPersonalDetailsView {
     HomeView homeView;
@@ -23,6 +25,11 @@ public class ReadAmendPersonalDetailsView {
 
     ReadAmendPersonalDetailsController readAmendPersonalDetailsController;
 
+    /**
+     * Constructor for class
+     * Passes in homeView
+     * @param homeView homeView instance
+     */
     public ReadAmendPersonalDetailsView(HomeView homeView)
     {
         this.homeView = homeView;
@@ -45,44 +52,72 @@ public class ReadAmendPersonalDetailsView {
 
     }
 
+    /**
+     * Returns homeView class instance
+     * @return homeView class
+     */
     public HomeView getHomeView()
     {
         return homeView;
     }
 
+    /**
+     * Returns stage
+     * @return stage
+     */
     public Stage getStage()
     {
         return stage;
     }
 
+    /**
+     * Returns isAmendMode boolean
+     * @return amendMode
+     */
     public boolean isAmendMode()
     {
         return amendMode;
     }
 
+    /**
+     * Sets isAmendMode boolean
+     * @param amendMode boolean to set
+     */
     public void setAmendMode(boolean amendMode)
     {
         this.amendMode = amendMode;
     }
 
-
+    /**
+     * Returns readAmendPersonalDetailsController class instance
+     * @return readAmendPersonalDetailsController
+     */
     public ReadAmendPersonalDetailsController getReadAmendPersonalDetailsController()
     {
         return readAmendPersonalDetailsController;
     }
 
+    /**
+     * Loads the ReadPersonalDetailsView with isAmendMode set to false
+     */
     public void loadReadPersonalDetailsView()
     {
         amendMode = false;
         stage.show();
     }
 
+    /**
+     * Loads the AmendPersonalDetailsView with isAmendMode set to true
+     */
     public void loadAmendPersonalDetailsView()
     {
         amendMode = true;
         stage.show();
     }
 
+    /**
+     * Closes window
+     */
     public void closeReadPersonalDetailsView()
     {
         stage.close();
