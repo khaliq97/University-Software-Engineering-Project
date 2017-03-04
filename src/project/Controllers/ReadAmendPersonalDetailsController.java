@@ -139,11 +139,11 @@ public class ReadAmendPersonalDetailsController {
      * Method sets the text of the fields in window with values from a PersonalDetail object
      * @param userName user to load PersonalDetail object from
      */
-    public void loadPersonalDetails(String userName)
-    {
+    public void loadPersonalDetails(String userName) {
 
-            if(!readAmendPersonalDetailsView.isAmendMode())
-            {
+        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName) != null)
+        {
+            if (!readAmendPersonalDetailsView.isAmendMode()) {
                 PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(txtFieldUserName.getText());
 
                 txtFieldSurname.setText(personalDetail.getSurname());
@@ -168,8 +168,7 @@ public class ReadAmendPersonalDetailsController {
 
                 txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
 
-            }else
-            {
+            } else {
 
                 PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
 
@@ -196,7 +195,11 @@ public class ReadAmendPersonalDetailsController {
                 txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
 
             }
+        }else
+        {
+            showNoPersonalDetailFoundAlert(userName);
         }
+    }
 
 
     /**
@@ -205,36 +208,43 @@ public class ReadAmendPersonalDetailsController {
      */
     public void amendPersonalDetail(String userName)
     {
-        PersonalDetail newPersonalDetail = new PersonalDetail();
-
-        newPersonalDetail.setUserName(userName);
-        newPersonalDetail.setSurname(txtFieldSurname.getText());
-        newPersonalDetail.setName(txtFieldName.getText());
-        newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
-        newPersonalDetail.setAddress(txtFieldAddress.getText());
-        newPersonalDetail.setTownCity(txtFieldTownCity.getText());
-        newPersonalDetail.setCounty(txtFieldCounty.getText());
-        newPersonalDetail.setPostcode(txtFieldPostcode.getText());
-        newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
-        newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
-        newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
-        newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
-
-        int index = 0;
-        for(PersonalDetail personalDetail: readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails())
+        if (readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName) != null)
         {
-            if(personalDetail.getUserName().equals(newPersonalDetail.getUserName()))
+            PersonalDetail newPersonalDetail = new PersonalDetail();
+
+            newPersonalDetail.setUserName(userName);
+            newPersonalDetail.setSurname(txtFieldSurname.getText());
+            newPersonalDetail.setName(txtFieldName.getText());
+            newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
+            newPersonalDetail.setAddress(txtFieldAddress.getText());
+            newPersonalDetail.setTownCity(txtFieldTownCity.getText());
+            newPersonalDetail.setCounty(txtFieldCounty.getText());
+            newPersonalDetail.setPostcode(txtFieldPostcode.getText());
+            newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
+            newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
+            newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
+            newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
+
+            int index = 0;
+            for(PersonalDetail personalDetail: readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails())
             {
-                readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails().set(index, newPersonalDetail);
+                if(personalDetail.getUserName().equals(newPersonalDetail.getUserName()))
+                {
+                    readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails().set(index, newPersonalDetail);
+                }
+                index++;
             }
-            index++;
+
+            readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
+            readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
+
+            showSuccessfulPersonalDetailsAmendAlert(userName);
+            readAmendPersonalDetailsView.closeReadPersonalDetailsView();
+        }else
+        {
+            showNoPersonalDetailFoundAlert(userName);
         }
 
-        readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
-        readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
-
-        showSuccessfulPersonalDetailsAmendAlert();
-        readAmendPersonalDetailsView.closeReadPersonalDetailsView();
     }
 
     @FXML
@@ -258,19 +268,19 @@ public class ReadAmendPersonalDetailsController {
     /**
      * Shows Alert box for successful PersonalDetail amendment
      */
-    public void showSuccessfulPersonalDetailsAmendAlert()
+    public void showSuccessfulPersonalDetailsAmendAlert(String userName)
     {
 
         Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
-        successfulPersonalDetails.setHeaderText("Personal Detail amened successfully for " + readAmendPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        successfulPersonalDetails.setHeaderText("Personal Detail amened successfully for " + userName);
         successfulPersonalDetails.show();
     }
 
-    public void showNoPersonalDetailFoundAlert()
+    public void showNoPersonalDetailFoundAlert(String userName)
     {
 
         Alert noPersonalDetailFound = new Alert(Alert.AlertType.ERROR);
-        noPersonalDetailFound.setHeaderText("No Personal Detail found for " + readAmendPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        noPersonalDetailFound.setHeaderText("No Personal Detail found for " +  userName);
         noPersonalDetailFound.show();
     }
 

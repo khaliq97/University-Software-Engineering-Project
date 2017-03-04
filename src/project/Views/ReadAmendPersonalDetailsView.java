@@ -45,10 +45,11 @@ public class ReadAmendPersonalDetailsView {
             e.printStackTrace();
         }
 
-        scene = new Scene(root, 414, 568);
+        scene = new Scene(root, 414, 603);
         stage.setTitle("Read Personal Details");
         stage.setResizable(false);
         stage.setScene(scene);
+
 
     }
 
