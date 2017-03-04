@@ -36,7 +36,6 @@ public class HomeView
     private Scene scene;
     private HomeController homeController;
 
-    private User user;
 
 
     /**
@@ -68,7 +67,6 @@ public class HomeView
         stage.setScene(scene);
 
         this.loginView = loginView;
-        this.user = user;
 
         initialize();
 
@@ -81,6 +79,7 @@ public class HomeView
     public void initialize()
     {
         homeController.setLabelWelcome(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
+        readAmendPersonalDetailsView.getReadAmendPersonalDetailsController().getTxtFieldUserName().setText(userSession.getUser().getUsername());
     }
 
     public HomeController getHomeController()
@@ -95,24 +94,6 @@ public class HomeView
     public void setUserSession(UserSession userSession)
     {
         this.userSession = userSession;
-    }
-
-    /**
-     * Returns user
-     * @return User
-     */
-    public User getUser()
-    {
-        return user;
-    }
-
-    /**
-     * Sets the user from the parameter
-     * @param user User to set
-     */
-    public void setUser(User user)
-    {
-        this.user = user;
     }
 
     public CreatePersonalDetailsView getCreatePersonalDetailsView() {
