@@ -16,6 +16,12 @@ import project.Views.ReadAmendPersonalDetailsView;
  */
 public class ReadAmendPersonalDetailsController {
 
+    public Button getButtonView() {
+        return buttonView;
+    }
+
+    @FXML
+    private Button buttonView;
 
     @FXML
     private Button buttonAmend;
@@ -65,119 +71,143 @@ public class ReadAmendPersonalDetailsController {
     public ReadAmendPersonalDetailsController(ReadAmendPersonalDetailsView readAmendPersonalDetailsView)
     {
         this.readAmendPersonalDetailsView = readAmendPersonalDetailsView;
+
     }
 
     /**
+     * Checks what mode the view has started in and adjusts the properites for thhe controls
+     */
+    public void checkMode()
+    {
+        if(!readAmendPersonalDetailsView.isAmendMode())
+        {
+            readAmendPersonalDetailsView.getStage().setTitle("Read Personal Details");
+            buttonAmend.setDisable(true);
+
+            txtFieldSurname.setEditable(false);
+
+            txtFieldName.setEditable(false);
+
+            txtFieldDateOfBirth.setEditable(false);
+
+            txtFieldAddress.setEditable(false);
+
+            txtFieldTownCity.setEditable(false);
+
+            txtFieldCounty.setEditable(false);
+
+            txtFieldPostcode.setEditable(false);
+
+            txtFieldTelephoneNumber.setEditable(false);
+
+            txtFieldMobileNumber.setEditable(false);
+
+            txtFieldEmergencyContact.setEditable(false);
+
+            txtFieldEmergencyContactNumber.setEditable(false);
+
+        }else
+        {
+            readAmendPersonalDetailsView.getStage().setTitle("Amend Personal Details");
+            buttonAmend.setDisable(false);
+
+            txtFieldSurname.setEditable(true);
+
+            txtFieldName.setEditable(true);
+
+            txtFieldDateOfBirth.setEditable(true);
+
+            txtFieldAddress.setEditable(true);
+
+            txtFieldTownCity.setEditable(true);
+
+            txtFieldCounty.setEditable(true);
+
+            txtFieldPostcode.setEditable(true);
+
+            txtFieldTelephoneNumber.setEditable(true);
+
+            txtFieldMobileNumber.setEditable(true);
+
+            txtFieldEmergencyContact.setEditable(true);
+
+            txtFieldEmergencyContactNumber.setEditable(true);
+
+        }
+    }
+    /**
      * Method sets the text of the fields in window with values from a PersonalDetail object
-     * Sets the setEditable value depending if isAmendMode is true or false
      * @param userName user to load PersonalDetail object from
      */
     public void loadPersonalDetails(String userName)
     {
-        if(readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName) != null)
-        {
+
             if(!readAmendPersonalDetailsView.isAmendMode())
             {
-                readAmendPersonalDetailsView.getStage().setTitle("Read Personal Details");
-                buttonAmend.setDisable(true);
-                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
+                PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(txtFieldUserName.getText());
 
                 txtFieldSurname.setText(personalDetail.getSurname());
-                txtFieldSurname.setEditable(false);
 
                 txtFieldName.setText(personalDetail.getName());
-                txtFieldName.setEditable(false);
 
                 txtFieldDateOfBirth.setText(personalDetail.getDOB());
-                txtFieldDateOfBirth.setEditable(false);
 
                 txtFieldAddress.setText(personalDetail.getAddress());
-                txtFieldAddress.setEditable(false);
 
                 txtFieldTownCity.setText(personalDetail.getTownCity());
-                txtFieldTownCity.setEditable(false);
 
                 txtFieldCounty.setText(personalDetail.getCounty());
-                txtFieldCounty.setEditable(false);
 
                 txtFieldPostcode.setText(personalDetail.getPostcode());
-                txtFieldPostcode.setEditable(false);
 
                 txtFieldTelephoneNumber.setText(String.valueOf(personalDetail.getTelephoneNumber()));
-                txtFieldTelephoneNumber.setEditable(false);
 
                 txtFieldMobileNumber.setText(String.valueOf(personalDetail.getMobileNumber()));
-                txtFieldMobileNumber.setEditable(false);
 
                 txtFieldEmergencyContact.setText(personalDetail.getEmergencyContact());
-                txtFieldEmergencyContact.setEditable(false);
 
                 txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
-                txtFieldEmergencyContactNumber.setEditable(false);
 
             }else
             {
-                readAmendPersonalDetailsView.getStage().setTitle("Amend Personal Details");
-                buttonAmend.setDisable(false);
 
                 PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().getPersonalDetails(userName);
 
                 txtFieldSurname.setText(personalDetail.getSurname());
-                txtFieldSurname.setEditable(true);
 
                 txtFieldName.setText(personalDetail.getName());
-                txtFieldName.setEditable(true);
 
                 txtFieldDateOfBirth.setText(personalDetail.getDOB());
-                txtFieldDateOfBirth.setEditable(true);
 
                 txtFieldAddress.setText(personalDetail.getAddress());
-                txtFieldAddress.setEditable(true);
 
                 txtFieldTownCity.setText(personalDetail.getTownCity());
-                txtFieldTownCity.setEditable(true);
 
                 txtFieldCounty.setText(personalDetail.getCounty());
-                txtFieldCounty.setEditable(true);
 
                 txtFieldPostcode.setText(personalDetail.getPostcode());
-                txtFieldPostcode.setEditable(true);
 
                 txtFieldTelephoneNumber.setText(String.valueOf(personalDetail.getTelephoneNumber()));
-                txtFieldTelephoneNumber.setEditable(true);
 
                 txtFieldMobileNumber.setText(String.valueOf(personalDetail.getMobileNumber()));
-                txtFieldMobileNumber.setEditable(true);
 
                 txtFieldEmergencyContact.setText(personalDetail.getEmergencyContact());
-                txtFieldEmergencyContact.setEditable(true);
 
                 txtFieldEmergencyContactNumber.setText(String.valueOf(personalDetail.getEmergencyContactNumber()));
-                txtFieldEmergencyContactNumber.setEditable(true);
 
             }
-        }else
-        {
-            readAmendPersonalDetailsView.closeReadPersonalDetailsView();
-            showNoPersonalDetailFoundAlert();
         }
 
 
-
-    }
-
     /**
-     * Event handler for buttonAmend Button control
-     * Creates new personal detail and sets values based on text field values
-     * Finds and sets the existing PersonalDetail object to the new one
-     * Writes it the HRDatabase and populates it.
+     * Creates a new PersonalDetail and sets the existing PersonalDetail to the new one in the database.
+     * @param userName
      */
-    @FXML
-    public void onButtonAmendClick()
+    public void amendPersonalDetail(String userName)
     {
         PersonalDetail newPersonalDetail = new PersonalDetail();
 
-        newPersonalDetail.setUserName(readAmendPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        newPersonalDetail.setUserName(userName);
         newPersonalDetail.setSurname(txtFieldSurname.getText());
         newPersonalDetail.setName(txtFieldName.getText());
         newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
@@ -205,6 +235,24 @@ public class ReadAmendPersonalDetailsController {
 
         showSuccessfulPersonalDetailsAmendAlert();
         readAmendPersonalDetailsView.closeReadPersonalDetailsView();
+    }
+
+    @FXML
+
+    public void onButtonViewClick()
+    {
+        loadPersonalDetails(txtFieldUserName.getText());
+    }
+    /**
+     * Event handler for buttonAmend Button control
+     * Creates new personal detail and sets values based on text field values
+     * Finds and sets the existing PersonalDetail object to the new one
+     * Writes it the HRDatabase and populates it.
+     */
+    @FXML
+    public void onButtonAmendClick()
+    {
+        amendPersonalDetail(txtFieldUserName.getText());
     }
 
     /**
