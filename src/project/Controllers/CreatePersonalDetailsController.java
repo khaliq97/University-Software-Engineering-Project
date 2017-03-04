@@ -7,11 +7,18 @@ import project.Database.User.PersonalDetail;
 import project.Views.CreatePersonalDetailsView;
 
 /**
- * Created by osamakhaliq on 02/03/17.
+ * Created by Osama Khaliq
+ * Version (03/03/2016)
+ * CreatePersonalDetailVew Window controller Class
+ * Responsible for CreatePersonalDetailVew window event handling
+ * Creates a PersonalDetail object.
  */
 public class CreatePersonalDetailsController {
 
     CreatePersonalDetailsView createPersonalDetailsView;
+
+    @FXML
+    private TextField txtFieldUserName;
 
     @FXML
     private TextField txtFieldSurname;
@@ -47,42 +54,86 @@ public class CreatePersonalDetailsController {
     private TextField txtFieldEmergencyContactNumber;
 
 
-
-
-    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView)
-    {
+    /**
+     * Constructor for class
+     *
+     * @param createPersonalDetailsView createPersonalDetailsView Window
+     */
+    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView) {
         this.createPersonalDetailsView = createPersonalDetailsView;
+
     }
 
+    /**
+     * Event handler for buttonCreate Button control
+     * Creates a new PersonalDetail object
+     * Checks if a Personal Detail already exists for the User
+     * Adds it to HRDatabase
+     */
     @FXML
-    public void onButtonCreateClick()
-    {
-        PersonalDetail newPersonalDetail = new PersonalDetail();
+    public void onButtonCreateClick() {
 
-        newPersonalDetail.setUserName(createPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
-        newPersonalDetail.setSurname(txtFieldSurname.getText());
-        newPersonalDetail.setName(txtFieldName.getText());
-        newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
-        newPersonalDetail.setAddress(txtFieldAddress.getText());
-        newPersonalDetail.setTownCity(txtFieldTownCity.getText());
-        newPersonalDetail.setCounty(txtFieldCounty.getText());
-        newPersonalDetail.setPostcode(txtFieldPostcode.getText());
-        newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
-        newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
-        newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
-        newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
+        boolean personalDetailExists = false;
+        boolean userExists = false;
+        PersonalDetail personalDetailToAdd = null;
+        for (PersonalDetail personalDetail : createPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails()) {
 
-        createPersonalDetailsView.getHomeView().getHrDatabaseController().createPersonalDetail(newPersonalDetail);
+                if (!personalDetail.getUserName().equals(txtFieldUserName.getText()))
+                {
+                    personalDetailExists = false;
+                }else
+                {
+                    personalDetailExists = true;
+                }
+        }
 
-        showSuccessfulPersonalDetailsCreationAlert();
-        createPersonalDetailsView.closeCreatePersonalDetailsView();
+        if(!personalDetailExists)
+        {
+            PersonalDetail newPersonalDetail = new PersonalDetail();
+
+            newPersonalDetail.setUserName(txtFieldUserName.getText());
+            newPersonalDetail.setSurname(txtFieldSurname.getText());
+            newPersonalDetail.setName(txtFieldName.getText());
+            newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
+            newPersonalDetail.setAddress(txtFieldAddress.getText());
+            newPersonalDetail.setTownCity(txtFieldTownCity.getText());
+            newPersonalDetail.setCounty(txtFieldCounty.getText());
+            newPersonalDetail.setPostcode(txtFieldPostcode.getText());
+            newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
+            newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
+            newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
+            newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
+
+            createPersonalDetailsView.getHomeView().getHrDatabaseController().createPersonalDetail(newPersonalDetail);
+
+            showSuccessfulPersonalDetailsCreationAlert();
+            createPersonalDetailsView.closeCreatePersonalDetailsView();
+        }else
+        {
+            showPersonalDetailExistsAlert();
+        }
+
     }
 
+    /**
+     * Shows Alert box for successful PersonalDetail creation
+     */
     public void showSuccessfulPersonalDetailsCreationAlert()
     {
 
         Alert successfulPersonalDetails = new Alert(Alert.AlertType.INFORMATION);
-        successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + createPersonalDetailsView.getHomeView().getUserSession().getUser().getUsername());
+        successfulPersonalDetails.setHeaderText("Personal Details created successfully for " + txtFieldUserName.getText());
         successfulPersonalDetails.show();
+    }
+
+    /**
+     * Shows Alert Box if a Personal Detail already exists for a User
+     */
+    public void showPersonalDetailExistsAlert()
+    {
+
+        Alert personalDetailsExist = new Alert(Alert.AlertType.ERROR);
+        personalDetailsExist.setHeaderText("Personal Details already exists for " + txtFieldUserName.getText());
+        personalDetailsExist.show();
     }
 }
