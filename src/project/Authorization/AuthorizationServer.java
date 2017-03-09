@@ -24,6 +24,7 @@ public class AuthorizationServer {
     private LoginView loginView;
 
 
+
     /**
      * Class constructor
      * @param loginView LoginView instance
