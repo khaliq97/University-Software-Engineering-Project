@@ -5,19 +5,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
-import project.User.User;
+import project.Database.UserSession;
+import project.Database.HR_Database.HRDatabaseController;
+import project.Database.User.User;
 
 import java.io.IOException;
 
 /**
  * Created by Osama Khaliq
  * Version (19/02/2016)
- * HomeView window functions
+ * GUI class for HomeView
  * Window is shown when the user successfully logs in
  */
 public class HomeView
 {
     private LoginView loginView;
+
+
+    private UserSession userSession;
+
+    private CreatePersonalDetailsView createPersonalDetailsView;
+
+    private ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
+
+    private HRDatabaseController hrDatabaseController;
 
     private Parent root;
     private Stage stage;
@@ -25,20 +36,24 @@ public class HomeView
     private Scene scene;
     private HomeController homeController;
 
-    private User user;
 
 
     /**
      * Constructor for HomeView class
      * Passes in loginView and User
      * @param loginView LoginView instance
-     * @param user User that has logged in
      */
-    public HomeView(LoginView loginView, User user)
+    public HomeView(LoginView loginView, UserSession userSession)
     {
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/Home.fxml"));
         stage = new Stage();
         homeController = new HomeController(this, loginView);
+        hrDatabaseController = new HRDatabaseController();
+
+        this.userSession = userSession;
+
+        createPersonalDetailsView = new CreatePersonalDetailsView(this);
+        readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this);
 
         fxmlLoader.setController(homeController);
         try {
@@ -52,7 +67,6 @@ public class HomeView
         stage.setScene(scene);
 
         this.loginView = loginView;
-        this.user = user;
 
         initialize();
 
@@ -64,41 +78,41 @@ public class HomeView
      */
     public void initialize()
     {
-        homeController.setLabelWelcome(("User: " + user.getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
+        homeController.setLabelWelcome(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
+        readAmendPersonalDetailsView.getReadAmendPersonalDetailsController().getTxtFieldUserName().setText(userSession.getUser().getUsername());
     }
 
-    /**
-     * Logs out the user
-     * Sets the user to null
-     */
-    public void logout()
+    public HomeController getHomeController()
     {
-        user.setLoggedIn(false);
-        user = null;
+        return homeController;
+    }
+    public UserSession getUserSession()
+    {
+        return userSession;
     }
 
-    /**
-     * Returns user
-     * @return User
-     */
-    public User getUser()
+    public void setUserSession(UserSession userSession)
     {
-        return user;
+        this.userSession = userSession;
     }
 
-    /**
-     * Sets the user from the parameter
-     * @param user User to set
-     */
-    public void setUser(User user)
+    public CreatePersonalDetailsView getCreatePersonalDetailsView() {
+        return createPersonalDetailsView;
+    }
+
+    public ReadAmendPersonalDetailsView getReadAmendPersonalDetailsView() {
+        return readAmendPersonalDetailsView;
+    }
+
+    public HRDatabaseController getHrDatabaseController()
     {
-        this.user = user;
+        return hrDatabaseController;
     }
 
     /**
      * Loads the HomeView window
      */
-    public void loadHomeView()
+    public void loadHomePageView()
     {
         stage.show();
     }
@@ -106,7 +120,7 @@ public class HomeView
     /**
      * Loads the HomeView window
      */
-    public void closeHomeView()
+    public void closeHomePageView()
     {
         stage.close();
     }

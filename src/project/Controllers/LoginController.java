@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by Osama Khaliq
- * Version (17/02/2016)
+ * Version (03/03/2016)
  * LoginView Window controller Class
  * Responsible for LoginView window event handling
  * Shows Alert boxes
@@ -141,7 +141,7 @@ public class LoginController {
     }
 
     /**
-     * Shows Alert box for Authorization Failure
+     * Shows Alert box for Database Failure
      */
     public void showAuthorizationFailureAlert()
     {
@@ -159,6 +159,8 @@ public class LoginController {
         incorrectUsername.setHeaderText(jsonFilePath + " not found, application exiting");
         incorrectUsername.show();
     }
+
+
 
     /**
      * Adds authorization levels to comboBoxAccess control

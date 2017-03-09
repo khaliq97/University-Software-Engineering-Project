@@ -1,6 +1,4 @@
-package project.User;
-
-
+package project.Database.User;
 
 /**
  * Created by osamakhaliq on 18/02/17.
