@@ -17,6 +17,7 @@ import java.util.List;
  * LoginView Window controller Class
  * Responsible for LoginView window event handling
  * Shows Alert boxes
+ * Test comment
  */
 
 public class LoginController {
