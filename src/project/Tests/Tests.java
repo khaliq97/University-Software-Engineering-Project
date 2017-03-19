@@ -1,7 +1,6 @@
 package project.Tests;
 import org.junit.Test;
-import project.Database.UserSession;
-import project.Views.LoginView;
+import project.Database.User_Database.UserSession;
 
 import static org.junit.Assert.*;
 

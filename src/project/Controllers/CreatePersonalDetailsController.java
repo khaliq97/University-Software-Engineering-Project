@@ -3,7 +3,8 @@ package project.Controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import project.Database.User.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetailController;
 import project.Views.CreatePersonalDetailsView;
 
 /**
@@ -15,6 +16,7 @@ import project.Views.CreatePersonalDetailsView;
  */
 public class CreatePersonalDetailsController {
 
+    PersonalDetailController personalDetailController;
     CreatePersonalDetailsView createPersonalDetailsView;
 
     @FXML
@@ -59,8 +61,10 @@ public class CreatePersonalDetailsController {
      *
      * @param createPersonalDetailsView createPersonalDetailsView Window
      */
-    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView) {
+    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView, PersonalDetailController personalDetailController) {
         this.createPersonalDetailsView = createPersonalDetailsView;
+        this.personalDetailController = personalDetailController;
+
 
     }
 

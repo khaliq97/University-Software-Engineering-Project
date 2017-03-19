@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.LoginController;
-import project.Database.UserSession;
+import project.Database.User_Database.UserSession;
 
 /**
  * Created by Osama Khaliq

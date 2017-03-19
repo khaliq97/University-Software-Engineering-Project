@@ -4,7 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import project.Database.User.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetailController;
 import project.Views.ReadAmendPersonalDetailsView;
 
 /**
@@ -16,9 +17,7 @@ import project.Views.ReadAmendPersonalDetailsView;
  */
 public class ReadAmendPersonalDetailsController {
 
-    public Button getButtonView() {
-        return buttonView;
-    }
+    private PersonalDetailController personalDetailController;
 
     @FXML
     private Button buttonView;
@@ -68,9 +67,10 @@ public class ReadAmendPersonalDetailsController {
      * Constructor for class
      * @param readAmendPersonalDetailsView ReadAmendPersonalDetailsView Window
      */
-    public ReadAmendPersonalDetailsController(ReadAmendPersonalDetailsView readAmendPersonalDetailsView)
+    public ReadAmendPersonalDetailsController(ReadAmendPersonalDetailsView readAmendPersonalDetailsView, PersonalDetailController personalDetailController)
     {
         this.readAmendPersonalDetailsView = readAmendPersonalDetailsView;
+        this.personalDetailController = personalDetailController;
 
     }
 
@@ -282,6 +282,10 @@ public class ReadAmendPersonalDetailsController {
         Alert noPersonalDetailFound = new Alert(Alert.AlertType.ERROR);
         noPersonalDetailFound.setHeaderText("No Personal Detail found for " +  userName);
         noPersonalDetailFound.show();
+    }
+
+    public Button getButtonView() {
+        return buttonView;
     }
 
     /**

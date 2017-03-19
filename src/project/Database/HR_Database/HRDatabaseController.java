@@ -1,7 +1,7 @@
 package project.Database.HR_Database;
 
 import javafx.scene.control.Alert;
-import project.Database.User.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetail;
 
 import java.io.*;
 
