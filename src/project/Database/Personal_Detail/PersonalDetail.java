@@ -1,4 +1,4 @@
-package project.Database.User;
+package project.Database.Personal_Detail;
 
 import java.io.Serializable;
 

@@ -5,6 +5,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.ReadAmendPersonalDetailsController;
+import project.Database.Personal_Detail.PersonalDetail;
+import project.Database.Personal_Detail.PersonalDetailController;
 
 import java.io.IOException;
 
@@ -23,6 +25,7 @@ public class ReadAmendPersonalDetailsView {
 
     private boolean amendMode;
 
+    PersonalDetailController personalDetailController;
     ReadAmendPersonalDetailsController readAmendPersonalDetailsController;
 
     /**
@@ -30,12 +33,13 @@ public class ReadAmendPersonalDetailsView {
      * Passes in homeView
      * @param homeView homeView instance
      */
-    public ReadAmendPersonalDetailsView(HomeView homeView)
+    public ReadAmendPersonalDetailsView(HomeView homeView, PersonalDetailController personalDetailController)
     {
         this.homeView = homeView;
+        this.personalDetailController = personalDetailController;
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/ReadPersonalDetails.fxml"));
         stage = new Stage();
-        readAmendPersonalDetailsController = new ReadAmendPersonalDetailsController(this);
+        readAmendPersonalDetailsController = new ReadAmendPersonalDetailsController(this, personalDetailController);
         amendMode = false;
 
         fxmlLoader.setController(readAmendPersonalDetailsController);

@@ -1,6 +1,8 @@
-package project.Database;
+package project.Database.User_Database;
 
 import project.Database.User.User;
+import project.Database.User_Database.AuthorizationServer;
+import project.Database.User_Database.Database;
 
 /**
  * Created by Osama Khaliq

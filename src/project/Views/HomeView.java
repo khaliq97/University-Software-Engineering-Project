@@ -5,9 +5,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.HomeController;
-import project.Database.UserSession;
+import project.Database.Personal_Detail.PersonalDetailController;
+import project.Database.User_Database.UserSession;
 import project.Database.HR_Database.HRDatabaseController;
-import project.Database.User.User;
 
 import java.io.IOException;
 
@@ -23,6 +23,8 @@ public class HomeView
 
 
     private UserSession userSession;
+
+    private PersonalDetailController personalDetailController;
 
     private CreatePersonalDetailsView createPersonalDetailsView;
 
@@ -52,8 +54,9 @@ public class HomeView
 
         this.userSession = userSession;
 
-        createPersonalDetailsView = new CreatePersonalDetailsView(this);
-        readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this);
+        personalDetailController = new PersonalDetailController();
+        createPersonalDetailsView = new CreatePersonalDetailsView(this, personalDetailController);
+        readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this, personalDetailController);
 
         fxmlLoader.setController(homeController);
         try {
@@ -86,6 +89,7 @@ public class HomeView
     {
         return homeController;
     }
+    
     public UserSession getUserSession()
     {
         return userSession;

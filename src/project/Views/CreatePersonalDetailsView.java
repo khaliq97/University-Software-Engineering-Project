@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.Controllers.CreatePersonalDetailsController;
 import project.Controllers.HomeController;
+import project.Database.Personal_Detail.PersonalDetailController;
 
 import java.io.IOException;
 
@@ -17,6 +18,8 @@ import java.io.IOException;
 public class CreatePersonalDetailsView {
 
     HomeView homeView;
+
+    PersonalDetailController personalDetailController;
 
     private Parent root;
     private Stage stage;
@@ -30,12 +33,13 @@ public class CreatePersonalDetailsView {
      * Passes in homeView
      * @param homeView homeView instance
      */
-    public CreatePersonalDetailsView(HomeView homeView)
+    public CreatePersonalDetailsView(HomeView homeView, PersonalDetailController personalDetailController)
     {
         this.homeView = homeView;
+        this.personalDetailController = personalDetailController;
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/CreatePersonalDetails.fxml"));
         stage = new Stage();
-        createPersonalDetailsController = new CreatePersonalDetailsController(this);
+        createPersonalDetailsController = new CreatePersonalDetailsController(this, personalDetailController);
 
         fxmlLoader.setController(createPersonalDetailsController);
         try {
