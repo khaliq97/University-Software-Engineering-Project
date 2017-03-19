@@ -112,25 +112,6 @@ public class LoginController {
 
 
     /**
-     * Returns txtFieldPassword control
-     * @return txtFieldPassword
-     */
-    public TextField getTxtFieldPassword()
-    {
-        return txtFieldPassword;
-    }
-
-    /**
-     * Returns selectedAuthorizationLevel
-     * @return selectedAuthorizationLevel
-     */
-    public int getSelectedAccessLevel()
-    {
-        return selectedAuthorizationLevel;
-    }
-
-
-    /**
      * Displays Alert box for message "incorrect Username or Password"
      */
     public void showIncorrectUsernameOrPasswordAlert()
