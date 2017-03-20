@@ -21,7 +21,6 @@ public class HomeView
 {
     private LoginView loginView;
 
-
     private UserSession userSession;
 
     private PersonalDetailController personalDetailController;
@@ -81,7 +80,7 @@ public class HomeView
      */
     public void initialize()
     {
-        homeController.setLabelWelcome(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
+        homeController.setLabelWelcomeText(("User: " + userSession.getUser().getUsername() + ", you're are logged in as " + loginView.getLoginController().getSelectedAuthorizationString()));
         readAmendPersonalDetailsView.getReadAmendPersonalDetailsController().getTxtFieldUserName().setText(userSession.getUser().getUsername());
     }
 
@@ -95,10 +94,6 @@ public class HomeView
         return userSession;
     }
 
-    public void setUserSession(UserSession userSession)
-    {
-        this.userSession = userSession;
-    }
 
     public CreatePersonalDetailsView getCreatePersonalDetailsView() {
         return createPersonalDetailsView;
@@ -116,7 +111,7 @@ public class HomeView
     /**
      * Loads the HomeView window
      */
-    public void loadHomePageView()
+    public void loadHomeView()
     {
         stage.show();
     }
@@ -124,7 +119,7 @@ public class HomeView
     /**
      * Loads the HomeView window
      */
-    public void closeHomePageView()
+    public void closeHomeView()
     {
         stage.close();
     }
