@@ -12,34 +12,34 @@ public class CreateAmendReadReviewRecordController {
     CreateAmendReadReviewRecordView createAmendViewReviewRecordView;
 
     @FXML
-    private TextField staffNumberfld;
+    private TextField txtFieldStaffNumber;
 
     @FXML
-    private TextField nameFld;
+    private TextField txtFieldName;
 
     @FXML
-    private TextField sectionFld;
+    private TextField txtFieldsection;
 
     @FXML
-    private TextField mandirFld;
+    private TextField txtFIeldManagerDirectorName;
 
     @FXML
-    private TextField secondmandirFld;
+    private TextField txtSecondManagerDirectorName;
 
     @FXML
-    private TextField objFLd;
+    private TextField txtFIeldObjectives;
 
     @FXML
-    private TextField achFld;
+    private TextField txtFieldAchievement;
 
     @FXML
-    private  TextField previewFld;
+    private  TextField txtFieldPreview;
 
     @FXML
-    private TextField reviewcommentsFld;
+    private TextField txtFIeldReviewComments;
 
     @FXML
-    private ComboBox recommendationCbox;
+    private ComboBox comboBoxRecommendation;
 
 
     public CreateAmendReadReviewRecordController(CreateAmendReadReviewRecordView createAmendReadReviewRecordView) {
