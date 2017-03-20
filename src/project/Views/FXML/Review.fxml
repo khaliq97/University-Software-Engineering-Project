@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <AnchorPane prefHeight="794.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="staffNumberfld" layoutX="145.0" layoutY="53.0" prefHeight="26.0" prefWidth="217.0" />
+            <Label layoutX="217.0" layoutY="14.0" prefHeight="19.0" prefWidth="176.0" text="Review Record">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="57.0" text="Staff Number:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameFLd" layoutX="443.0" layoutY="53.0" prefHeight="26.0" prefWidth="129.0" />
+            <Label layoutX="376.0" layoutY="57.0" text="Name:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="201.0" text="Objectives:" />
+            <Label layoutX="29.0" layoutY="285.0" text="Achievements:" />
+            <TextArea fx:id="objFLd" layoutX="26.0" layoutY="223.0" prefHeight="55.0" prefWidth="548.0" />
+            <TextArea fx:id="achFld" layoutX="30.0" layoutY="313.0" prefHeight="57.0" prefWidth="549.0" />
+            <Label layoutX="33.0" layoutY="385.0" text="A preview of future performance: Goals/Planned outcomes" />
+            <TextArea fx:id="previewFld" layoutX="33.0" layoutY="411.0" prefHeight="69.0" prefWidth="548.0" />
+            <Label layoutX="33.0" layoutY="493.0" text="Reviewer Comments:" />
+            <TextArea fx:id="reviewcommentsFld" layoutX="30.0" layoutY="521.0" prefHeight="79.0" prefWidth="550.0" />
+            <ComboBox fx:id="recommendationCbox" layoutX="33.0" layoutY="620.0" prefWidth="150.0" />
+            <Label layoutX="33.0" layoutY="600.0" text="Recommendation:" />
+            <Label layoutX="30.0" layoutY="136.0" text="Manager/Director Name:" />
+            <Label layoutX="32.0" layoutY="173.0" text="Second Manager/DIrector Name:" />
+            <TextField fx:id="mandirFld" layoutX="201.0" layoutY="131.0" prefHeight="26.0" prefWidth="163.0" />
+            <TextField fx:id="secondmandirFld" layoutX="258.0" layoutY="168.0" prefHeight="26.0" prefWidth="108.0" />
+            <Label layoutX="33.0" layoutY="96.0" text="Section:">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <TextField fx:id="sectionFld" layoutX="146.0" layoutY="91.0" prefHeight="26.0" prefWidth="215.0" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
