@@ -38,15 +38,6 @@ public class UserSession {
     }
 
     /**
-     * Sets user object
-     * @param user User object to set
-     */
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
-
-    /**
      * Returns database class
      * @return database
      */
