@@ -4,8 +4,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.Controllers.CreateAmendReadReviewRecordController;
 import project.Controllers.HomeController;
 import project.Database.Personal_Detail.PersonalDetailController;
+import project.Database.Review.ReviewController;
 import project.Database.User_Database.UserSession;
 import project.Database.HR_Database.HRDatabaseController;
 
@@ -28,6 +30,10 @@ public class HomeView
     private CreatePersonalDetailsView createPersonalDetailsView;
 
     private ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
+
+    private ReviewController reviewController;
+    private CreateAmendReadReviewRecordView createAmendReadReviewRecordView;
+
 
     private HRDatabaseController hrDatabaseController;
 
@@ -56,6 +62,9 @@ public class HomeView
         personalDetailController = new PersonalDetailController();
         createPersonalDetailsView = new CreatePersonalDetailsView(this, personalDetailController);
         readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this, personalDetailController);
+
+        reviewController = new ReviewController();
+//        createAmendReadReviewRecordView = new CreateAmendReadReviewRecordView(this, reviewController);
 
         fxmlLoader.setController(homeController);
         try {
