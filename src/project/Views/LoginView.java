@@ -53,30 +53,6 @@ public class LoginView extends Application {
     }
 
     /**
-     * Returns loginController class
-     * @return loginController
-     */
-    public LoginController getLoginController()
-    {
-        return loginController;
-    }
-    /**
-     * Loads the LoginView window
-     */
-    public void loadLoginView()
-    {
-        primaryStage.show();
-    }
-
-    /**
-     * Closes LoginView window
-     */
-    public void closeLoginView()
-    {
-        primaryStage.close();
-    }
-
-    /**
      * Populates the Access Combo Box from loginController.
      * Reads JSON file and inputs data into the "database" ArrayList.
      */
@@ -105,7 +81,7 @@ public class LoginView extends Application {
             primaryStage.close();
             HomeView homeView = new HomeView(this, userSession);
             homeView.getHomeController().checkAuthorization(authorization);
-            homeView.loadHomePageView();
+            homeView.loadHomeView();
             returnBoolean = true;
         }else if(loginFlag.equals("AUTH_FAILURE"))
         {
@@ -119,6 +95,31 @@ public class LoginView extends Application {
         }
 
         return returnBoolean;
+    }
+
+    /**
+     * Returns loginController class
+     * @return loginController
+     */
+    public LoginController getLoginController()
+    {
+        return loginController;
+    }
+
+    /**
+     * Loads the LoginView window
+     */
+    public void loadLoginView()
+    {
+        primaryStage.show();
+    }
+
+    /**
+     * Closes LoginView window
+     */
+    public void closeLoginView()
+    {
+        primaryStage.close();
     }
 
     public static void main(String[] args) {
