@@ -80,9 +80,9 @@ public class CreatePersonalDetailsController {
         boolean personalDetailExists = false;
         boolean userExists = false;
         PersonalDetail personalDetailToAdd = null;
-        for (PersonalDetail personalDetail : createPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getPersonalDetails()) {
+        for (PersonalDetail personalDetail : createPersonalDetailsView.getHomeView().getHrDatabaseController().getHrDatabase().getArrayListPersonalDetails()) {
 
-                if (!personalDetail.getUserName().equals(txtFieldUserName.getText()))
+                if (!personalDetail.getUsername().equals(txtFieldUserName.getText()))
                 {
                     personalDetailExists = false;
                 }else
@@ -95,7 +95,7 @@ public class CreatePersonalDetailsController {
         {
             PersonalDetail newPersonalDetail = new PersonalDetail();
 
-            newPersonalDetail.setUserName(txtFieldUserName.getText());
+            newPersonalDetail.setUsername(txtFieldUserName.getText());
             newPersonalDetail.setSurname(txtFieldSurname.getText());
             newPersonalDetail.setName(txtFieldName.getText());
             newPersonalDetail.setDOB(txtFieldDateOfBirth.getText());
@@ -105,7 +105,7 @@ public class CreatePersonalDetailsController {
             newPersonalDetail.setPostcode(txtFieldPostcode.getText());
             newPersonalDetail.setTelephoneNumber(txtFieldTelephoneNumber.getText());
             newPersonalDetail.setMobileNumber(txtFieldMobileNumber.getText());
-            newPersonalDetail.setEmergencyContact(txtFieldEmergencyContact.getText());
+            newPersonalDetail.setEmergencyContactName(txtFieldEmergencyContact.getText());
             newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
 
             createPersonalDetailsView.getHomeView().getHrDatabaseController().createPersonalDetail(newPersonalDetail);
