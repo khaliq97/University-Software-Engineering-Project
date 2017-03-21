@@ -28,7 +28,7 @@ public class HRDatabase implements Serializable{
      * Returns personalDetails ArrayList
      * @return personalDetails
      */
-    public ArrayList<PersonalDetail> getPersonalDetails()
+    public ArrayList<PersonalDetail> getArrayListPersonalDetails()
     {
         return personalDetails;
     }

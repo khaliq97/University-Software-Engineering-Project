@@ -76,8 +76,6 @@ public class HRDatabaseController{
             }
 
 
-
-
     }
 
     /**
@@ -115,23 +113,23 @@ public class HRDatabaseController{
     public void createPersonalDetail(PersonalDetail personalDetail)
     {
         PersonalDetail personalDetailToAdd = new PersonalDetail();
-        hrDatabase.getPersonalDetails().add(personalDetail);
+        hrDatabase.getArrayListPersonalDetails().add(personalDetail);
 
         writeToDatabase();
     }
 
     /**
      * Gets PersonalDetail object from hrDatabase using userName as key
-     * @param userName the user which the PersonalDetail object is gotten from
+     * @param username the user which the PersonalDetail object is gotten from
      * @return PersonalDetail object
      */
-    public PersonalDetail getPersonalDetail(String userName)
+    public PersonalDetail getPersonalDetail(String username)
     {
         PersonalDetail personalDetailReturn = null;
-        for(PersonalDetail personalDetail: hrDatabase.getPersonalDetails())
+        for(PersonalDetail personalDetail: hrDatabase.getArrayListPersonalDetails())
         {
 
-            if(personalDetail.getUserName().equals(userName))
+            if(personalDetail.getUsername().equals(username))
             {
                 personalDetailReturn = personalDetail;
             }
