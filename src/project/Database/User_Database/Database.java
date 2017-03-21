@@ -22,7 +22,7 @@ public class Database {
 
     private StringBuilder jsonFile;
 
-    private final String jsonFilePath = "database.json";
+    private final String JSON_FILE_PATH = "database.json";
 
     /**
      * Class constructor
@@ -61,7 +61,7 @@ public class Database {
      */
     public boolean checkIfJSONFileExists()
     {
-        File jsonFile = new File(jsonFilePath);
+        File jsonFile = new File(JSON_FILE_PATH);
         if(jsonFile.exists() && !jsonFile.isDirectory())
         {
             return true;
@@ -81,7 +81,7 @@ public class Database {
         if(checkIfJSONFileExists())
         {
             try {
-                FileReader fileReader = new FileReader(jsonFilePath);
+                FileReader fileReader = new FileReader(JSON_FILE_PATH);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 try {
                     while((line = bufferedReader.readLine()) != null)
@@ -107,17 +107,6 @@ public class Database {
     }
 
     /**
-     * Shows Alert Box if JSON file does not exist.
-     */
-    public void showJSONFileDoesNotExistAlert()
-    {
-
-        Alert jsonFileDoesNotExist = new Alert(Alert.AlertType.ERROR);
-        jsonFileDoesNotExist.setHeaderText(jsonFilePath + " does not exist, application exiting");
-        jsonFileDoesNotExist.show();
-    }
-
-    /**
      * Parses JSON file as Array.
      * Stores each Username, Password and Database in variables
      * Creates new User with these attributes
@@ -139,6 +128,18 @@ public class Database {
 
 
     }
+
+    /**
+     * Shows Alert Box if JSON file does not exist.
+     */
+    public void showJSONFileDoesNotExistAlert()
+    {
+
+        Alert jsonFileDoesNotExist = new Alert(Alert.AlertType.ERROR);
+        jsonFileDoesNotExist.setHeaderText(JSON_FILE_PATH + " does not exist, application exiting");
+        jsonFileDoesNotExist.show();
+    }
+
 
 
 }
