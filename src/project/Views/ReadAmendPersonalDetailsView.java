@@ -123,7 +123,7 @@ public class ReadAmendPersonalDetailsView {
     /**
      * Closes window
      */
-    public void closeReadPersonalDetailsView()
+    public void closeReadAmendPersonalDetailsView()
     {
         stage.close();
     }
