@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class PersonalDetail implements Serializable {
 
 
-    private String userName;
+    private String username;
     private String surname;
     private String name;
     private String DOB;
@@ -20,7 +20,7 @@ public class PersonalDetail implements Serializable {
     private String postcode;
     private String telephoneNumber;
     private String mobileNumber;
-    private String emergencyContact;
+    private String emergencyContactName;
     private String emergencyContactNumber;
 
     /**
@@ -36,12 +36,12 @@ public class PersonalDetail implements Serializable {
      * Getter and Setter methods for all variables
      */
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSurname() {
@@ -116,12 +116,12 @@ public class PersonalDetail implements Serializable {
         this.mobileNumber = mobileNumber;
     }
 
-    public String getEmergencyContact() {
-        return emergencyContact;
+    public String getEmergencyContactName() {
+        return emergencyContactName;
     }
 
-    public void setEmergencyContact(String emergencyContact) {
-        this.emergencyContact = emergencyContact;
+    public void setEmergencyContactName(String emergencyContactName) {
+        this.emergencyContactName = emergencyContactName;
     }
 
     public String getEmergencyContactNumber() {
