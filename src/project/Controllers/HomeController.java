@@ -70,7 +70,7 @@ public class HomeController {
     public void onLogoutButtonClick()
     {
         homeView.getUserSession().logout();
-        homeView.closeHomePageView();
+        homeView.closeHomeView();
         loginView.loadLoginView();
 
     }
@@ -111,12 +111,18 @@ public class HomeController {
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
+    @FXML
+    public void onButtonCreateReviewRecordClick()
+    {
+
+    }
+
 
     /**
      * Sets the labelWelcome text
      * @param value Text to set
      */
-    public void setLabelWelcome(String value)
+    public void setLabelWelcomeText(String value)
     {
         labelWelcome.setText(value);
     }
