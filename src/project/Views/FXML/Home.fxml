@@ -44,6 +44,7 @@
                                     <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="249.0" spacing="20.0">
                                        <children>
                                           <Button fx:id="buttonCreateReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonCreateReviewRecordClick" prefHeight="25.0" prefWidth="198.0" text="Create Review Record" />
+                                          <Button fx:id="buttonReadReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonReadReviewRecordClick" prefHeight="25.0" prefWidth="198.0" text="Read Review Record" />
                                        </children>
                                     </VBox>
                                  </children>
