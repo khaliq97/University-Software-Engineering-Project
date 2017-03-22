@@ -236,7 +236,6 @@ public class ReadAmendPersonalDetailsController {
             }
 
             readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().writeToDatabase();
-            readAmendPersonalDetailsView.getHomeView().getHrDatabaseController().populateHRDatabase();
 
             showSuccessfulPersonalDetailsAmendAlert(userName);
             readAmendPersonalDetailsView.closeReadAmendPersonalDetailsView();
