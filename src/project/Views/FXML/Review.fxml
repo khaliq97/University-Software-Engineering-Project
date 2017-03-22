@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,47 +13,49 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="794.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="txtFieldStaffNumber" layoutX="145.0" layoutY="53.0" prefHeight="26.0" prefWidth="217.0" />
-            <Label layoutX="217.0" layoutY="14.0" prefHeight="19.0" prefWidth="176.0" text="Review Record">
+            <TextField fx:id="txtFieldStaffNumber" layoutX="142.0" layoutY="82.0" prefHeight="26.0" prefWidth="217.0" />
+            <Label layoutX="214.0" layoutY="12.0" prefHeight="19.0" prefWidth="176.0" text="Review Record">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="57.0" text="Staff Number:">
+            <Label layoutX="25.0" layoutY="86.0" text="Staff Number:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txtFieldName" layoutX="443.0" layoutY="53.0" prefHeight="26.0" prefWidth="129.0" />
-            <Label layoutX="376.0" layoutY="57.0" text="Name:">
+            <TextField fx:id="txtFieldName" layoutX="440.0" layoutY="82.0" prefHeight="26.0" prefWidth="129.0" />
+            <Label layoutX="373.0" layoutY="86.0" text="Name:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="201.0" text="Objectives:" />
-            <Label layoutX="29.0" layoutY="285.0" text="Achievements:" />
-            <TextArea fx:id="txtFieldObjectives" layoutX="26.0" layoutY="223.0" prefHeight="55.0" prefWidth="548.0" />
-            <TextArea fx:id="txtFieldAchievement" layoutX="30.0" layoutY="313.0" prefHeight="57.0" prefWidth="549.0" />
-            <Label layoutX="33.0" layoutY="385.0" text="A preview of future performance: Goals/Planned outcomes" />
-            <TextArea fx:id="txtFieldPreview" layoutX="33.0" layoutY="411.0" prefHeight="69.0" prefWidth="548.0" />
-            <Label layoutX="33.0" layoutY="493.0" text="Reviewer Comments:" />
-            <TextArea fx:id="txtFieldReviewComments" layoutX="30.0" layoutY="521.0" prefHeight="79.0" prefWidth="550.0" />
-            <ComboBox fx:id="comboBoxRecommendation" layoutX="33.0" layoutY="620.0" prefWidth="150.0" />
-            <Label layoutX="33.0" layoutY="600.0" text="Recommendation:" />
-            <Label layoutX="30.0" layoutY="136.0" text="Manager/Director Name:" />
-            <Label layoutX="32.0" layoutY="173.0" text="Second Manager/DIrector Name:" />
-            <TextField fx:id="txtFieldManagerDirectorName" layoutX="201.0" layoutY="131.0" prefHeight="26.0" prefWidth="163.0" />
-            <TextField fx:id="txtFieldSecondManagerDirectorName" layoutX="258.0" layoutY="168.0" prefHeight="26.0" prefWidth="108.0" />
-            <Label layoutX="33.0" layoutY="96.0" text="Section:">
+            <Label layoutX="26.0" layoutY="230.0" text="Objectives:" />
+            <Label layoutX="26.0" layoutY="314.0" text="Achievements:" />
+            <TextArea fx:id="txtFieldObjectives" layoutX="23.0" layoutY="252.0" prefHeight="55.0" prefWidth="548.0" />
+            <TextArea fx:id="txtFieldAchievement" layoutX="27.0" layoutY="342.0" prefHeight="57.0" prefWidth="549.0" />
+            <Label layoutX="30.0" layoutY="414.0" text="A preview of future performance: Goals/Planned outcomes" />
+            <TextArea fx:id="txtFieldPreview" layoutX="30.0" layoutY="441.0" prefHeight="69.0" prefWidth="548.0" />
+            <Label layoutX="30.0" layoutY="522.0" text="Reviewer Comments:" />
+            <TextArea fx:id="txtFieldReviewComments" layoutX="27.0" layoutY="550.0" prefHeight="79.0" prefWidth="550.0" />
+            <ComboBox fx:id="comboBoxRecommendation" layoutX="30.0" layoutY="649.0" prefWidth="150.0" />
+            <Label layoutX="30.0" layoutY="629.0" text="Recommendation:" />
+            <Label layoutX="27.0" layoutY="165.0" text="Manager/Director Name:" />
+            <Label layoutX="29.0" layoutY="202.0" text="Second Manager/DIrector Name:" />
+            <TextField fx:id="txtFieldManagerDirectorName" layoutX="198.0" layoutY="160.0" prefHeight="26.0" prefWidth="163.0" />
+            <TextField fx:id="txtFieldSecondManagerDirectorName" layoutX="255.0" layoutY="197.0" prefHeight="26.0" prefWidth="108.0" />
+            <Label layoutX="30.0" layoutY="125.0" text="Section:">
                <font>
                   <Font size="15.0" />
                </font></Label>
-            <TextField fx:id="txtFieldSection" layoutX="146.0" layoutY="91.0" prefHeight="26.0" prefWidth="215.0" />
-            <Button fx:id="completeRecordButton" layoutX="430.0" layoutY="620.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Complete Record" />
+            <TextField fx:id="txtFieldSection" layoutX="143.0" layoutY="120.0" prefHeight="26.0" prefWidth="215.0" />
+            <Button fx:id="completeRecordButton" layoutX="427.0" layoutY="649.0" mnemonicParsing="false" onMouseClicked="#onCompleteRecordButtonClick" prefHeight="26.0" prefWidth="135.0" text="Complete Record" />
+            <Label layoutX="25.0" layoutY="52.0" text="Year: " />
+            <TextField fx:id="txtFieldYear" layoutX="65.0" layoutY="47.0" prefHeight="25.0" prefWidth="75.0" />
          </children>
       </AnchorPane>
    </top>
