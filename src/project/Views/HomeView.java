@@ -32,6 +32,7 @@ public class HomeView
     private ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
 
     private ReviewController reviewController;
+
     private CreateAmendReadReviewRecordView createAmendReadReviewRecordView;
 
 
@@ -63,7 +64,8 @@ public class HomeView
         createPersonalDetailsView = new CreatePersonalDetailsView(this, personalDetailController);
         readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this, personalDetailController);
 
-        reviewController = new ReviewController();
+        reviewController = new ReviewController(hrDatabaseController);
+        createAmendReadReviewRecordView = new CreateAmendReadReviewRecordView(this, reviewController);
 //        createAmendReadReviewRecordView = new CreateAmendReadReviewRecordView(this, reviewController);
 
         fxmlLoader.setController(homeController);
@@ -115,6 +117,10 @@ public class HomeView
     public HRDatabaseController getHrDatabaseController()
     {
         return hrDatabaseController;
+    }
+
+    public CreateAmendReadReviewRecordView getCreateAmendReadReviewRecordView() {
+        return createAmendReadReviewRecordView;
     }
 
     /**
