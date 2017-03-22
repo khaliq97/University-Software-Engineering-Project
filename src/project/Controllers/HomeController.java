@@ -114,7 +114,13 @@ public class HomeController {
     @FXML
     public void onButtonCreateReviewRecordClick()
     {
+        homeView.getCreateAmendReadReviewRecordView().loadCreateReviewRecordView();
+    }
 
+    @FXML
+    public void onButtonReadReviewRecordClick()
+    {
+        homeView.getCreateAmendReadReviewRecordView().loadReadReviewRecordView();
     }
 
 
