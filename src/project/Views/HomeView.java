@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.Controllers.CreateAmendReadReviewRecordController;
 import project.Controllers.HomeController;
 import project.Database.Personal_Detail.PersonalDetailController;
 import project.Database.Review.ReviewController;
@@ -60,7 +59,7 @@ public class HomeView
 
         this.userSession = userSession;
 
-        personalDetailController = new PersonalDetailController();
+        personalDetailController = new PersonalDetailController(hrDatabaseController);
         createPersonalDetailsView = new CreatePersonalDetailsView(this, personalDetailController);
         readAmendPersonalDetailsView = new ReadAmendPersonalDetailsView(this, personalDetailController);
 
