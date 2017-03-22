@@ -2,6 +2,7 @@ package project.Database.HR_Database;
 
 import javafx.scene.control.Alert;
 import project.Database.Personal_Detail.PersonalDetail;
+import project.Database.Review.Review;
 
 import java.io.*;
 
@@ -23,7 +24,7 @@ public class HRDatabaseController{
     public HRDatabaseController()
     {
         hrDatabase = new HRDatabase(this);
-        populateHRDatabase();
+       populateHRDatabase();
     }
 
     /**
@@ -102,6 +103,8 @@ public class HRDatabaseController{
 
         }
 
+        populateHRDatabase();
+
     }
 
     /**
@@ -137,6 +140,30 @@ public class HRDatabaseController{
 
         return personalDetailReturn;
     }
+
+    public void createReviewRecord(Review reviewRecord)
+    {
+
+                hrDatabase.getArrayListReviews().add(reviewRecord);
+                writeToDatabase();
+
+    }
+
+    public Review getReviewRecord(String username)
+    {
+        Review reviewToReturn = null;
+        for(Review review: hrDatabase.getArrayListReviews())
+        {
+
+            if(review.getStaffNumber().equals(username))
+            {
+                reviewToReturn = review;
+            }
+        }
+
+        return reviewToReturn;
+    }
+
 
     /**
      * Shows Alert Box if HR_Database file does not exist
