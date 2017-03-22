@@ -14,15 +14,19 @@ import java.io.IOException;
  */
 public class CreateAmendReadReviewRecordView {
 
-        HomeView homeView;
+        private HomeView homeView;
 
         private Parent root;
         private Stage stage;
         private FXMLLoader fxmlLoader;
         private Scene scene;
 
-        ReviewController reviewController;
-        CreateAmendReadReviewRecordController createAmendReadReviewRecordController;
+    public ReviewController getReviewController() {
+        return reviewController;
+    }
+
+    ReviewController reviewController;
+    CreateAmendReadReviewRecordController createAmendReadReviewRecordController;
 
         public CreateAmendReadReviewRecordView(HomeView homeView, ReviewController reviewController)
         {
@@ -43,12 +47,27 @@ public class CreateAmendReadReviewRecordView {
             stage.setTitle("Create Personal Details");
             stage.setResizable(false);
             stage.setScene(scene);
+
+            initialize();
         }
 
-        public void loadCreateReviewRecordView()
-        {
-            stage.show();
-        }
+    public void initialize()
+    {
+        createAmendReadReviewRecordController.populateComboBoxRecommendation();
+
+    }
+
+    public void loadCreateReviewRecordView()
+    {
+        createAmendReadReviewRecordController.createMode();
+        stage.show();
+    }
+
+    public void loadReadReviewRecordView()
+    {
+        createAmendReadReviewRecordController.readMode();
+        stage.show();
+    }
 
         public void closeCreateAmendReadReviewRecordView()
         {
