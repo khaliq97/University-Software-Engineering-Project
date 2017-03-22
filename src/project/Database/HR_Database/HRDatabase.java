@@ -1,6 +1,7 @@
 package project.Database.HR_Database;
 
 import project.Database.Personal_Detail.PersonalDetail;
+import project.Database.Review.Review;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ public class HRDatabase implements Serializable{
 
     private ArrayList<PersonalDetail> personalDetails;
 
+    private ArrayList<Review> reviews;
+
     /**
      * Constructor for Class
      * @param hrDatabaseController hrDatabaseController class
@@ -22,6 +25,7 @@ public class HRDatabase implements Serializable{
     public HRDatabase(HRDatabaseController hrDatabaseController)
     {
         personalDetails = new ArrayList<>();
+        reviews = new ArrayList<>();
     }
 
     /**
@@ -33,6 +37,11 @@ public class HRDatabase implements Serializable{
         return personalDetails;
     }
 
+
+    public ArrayList<Review> getArrayListReviews()
+    {
+        return reviews;
+    }
 
 
 }
