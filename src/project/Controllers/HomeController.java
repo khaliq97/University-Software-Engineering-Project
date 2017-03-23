@@ -28,6 +28,15 @@ public class HomeController {
     @FXML
     private Button buttonReadPersonalDetail;
 
+    @FXML
+    private Button buttonCreateReviewRecord;
+
+    @FXML
+    private Button buttonAmendReviewRecord;
+
+    @FXML
+    private Button buttonReadReviewRecord;
+
     /**
      * Class constructor
      * @param homeView HomeView instance
@@ -42,21 +51,38 @@ public class HomeController {
     /**
      * Methods checks authorization level of user
      * Determines what buttons to enable and disable based on level
-     * @param auth user autorization level
+     * @param auth user authorization level
      */
     public void checkAuthorization(int auth)
     {
 
 
         if(auth == 3 || auth == 5) {
-            buttonCreatePersonalDetail.setDisable(false);;
-            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonView().setDisable(false);
+            if(auth == 3)
+            {
+                buttonCreateReviewRecord.setDisable(false);
+                buttonAmendReviewRecord.setDisable(false);
+                buttonReadReviewRecord.setDisable(false);
+            }else
+            {
+                buttonCreateReviewRecord.setDisable(true);
+                buttonAmendReviewRecord.setDisable(true);
+                buttonReadReviewRecord.setDisable(true);
+            }
+            buttonCreatePersonalDetail.setDisable(false);
+            buttonAmendPersonalDetail.setDisable(false);
+            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonLoadPersonalDetail().setDisable(false);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(true);
 
         }else
         {
+            buttonCreateReviewRecord.setDisable(true);
+            buttonAmendReviewRecord.setDisable(true);
+            buttonReadReviewRecord.setDisable(true);
+
             buttonCreatePersonalDetail.setDisable(true);
-            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonView().setDisable(true);
+            buttonAmendPersonalDetail.setDisable(true);
+            homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonLoadPersonalDetail().setDisable(true);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(false);
         }
 
@@ -95,7 +121,6 @@ public class HomeController {
     {
         homeView.getReadAmendPersonalDetailsView().loadAmendPersonalDetailsView();
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().checkMode();
-        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
     /**
@@ -108,7 +133,6 @@ public class HomeController {
     {
         homeView.getReadAmendPersonalDetailsView().loadReadPersonalDetailsView();
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().checkMode();
-        homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().loadPersonalDetails(homeView.getUserSession().getUser().getUsername());
     }
 
     @FXML
@@ -121,6 +145,12 @@ public class HomeController {
     public void onButtonReadReviewRecordClick()
     {
         homeView.getCreateAmendReadReviewRecordView().loadReadReviewRecordView();
+    }
+
+    @FXML
+    public void onButtonAmendRecordClick()
+    {
+        homeView.getCreateAmendReadReviewRecordView().loadAmendReviewRecordView();
     }
 
 
