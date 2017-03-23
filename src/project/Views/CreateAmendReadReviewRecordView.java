@@ -69,6 +69,12 @@ public class CreateAmendReadReviewRecordView {
         stage.show();
     }
 
+    public void loadAmendReviewRecordView()
+    {
+        createAmendReadReviewRecordController.amendMode();
+        stage.show();
+    }
+
         public void closeCreateAmendReadReviewRecordView()
         {
             stage.close();
