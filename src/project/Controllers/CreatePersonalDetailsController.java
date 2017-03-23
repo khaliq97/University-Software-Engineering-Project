@@ -16,7 +16,6 @@ import project.Views.CreatePersonalDetailsView;
  */
 public class CreatePersonalDetailsController {
 
-    PersonalDetailController personalDetailController;
     CreatePersonalDetailsView createPersonalDetailsView;
 
     @FXML
@@ -61,10 +60,8 @@ public class CreatePersonalDetailsController {
      *
      * @param createPersonalDetailsView createPersonalDetailsView Window
      */
-    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView, PersonalDetailController personalDetailController) {
+    public CreatePersonalDetailsController(CreatePersonalDetailsView createPersonalDetailsView) {
         this.createPersonalDetailsView = createPersonalDetailsView;
-        this.personalDetailController = personalDetailController;
-
 
     }
 
@@ -77,7 +74,7 @@ public class CreatePersonalDetailsController {
     @FXML
     public void onButtonCreateClick() {
 
-        int result = personalDetailController.createPersonalDetail(txtFieldUserName.getText(), txtFieldSurname.getText(), txtFieldName.getText(), txtFieldDateOfBirth.getText(), txtFieldAddress.getText(),
+        int result = createPersonalDetailsView.getHomeView().getPersonalDetailController().createPersonalDetail(txtFieldUserName.getText(), txtFieldSurname.getText(), txtFieldName.getText(), txtFieldDateOfBirth.getText(), txtFieldAddress.getText(),
                 txtFieldTownCity.getText(), txtFieldCounty.getText(), txtFieldPostcode.getText(), txtFieldTelephoneNumber.getText(), txtFieldMobileNumber.getText(),
                 txtFieldEmergencyContact.getText(), txtFieldEmergencyContactNumber.getText());
 
