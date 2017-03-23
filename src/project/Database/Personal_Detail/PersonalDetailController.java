@@ -52,4 +52,45 @@ public class PersonalDetailController {
             return 0;
         }
     }
+
+    /**
+     * Gets PersonalDetail object from hrDatabase using userName as key
+     * @param username the user which the PersonalDetail object is gotten from
+     * @return PersonalDetail object
+     */
+    public PersonalDetail getPersonalDetail(String username)
+    {
+        PersonalDetail personalDetailReturn = null;
+        for(PersonalDetail personalDetail: hrDatabaseController.getHrDatabase().getArrayListPersonalDetails())
+        {
+
+            if(personalDetail.getUsername().equals(username))
+            {
+                personalDetailReturn = personalDetail;
+            }
+        }
+
+        return personalDetailReturn;
+    }
+
+    public int setPersonalDetail(PersonalDetail personalDetail)
+    {
+        int returnFlag = 0;
+        int index = 0;
+        for(PersonalDetail personalDetailToCheck: hrDatabaseController.getHrDatabase().getArrayListPersonalDetails()) {
+            if (personalDetailToCheck.getUsername().equals(personalDetail.getUsername()))
+            {
+                hrDatabaseController.getHrDatabase().getArrayListPersonalDetails().set(index, personalDetail);
+                hrDatabaseController.writeToDatabase();
+
+                returnFlag =  1;
+            }else
+            {
+                returnFlag =  0;
+            }
+            index++;
+        }
+
+        return returnFlag;
+    }
 }
