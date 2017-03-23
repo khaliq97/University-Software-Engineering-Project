@@ -15,11 +15,11 @@ public class ReviewController {
     }
 
     public int createReviewRecord(String year, String staffNumber, String name, String section, String  managerDirectorName,String secondManagerDirectName,
-                                   String objectives, String achievements, String preview, String reviewComments, String recommendation )
+                                   String objectives, String achievements, String preview, String reviewComments, String recommendation, String revieweeSignature, String managerDirectorSignature, String secondReviewerSignature, String dateSigned, boolean signed)
     {
-        int returnResult = 0;
+        int returnFlag = 0;
         boolean reviewRecordExists = false;
-        Review newRecord = new Review(year, staffNumber, name, section, managerDirectorName, secondManagerDirectName, objectives, achievements, preview, reviewComments, recommendation);
+        Review newRecord = new Review(year, staffNumber, name, section, managerDirectorName, secondManagerDirectName, objectives, achievements, preview, reviewComments, recommendation, revieweeSignature, managerDirectorSignature, secondReviewerSignature, dateSigned, signed);
 
         for(Review review: hrDatabaseController.getHrDatabase().getArrayListReviews()) {
             if (!review.getStaffNumber().equals(staffNumber)) {
@@ -35,13 +35,13 @@ public class ReviewController {
         if(!reviewRecordExists)
         {
             hrDatabaseController.createReviewRecord(newRecord);
-            returnResult = 1;
+            returnFlag = 1;
         }else
         {
-            returnResult = 0;
+            returnFlag = 0;
         }
 
-        return returnResult;
+        return returnFlag;
 
     }
 
@@ -58,5 +58,26 @@ public class ReviewController {
             }
         }
         return reviewToReturn;
+    }
+
+    public int setReviewRecord(Review review)
+    {
+        int returnFlag = 0;
+        int index = 0;
+        for(Review reviewToCheck: hrDatabaseController.getHrDatabase().getArrayListReviews()) {
+            if (reviewToCheck.getStaffNumber().equals(review.getStaffNumber()) && reviewToCheck.getYear().equals(review.getYear()))
+            {
+                hrDatabaseController.getHrDatabase().getArrayListReviews().set(index, review);
+                hrDatabaseController.writeToDatabase();
+
+                returnFlag =  1;
+            }else
+            {
+                returnFlag =  0;
+            }
+            index++;
+        }
+
+        return returnFlag;
     }
 }
