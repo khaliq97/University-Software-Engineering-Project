@@ -121,25 +121,6 @@ public class HRDatabaseController{
         writeToDatabase();
     }
 
-    /**
-     * Gets PersonalDetail object from hrDatabase using userName as key
-     * @param username the user which the PersonalDetail object is gotten from
-     * @return PersonalDetail object
-     */
-    public PersonalDetail getPersonalDetail(String username)
-    {
-        PersonalDetail personalDetailReturn = null;
-        for(PersonalDetail personalDetail: hrDatabase.getArrayListPersonalDetails())
-        {
-
-            if(personalDetail.getUsername().equals(username))
-            {
-                personalDetailReturn = personalDetail;
-            }
-        }
-
-        return personalDetailReturn;
-    }
 
     public void createReviewRecord(Review reviewRecord)
     {
