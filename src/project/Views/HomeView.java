@@ -24,6 +24,10 @@ public class HomeView
 
     private UserSession userSession;
 
+    public PersonalDetailController getPersonalDetailController() {
+        return personalDetailController;
+    }
+
     private PersonalDetailController personalDetailController;
 
     private CreatePersonalDetailsView createPersonalDetailsView;
