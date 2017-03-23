@@ -39,7 +39,7 @@ public class CreatePersonalDetailsView {
         this.personalDetailController = personalDetailController;
         fxmlLoader = new FXMLLoader(getClass().getResource("FXML/CreatePersonalDetails.fxml"));
         stage = new Stage();
-        createPersonalDetailsController = new CreatePersonalDetailsController(this, personalDetailController);
+        createPersonalDetailsController = new CreatePersonalDetailsController(this);
 
         fxmlLoader.setController(createPersonalDetailsController);
         try {
