@@ -3,8 +3,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import project.Database.Personal_Detail.PersonalDetail;
 import project.Database.Review.Review;
 import project.Views.CreateAmendReadReviewRecordView;
 
@@ -16,11 +14,11 @@ import java.util.List;
  */
 public class CreateAmendReadReviewRecordController {
 
-    CreateAmendReadReviewRecordView createAmendViewReviewRecordView;
+    private CreateAmendReadReviewRecordView createAmendViewReviewRecordView;
 
-    boolean isCreateMode;
-    boolean isAmendMode;
-    boolean isReadMode;
+    private boolean isCreateMode;
+    private boolean isAmendMode;
+    private boolean isReadMode;
 
     @FXML
     private Button buttonLoad;
@@ -76,6 +74,7 @@ public class CreateAmendReadReviewRecordController {
     @FXML
     private Button completeRecordButton;
 
+    private boolean signedOff;
 
 
     public CreateAmendReadReviewRecordController(CreateAmendReadReviewRecordView createAmendReadReviewRecordView) {
@@ -85,6 +84,7 @@ public class CreateAmendReadReviewRecordController {
 
     public void checkMode()
     {
+        signedOff = false;
         if(isCreateMode)
         {
             clearFields();
@@ -187,6 +187,11 @@ public class CreateAmendReadReviewRecordController {
     @FXML
     public void onButtonLoadClick()
     {
+        readReviewRecord();
+    }
+
+    public void readReviewRecord()
+    {
         Review reviewRecordToRead = createAmendViewReviewRecordView.getReviewController().getReviewRecord(txtFieldStaffNumber.getText(), txtFieldYear.getText());
         if(reviewRecordToRead != null)
         {
@@ -265,41 +270,68 @@ public class CreateAmendReadReviewRecordController {
     {
         if(isCreateMode)
         {
-            int result = createAmendViewReviewRecordView.getReviewController().createReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
-                    txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
-                    txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(), txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), checkBoxSigned.isSelected());
-
-            if(result == 1)
-            {
-                showSuccessfulReviewRecordCreationAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-                createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
-            }else if(result == 0)
-            {
-                showReviewRecordAlreadyExists(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-            }
+            createReviewRecord();
         }
 
         if(isAmendMode)
         {
-            if(createAmendViewReviewRecordView.getReviewController().getReviewRecord(txtFieldStaffNumber.getText(), txtFieldYear.getText()) != null)
-            {
-                Review reviewToSet = new Review(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
-                        txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
-                        txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(),
-                        txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), checkBoxSigned.isSelected());
-
-
-                createAmendViewReviewRecordView.getReviewController().setReviewRecord(reviewToSet);
-                showSuccessfulReviewRecordAmendedAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-                createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
-
-            }else
-            {
-                showRecordDoesNotExistAlert(txtFieldStaffNumber.getText(), txtFieldStaffNumber.getText());
-            }
+            amendReviewRecord();
         }
 
         clearFields();
+    }
+
+    public void createReviewRecord()
+    {
+        int result = createAmendViewReviewRecordView.getReviewController().createReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
+                txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
+                txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(), txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
+
+        if(result == 1)
+        {
+            showSuccessfulReviewRecordCreationAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
+        }else if(result == 0)
+        {
+            showReviewRecordAlreadyExists(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+        }
+    }
+
+    public void amendReviewRecord()
+    {
+        if(createAmendViewReviewRecordView.getReviewController().getReviewRecord(txtFieldStaffNumber.getText(), txtFieldYear.getText()) != null)
+        {
+            Review reviewToSet = new Review(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
+                    txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
+                    txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(),
+                    txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
+
+
+            createAmendViewReviewRecordView.getReviewController().amendReviewRecord(reviewToSet);
+            showSuccessfulReviewRecordAmendedAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
+
+        }else
+        {
+            showRecordDoesNotExistAlert(txtFieldStaffNumber.getText(), txtFieldStaffNumber.getText());
+        }
+    }
+
+    @FXML
+    public void onCheckBoxSignedClick()
+    {
+        if(checkBoxSigned.isSelected())
+        {
+            signOffReview();
+        }else
+        {
+            signedOff = false;
+        }
+
+    }
+    public void signOffReview()
+    {
+        signedOff = true;
     }
 
     public void createMode()
