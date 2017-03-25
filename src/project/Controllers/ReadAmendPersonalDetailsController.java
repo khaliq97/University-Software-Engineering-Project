@@ -75,7 +75,7 @@ public class ReadAmendPersonalDetailsController {
     }
 
     /**
-     * Checks what mode the view has started in and adjusts the properites for thhe controls
+     * Checks what mode the view has started in and adjusts the properties for the controls
      */
     public void checkMode()
     {
@@ -136,9 +136,11 @@ public class ReadAmendPersonalDetailsController {
         }
     }
 
-    @FXML
-
-    public void onButtonLoadPersonalDetailClick()
+    /**
+     * Gets a PersonalDetail object from the current inputted username in txtFieldUsername
+     * Sets the text of all fields with the PersonalDetail's object
+     */
+    public void readPersonalDetail()
     {
         if (readAmendPersonalDetailsView.getHomeView().getPersonalDetailController().getPersonalDetail(txtFieldUserName.getText()) != null) {
             PersonalDetail personalDetail = readAmendPersonalDetailsView.getHomeView().getPersonalDetailController().getPersonalDetail(txtFieldUserName.getText());
@@ -170,14 +172,22 @@ public class ReadAmendPersonalDetailsController {
             showNoPersonalDetailFoundAlert(txtFieldUserName.getText());
         }
     }
+
     /**
-     * Event handler for buttonAmend Button control
-     * Creates new personal detail and sets values based on text field values
-     * Finds and sets the existing PersonalDetail object to the new one
-     * Writes it the HRDatabase and populates it.
+     * buttonLoadPersonalDetailClick event handler for when button is clicked.
+     * Calls readPersonalDetail
      */
     @FXML
-    public void onButtonAmendClick()
+    public void onButtonLoadPersonalDetailClick()
+    {
+        readPersonalDetail();
+    }
+
+    /**
+     * Creates a new PersonalDetail object with the current inputted values in the text fields and checkbox.
+     * Replaces the matching PersonalDetail object in reviews ArrayList in HRDatabaseController with the newly created one.
+     */
+    public void amendPersonalDetail()
     {
         if (readAmendPersonalDetailsView.getHomeView().getPersonalDetailController().getPersonalDetail(txtFieldUserName.getText()) != null) {
             PersonalDetail newPersonalDetail = new PersonalDetail();
@@ -195,7 +205,7 @@ public class ReadAmendPersonalDetailsController {
             newPersonalDetail.setEmergencyContactName(txtFieldEmergencyContact.getText());
             newPersonalDetail.setEmergencyContactNumber(txtFieldEmergencyContactNumber.getText());
 
-            readAmendPersonalDetailsView.getHomeView().getPersonalDetailController().setPersonalDetail(newPersonalDetail);
+            readAmendPersonalDetailsView.getHomeView().getPersonalDetailController().amendPersonalDetail(newPersonalDetail);
             showSuccessfulPersonalDetailsAmendAlert(txtFieldUserName.getText());
             readAmendPersonalDetailsView.closeReadAmendPersonalDetailsView();
         }
@@ -203,6 +213,15 @@ public class ReadAmendPersonalDetailsController {
         {
             showNoPersonalDetailFoundAlert(txtFieldUserName.getText());
         }
+    }
+    /**
+     * buttonLoadPersonalDetailClick event handler for when button is clicked.
+     * Calls amendPersonalDetail
+     */
+    @FXML
+    public void onButtonAmendClick()
+    {
+       amendPersonalDetail();
     }
 
     /**
@@ -216,6 +235,10 @@ public class ReadAmendPersonalDetailsController {
         successfulPersonalDetails.show();
     }
 
+    /**
+     * Shows alert box when a personal detail object is not found.
+     * @param username username of not found personal detail object
+     */
     public void showNoPersonalDetailFoundAlert(String username)
     {
         Alert noPersonalDetailFound = new Alert(Alert.AlertType.ERROR);
@@ -223,6 +246,10 @@ public class ReadAmendPersonalDetailsController {
         noPersonalDetailFound.show();
     }
 
+    /**
+     * Returns buttonLoadPersonalDetail
+     * @return buttonLoadPersonalDetail
+     */
     public Button getButtonLoadPersonalDetail() {
         return buttonLoadPersonalDetail;
     }
