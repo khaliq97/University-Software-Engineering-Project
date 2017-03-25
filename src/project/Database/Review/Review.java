@@ -3,7 +3,11 @@ package project.Database.Review;
 import java.io.Serializable;
 
 /**
- * Created by osamakhaliq on 21/03/17.
+ * Created by Osama Khaliq
+ * Version (23/03/2016)
+ *
+ * Responsible for creating, getting and setting a Review object
+ * Manipulated the reviews ArrayList in HRDatabase
  */
 public class Review implements Serializable {
 
@@ -59,6 +63,63 @@ public class Review implements Serializable {
     private String year;
     private String staffNumber;
     private String name;
+
+    public void setStaffNumber(String staffNumber) {
+        this.staffNumber = staffNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public void setManagerDirectorName(String managerDirectorName) {
+        this.managerDirectorName = managerDirectorName;
+    }
+
+    public void setSecondManagerDirectorName(String secondManagerDirectorName) {
+        this.secondManagerDirectorName = secondManagerDirectorName;
+    }
+
+    public void setObjectives(String objectives) {
+        this.objectives = objectives;
+    }
+
+    public void setAchievement(String achievement) {
+        this.achievement = achievement;
+    }
+
+    public void setPreview(String preview) {
+        this.preview = preview;
+    }
+
+    public void setReviewComments(String reviewComments) {
+        this.reviewComments = reviewComments;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
+    }
+
+    public void setRevieweeSignature(String revieweeSignature) {
+        this.revieweeSignature = revieweeSignature;
+    }
+
+    public void setManagerDirectorSignature(String managerDirectorSignature) {
+        this.managerDirectorSignature = managerDirectorSignature;
+    }
+
+    public void setSecondReviewerSignature(String secondReviewerSignature) {
+        this.secondReviewerSignature = secondReviewerSignature;
+    }
+
+    public void setSigned(boolean signed) {
+        this.signed = signed;
+    }
+
     private String section;
     private String managerDirectorName;
     private String secondManagerDirectorName;
