@@ -52,11 +52,6 @@
                               </AnchorPane>
                           </content>
                         </TitledPane>
-                        <Label layoutX="129.0" layoutY="193.0" prefHeight="276.0" prefWidth="745.0" text="( ͡° ͜ʖ ͡°)">
-                           <font>
-                              <Font size="92.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
             </content>

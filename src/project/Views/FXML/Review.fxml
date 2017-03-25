@@ -81,7 +81,7 @@
                </font>
             </Label>
             <TextField fx:id="txtFieldRevieweeSignature" layoutX="174.0" layoutY="623.0" prefHeight="26.0" prefWidth="211.0" />
-            <CheckBox fx:id="checkBoxSigned" layoutX="21.0" layoutY="762.0" mnemonicParsing="false" text="Signed" />
+            <CheckBox fx:id="checkBoxSigned" layoutX="21.0" layoutY="762.0" mnemonicParsing="false" onMouseClicked="#onCheckBoxSignedClick" text="Signed" />
          </children>
       </AnchorPane>
    </bottom>
