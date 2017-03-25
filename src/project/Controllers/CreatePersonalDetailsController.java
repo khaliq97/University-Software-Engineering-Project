@@ -65,15 +65,8 @@ public class CreatePersonalDetailsController {
 
     }
 
-    /**
-     * Event handler for buttonCreate Button control
-     * Creates a new PersonalDetail object
-     * Checks if a Personal Detail already exists for the User
-     * Adds it to HRDatabase
-     */
-    @FXML
-    public void onButtonCreateClick() {
-
+    public void createPersonalDetail()
+    {
         int result = createPersonalDetailsView.getHomeView().getPersonalDetailController().createPersonalDetail(txtFieldUserName.getText(), txtFieldSurname.getText(), txtFieldName.getText(), txtFieldDateOfBirth.getText(), txtFieldAddress.getText(),
                 txtFieldTownCity.getText(), txtFieldCounty.getText(), txtFieldPostcode.getText(), txtFieldTelephoneNumber.getText(), txtFieldMobileNumber.getText(),
                 txtFieldEmergencyContact.getText(), txtFieldEmergencyContactNumber.getText());
@@ -88,6 +81,18 @@ public class CreatePersonalDetailsController {
             showPersonalDetailExistsAlert();
             createPersonalDetailsView.closeCreatePersonalDetailsView();
         }
+    }
+
+    /**
+     * Event handler for buttonCreate Button control
+     * Creates a new PersonalDetail object
+     * Checks if a Personal Detail already exists for the User
+     * Adds it to HRDatabase
+     */
+    @FXML
+    public void onButtonCreateClick()
+    {
+        createPersonalDetail();
     }
 
     /**
