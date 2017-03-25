@@ -1,17 +1,41 @@
 package project.Database.Personal_Detail;
 import project.Database.HR_Database.HRDatabaseController;
 /**
- * Created by osamakhaliq on 07/03/17.
+ * Created by Osama Khaliq
+ * Version (23/03/2016)
+ *
+ * Responsible for creating, getting and setting Personal Details into and from the
+ * personalDetails ArrayList in HRDatabase.
  */
 public class PersonalDetailController {
 
     HRDatabaseController hrDatabaseController;
 
+    /**
+     * Class constructor
+     * @param hrDatabaseController HRDatabaseController class
+     */
     public PersonalDetailController(HRDatabaseController hrDatabaseController)
     {
        this.hrDatabaseController = hrDatabaseController;
     }
 
+    /**
+     * Creates a new PersonalDetail object with the parameter data from the createPersonalDetailsController class
+     * @param username username value
+     * @param surname surname value
+     * @param name name value
+     * @param dob dob value
+     * @param address address value
+     * @param townCity town or city value
+     * @param county county value
+     * @param postCode postcode value
+     * @param telephoneNumber telephone number value
+     * @param mobileNumber mobile number value
+     * @param emergencyContact emergency contact value
+     * @param emergencyContactNumber emergency contact number value
+     * @return status of creating a review record, 1 for success, 0 for failure
+     */
     public int createPersonalDetail(String username, String surname, String name, String dob, String address, String townCity,
                                     String county, String postCode, String telephoneNumber, String mobileNumber,
                                     String emergencyContact, String emergencyContactNumber) {
@@ -48,7 +72,6 @@ public class PersonalDetailController {
 
 
         } else {
-            System.out.println("eijrier");
             return 0;
         }
     }
@@ -60,36 +83,19 @@ public class PersonalDetailController {
      */
     public PersonalDetail getPersonalDetail(String username)
     {
-        PersonalDetail personalDetailReturn = null;
-        for(PersonalDetail personalDetail: hrDatabaseController.getHrDatabase().getArrayListPersonalDetails())
-        {
-
-            if(personalDetail.getUsername().equals(username))
-            {
-                personalDetailReturn = personalDetail;
-            }
-        }
-
-        return personalDetailReturn;
+       return hrDatabaseController.getPersonalDetail(username);
     }
 
-    public int setPersonalDetail(PersonalDetail personalDetail)
+    /**
+     * Sets a position in the personalDetails ArrayList in HRDatabaseController with the passed in personalDetail object.
+     * Checks if it matches its username.
+     * Writes it to the database.
+     * @param personalDetail personalDetail object that will replace the existing
+     * @return status of creating a personalDetail and writing it to the database, 1 for success, 0 for failure
+     */
+    public int amendPersonalDetail(PersonalDetail personalDetail)
     {
-        int returnFlag = 0;
-        int index = 0;
-        for(PersonalDetail personalDetailToCheck: hrDatabaseController.getHrDatabase().getArrayListPersonalDetails()) {
-            if (personalDetailToCheck.getUsername().equals(personalDetail.getUsername()))
-            {
-                hrDatabaseController.getHrDatabase().getArrayListPersonalDetails().set(index, personalDetail);
-                hrDatabaseController.writeToDatabase();
-
-                returnFlag =  1;
-            }else
-            {
-                returnFlag =  0;
-            }
-            index++;
-        }
+        int returnFlag = hrDatabaseController.amendPersonalDetail(personalDetail);
 
         return returnFlag;
     }
