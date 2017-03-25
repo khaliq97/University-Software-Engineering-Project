@@ -71,11 +71,19 @@ public class LoginController {
     }
 
     /**
-     * Executes on selected ComboBox item change
-     * Sets selectedAuthorizationLevel in accordance with item selected
+     * comboBoxAuthorizationLevels event handler for on click
+     * Calls selectAuthLevel
      */
     @FXML
     public void onComboBoxAction()
+    {
+        selectAuthLevel();
+    }
+
+    /**
+     * Converts the selected item to a authorization level
+     */
+    public void selectAuthLevel()
     {
         switch (comboBoxAuthorizationLevels.getSelectionModel().getSelectedItem())
         {
@@ -98,7 +106,6 @@ public class LoginController {
         }
 
         selectedAuthorizationString = comboBoxAuthorizationLevels.getSelectionModel().getSelectedItem();
-
     }
 
     /**
