@@ -19,9 +19,6 @@ public class AnnualReviewRecord implements Serializable {
     private String revieweeSignature;
     private String managerDirectorSignature;
     private String secondReviewerSignature;
-    public void setDateSigned(String dateSigned) {
-        this.dateSigned = dateSigned;
-    }
     private String dateSigned;
     private boolean signed;
 
@@ -276,6 +273,10 @@ public class AnnualReviewRecord implements Serializable {
      */
     public void setSecondReviewerSignature(String secondReviewerSignature) {
         this.secondReviewerSignature = secondReviewerSignature;
+    }
+
+    public void setDateSigned(String dateSigned) {
+        this.dateSigned = dateSigned;
     }
 
     /**
