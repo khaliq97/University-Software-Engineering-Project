@@ -2,14 +2,16 @@ package project.Database.Personal_Detail;
 import project.Database.HR_Database.HRDatabaseController;
 /**
  * Created by Osama Khaliq
- * Version (23/03/2016)
  *
  * Responsible for creating, getting and setting Personal Details into and from the
  * personalDetails ArrayList in HRDatabase.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class PersonalDetailController {
 
-    HRDatabaseController hrDatabaseController;
+    private HRDatabaseController hrDatabaseController;
 
     /**
      * Class constructor
