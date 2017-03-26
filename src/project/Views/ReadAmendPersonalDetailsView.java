@@ -53,7 +53,7 @@ public class ReadAmendPersonalDetailsView {
 
         scene = new Scene(root, 414, 603);
         stage.setTitle("Read Personal Details");
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.setScene(scene);
 
 

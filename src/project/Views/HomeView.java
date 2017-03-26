@@ -74,6 +74,7 @@ public class HomeView
 
         scene = new Scene(root, 745, 528);
         stage.setTitle("Home");
+        stage.setResizable(false);
         stage.setScene(scene);
 
         this.loginView = loginView;
