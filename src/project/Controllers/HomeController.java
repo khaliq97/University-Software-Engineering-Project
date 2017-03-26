@@ -10,6 +10,9 @@ import project.Views.LoginView;
  * Created by Osama Khaliq
  * HomeView window controller class
  * Responsible for HomeView window control event handling
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class HomeController {
 
@@ -135,18 +138,31 @@ public class HomeController {
         homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().checkMode();
     }
 
+    /**
+     * buttonCreateReviewRecord onMouseClick event handler
+     * Loads the CreateAmendReadReviewRecordView in create mode
+     */
     @FXML
     public void onButtonCreateReviewRecordClick()
     {
         homeView.getCreateAmendReadReviewRecordView().loadCreateReviewRecordView();
     }
 
+    /**
+     * buttonReadReviewRecordClick onMouseClick event handler
+     * Loads the CreateAmendReadReviewRecordView in read mode
+     */
     @FXML
     public void onButtonReadReviewRecordClick()
     {
         homeView.getCreateAmendReadReviewRecordView().loadReadReviewRecordView();
     }
 
+
+    /**
+     * buttonAmendRecordClick onMouseClick event handler
+     * Loads the CreateAmendReadReviewRecordView in amend mode
+     */
     @FXML
     public void onButtonAmendRecordClick()
     {

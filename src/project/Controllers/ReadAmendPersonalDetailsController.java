@@ -10,14 +10,16 @@ import project.Views.ReadAmendPersonalDetailsView;
 
 /**
  * Created by Osama Khaliq
- * Version (03/03/2016)
  * ReadAmendPersonalDetailsView Window controller Class
  * Responsible for ReadAmendPersonalDetailsView window event handling
  * Changes to edit mode or read mode for a PersonalDetail object.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class ReadAmendPersonalDetailsController {
 
-    private PersonalDetailController personalDetailController;
+    private ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
 
     @FXML
     private Button buttonLoadPersonalDetail;
@@ -61,8 +63,6 @@ public class ReadAmendPersonalDetailsController {
     @FXML
     private TextField txtFieldEmergencyContactNumber;
 
-    ReadAmendPersonalDetailsView readAmendPersonalDetailsView;
-
     /**
      * Constructor for class
      * @param readAmendPersonalDetailsView ReadAmendPersonalDetailsView Window
@@ -70,7 +70,6 @@ public class ReadAmendPersonalDetailsController {
     public ReadAmendPersonalDetailsController(ReadAmendPersonalDetailsView readAmendPersonalDetailsView, PersonalDetailController personalDetailController)
     {
         this.readAmendPersonalDetailsView = readAmendPersonalDetailsView;
-        this.personalDetailController = personalDetailController;
 
     }
 

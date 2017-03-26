@@ -13,10 +13,12 @@ import java.util.List;
 
 /**
  * Created by Osama Khaliq
- * Version (03/03/2016)
  * LoginView Window controller Class
  * Responsible for LoginView window event handling
  * Shows Alert boxes
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 
 public class LoginController {
@@ -69,6 +71,8 @@ public class LoginController {
             comboBoxAuthorizationLevels.getSelectionModel().selectFirst();
         }
     }
+
+
 
     /**
      * comboBoxAuthorizationLevels event handler for on click
