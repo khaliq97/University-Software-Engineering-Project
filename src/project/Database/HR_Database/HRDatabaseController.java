@@ -2,21 +2,23 @@ package project.Database.HR_Database;
 
 import javafx.scene.control.Alert;
 import project.Database.Personal_Detail.PersonalDetail;
-import project.Database.Review.Review;
+import project.Database.Review.AnnualReviewRecord;
 
 import java.io.*;
 
 /**
  * Created by Osama Khaliq
- * Version (03/03/2016)
  * Controller for the HRDatabase class
- * Resposbible for storing the file path, populating the hrDatabase ArrayList, writing to the file,
+ * Responsible for storing the file path, populating the hrDatabase ArrayList, writing to the file,
  * creating a PersonalDetail object and getting a PersonalDetail object.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class HRDatabaseController{
 
     private final String HR_DATABASE_FILE_PATH = "HR_Database.txt";
-    HRDatabase hrDatabase;
+    private HRDatabase hrDatabase;
 
     /**
      * Constructor for Class
@@ -24,7 +26,7 @@ public class HRDatabaseController{
     public HRDatabaseController()
     {
         hrDatabase = new HRDatabase(this);
-       populateHRDatabase();
+        populateHRDatabase();
     }
 
     /**
@@ -108,14 +110,16 @@ public class HRDatabaseController{
     }
 
     /**
-     * signOffReview
+     * Clears the personalDetails ArrayList for JUnit tests
      */
-
     public void resetPersonalDetailsArrayListForTest()
     {
         hrDatabase.getArrayListPersonalDetails().clear();
     }
 
+    /**
+     * Clears the reviews ArrayList for JUnit tests
+     */
     public void resetReviewsArrayListForTest()
     {
         hrDatabase.getArrayListReviews().clear();
@@ -187,14 +191,14 @@ public class HRDatabaseController{
 
 
     /**
-     * Adds the passed in reviewRecord to the reviews ArrayList.
+     * Adds the passed in annualReviewRecordRecord to the reviews ArrayList.
      * Writes to the the database.
-     * @param reviewRecord reviewRecord object to add
+     * @param annualReviewRecordRecord annualReviewRecordRecord object to add
      */
-    public void createReviewRecord(Review reviewRecord)
+    public void createReviewRecord(AnnualReviewRecord annualReviewRecordRecord)
     {
 
-        hrDatabase.getArrayListReviews().add(reviewRecord);
+        hrDatabase.getArrayListReviews().add(annualReviewRecordRecord);
         writeToDatabase();
 
     }
@@ -204,37 +208,37 @@ public class HRDatabaseController{
      * Gets a review object from a username and a year.
      * @param username username of review object
      * @param year year of review object
-     * @return Review object that matches username and year
+     * @return AnnualReviewRecord object that matches username and year
      */
-    public Review getReviewRecord(String username, String year)
+    public AnnualReviewRecord getReviewRecord(String username, String year)
     {
-        Review reviewToReturn = null;
-        for(Review review: hrDatabase.getArrayListReviews()) {
-            if (review.getStaffNumber().equals(username) && review.getYear().equals(year))
+        AnnualReviewRecord annualReviewRecordToReturn = null;
+        for(AnnualReviewRecord annualReviewRecord : hrDatabase.getArrayListReviews()) {
+            if (annualReviewRecord.getStaffNumber().equals(username) && annualReviewRecord.getYear().equals(year))
             {
-                reviewToReturn = review;
+                annualReviewRecordToReturn = annualReviewRecord;
             }else
             {
 
             }
         }
-        return reviewToReturn;
+        return annualReviewRecordToReturn;
     }
 
     /**
-     * Sets a position in the reviews ArrayList in HRDatabaseController with the passed in review object.
+     * Sets a position in the reviews ArrayList in HRDatabaseController with the passed in annualReviewRecord object.
      * Checks if it matches its staffNumber and year.
      * Writes it to the database.
-     * @param review review object that will replace the existing
-     * @return status of creating a review record and writing it to the database, 1 for success, 0 for failure
+     * @param annualReviewRecord annualReviewRecord object that will replace the existing
+     * @return status of creating a annualReviewRecord record and writing it to the database, 1 for success, 0 for failure
      */
-    public int setReviewRecord(Review review) {
+    public int setReviewRecord(AnnualReviewRecord annualReviewRecord) {
         int returnFlag = 0;
         int index = 0;
-        for (Review reviewToCheck : hrDatabase.getArrayListReviews()) {
-            if (reviewToCheck.getStaffNumber().equals(review.getStaffNumber()) && reviewToCheck.getYear().equals(review.getYear())) {
-                if (!review.isSigned()) {
-                    hrDatabase.getArrayListReviews().set(index, review);
+        for (AnnualReviewRecord annualReviewRecordToCheck : hrDatabase.getArrayListReviews()) {
+            if (annualReviewRecordToCheck.getStaffNumber().equals(annualReviewRecord.getStaffNumber()) && annualReviewRecordToCheck.getYear().equals(annualReviewRecord.getYear())) {
+                if (!annualReviewRecord.isSigned()) {
+                    hrDatabase.getArrayListReviews().set(index, annualReviewRecord);
                     writeToDatabase();
 
                     returnFlag = 1;
