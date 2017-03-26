@@ -9,14 +9,16 @@ import project.Views.CreatePersonalDetailsView;
 
 /**
  * Created by Osama Khaliq
- * Version (03/03/2016)
  * CreatePersonalDetailVew Window controller Class
  * Responsible for CreatePersonalDetailVew window event handling
  * Creates a PersonalDetail object.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class CreatePersonalDetailsController {
 
-    CreatePersonalDetailsView createPersonalDetailsView;
+    private CreatePersonalDetailsView createPersonalDetailsView;
 
     @FXML
     private TextField txtFieldUserName;
@@ -65,6 +67,10 @@ public class CreatePersonalDetailsController {
 
     }
 
+    /**
+     * Calls createPersonalController method in PersonalDetailController
+     * Shows the appropriate alert box based on the return value from createPersonalDetail in PersonalDetailController
+     */
     public void createPersonalDetail()
     {
         int result = createPersonalDetailsView.getHomeView().getPersonalDetailController().createPersonalDetail(txtFieldUserName.getText(), txtFieldSurname.getText(), txtFieldName.getText(), txtFieldDateOfBirth.getText(), txtFieldAddress.getText(),
