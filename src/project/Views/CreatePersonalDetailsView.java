@@ -52,7 +52,7 @@ public class CreatePersonalDetailsView {
 
         scene = new Scene(root, 414, 583);
         stage.setTitle("Create Personal Details");
-        //stage.setResizable(false);
+        stage.setResizable(false);
         stage.setScene(scene);
     }
 
