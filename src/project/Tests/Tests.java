@@ -3,7 +3,7 @@ import org.junit.Test;
 import project.Database.HR_Database.HRDatabaseController;
 import project.Database.Personal_Detail.PersonalDetail;
 import project.Database.Personal_Detail.PersonalDetailController;
-import project.Database.Review.Review;
+import project.Database.Review.AnnualReviewRecord;
 import project.Database.Review.ReviewController;
 import project.Database.User_Database.UserSession;
 
@@ -11,21 +11,19 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2017)
- * Test class
+ *
+ * Implements JUnit tests to cover all functionality
+ * Log in, log out, create personal detail, amend personal detail, readPersonalDetail,
+ * createReviewRecord, amendReviewRecord, readReviewRecord and their variants.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class Tests
 {
-    HRDatabaseController hrDatabaseController;
-    PersonalDetailController personalDetailController;
-    ReviewController reviewController;
-
-    /**
-     * HRDatabase
-     * amendReviewRecord to AmendReviewRecord
-     *
-     */
-
+    private HRDatabaseController hrDatabaseController;
+    private PersonalDetailController personalDetailController;
+    private ReviewController reviewController;
 
     public Tests()
     {
@@ -49,7 +47,7 @@ public class Tests
     public void createTestReviewRecord()
     {
         reviewController.createReviewRecord("2015", "111111", "Peter Taylor", "Section", "Manager\\Director Name", "Second Manager\\Director Name",
-                "Objectives", "Achievements", "Preview", "Review Comments", "Recommendation", "Reviewee Signature",
+                "Objectives", "Achievements", "Preview", "AnnualReviewRecord Comments", "Recommendation", "Reviewee Signature",
                 "Manager\\Director Signature", "Second Reviewer Signature", "01/01/2017", false);
     }
 
@@ -158,7 +156,7 @@ public class Tests
     public void createReviewRecordWithExistingStaffNumberDifferentYear()
     {
         int testResult = reviewController.createReviewRecord("2016", "111111", "Peter Taylor", "Section", "Manager\\Director Name", "Second Manager\\Director Name",
-                "Objectives", "Achievements", "Preview", "Review Comments", "Recommendation", "Reviewee Signature",
+                "Objectives", "Achievements", "Preview", "AnnualReviewRecord Comments", "Recommendation", "Reviewee Signature",
                 "Manager\\Director Signature", "Second Reviewer Signature", "01/01/2017", false);
 
         assertEquals("Creating a new review record with the username '111111' at year '2016' should return '1' for success", 1, testResult);
@@ -169,10 +167,10 @@ public class Tests
     public void createReviewRecordWithExistingStaffNumberAndYearTest()
     {
         int testResult = reviewController.createReviewRecord("2015", "111111", "Peter Taylor", "Section", "Manager\\Director Name", "Second Manager\\Director Name",
-                "Objectives", "Achievements", "Preview", "Review Comments", "Recommendation", "Reviewee Signature",
+                "Objectives", "Achievements", "Preview", "AnnualReviewRecord Comments", "Recommendation", "Reviewee Signature",
                 "Manager\\Director Signature", "Second Reviewer Signature", "01/01/2017", false);
 
-        assertEquals("Method should return '0' for failure as Review Record for username '1111111' and year '2015' does exist", 0, testResult);
+        assertEquals("Method should return '0' for failure as AnnualReviewRecord Record for username '1111111' and year '2015' does exist", 0, testResult);
     }
 
     @Test
@@ -186,15 +184,15 @@ public class Tests
     @Test
     public void readReviewRecordTest()
     {
-        assertEquals("Achievements of Review Record for username '111111' at year '2015' must be 'Achievements",  "Achievements", reviewController.getReviewRecord("111111", "2015").getAchievement());
+        assertEquals("Achievements of AnnualReviewRecord Record for username '111111' at year '2015' must be 'Achievements",  "Achievements", reviewController.getReviewRecord("111111", "2015").getAchievement());
     }
 
     @Test
     public void amendNonSignedOffReviewRecordTest()
     {
-        Review testReview = reviewController.getReviewRecord("111111", "2015");
+        AnnualReviewRecord testAnnualReviewRecord = reviewController.getReviewRecord("111111", "2015");
 
-        assertEquals("Review Record for username '111111' at year '2015' should be amendable and should return 1 for success", 1 ,reviewController.amendReviewRecord(testReview));
+        assertEquals("AnnualReviewRecord Record for username '111111' at year '2015' should be amendable and should return 1 for success", 1 ,reviewController.amendReviewRecord(testAnnualReviewRecord));
 
     }
 
@@ -202,9 +200,9 @@ public class Tests
     public void amendSignedOffReviewRecordTest()
     {
         reviewController.getReviewRecord("111111", "2015").setSigned(true);
-        Review testReview = reviewController.getReviewRecord("111111", "2015");
+        AnnualReviewRecord testAnnualReviewRecord = reviewController.getReviewRecord("111111", "2015");
 
-        assertEquals("Review Record for username '111111' at year '2015' should not be amendable and should return 0 for failure", 0 ,reviewController.amendReviewRecord(testReview));
+        assertEquals("AnnualReviewRecord Record for username '111111' at year '2015' should not be amendable and should return 0 for failure", 0 ,reviewController.amendReviewRecord(testAnnualReviewRecord));
 
     }
 
