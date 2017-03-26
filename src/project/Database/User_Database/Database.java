@@ -10,9 +10,12 @@ import java.util.ArrayList;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
+ *
  * Class stores the database from the database.json JSON file
  * Responsible for reading the file and populating the database ArrayList from JSON file
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class Database {
 

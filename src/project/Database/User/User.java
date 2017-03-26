@@ -1,11 +1,15 @@
 package project.Database.User;
 
 /**
- * Created by osamakhaliq on 18/02/17.
+ * Created by Osama Khaliq
+ *
  * User object class
  * Stores username, password and authorization of the given user
  * Has isLoggedIn to check weather the User is logged into the system
  * isLoggedIn acts as the "session" variable
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class User {
 

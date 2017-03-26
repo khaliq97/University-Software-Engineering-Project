@@ -6,16 +6,17 @@ import project.Database.User_Database.Database;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * Class stores the database and authorizationServer
  * Responsible for executing login() and logout() on server side
  * Login and logout methods for User
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class UserSession {
 
     private Database database;
     private AuthorizationServer authorizationServer;
-
 
     private User user;
 

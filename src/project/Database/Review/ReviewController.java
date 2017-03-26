@@ -4,14 +4,16 @@ import project.Database.HR_Database.HRDatabaseController;
 
 /**
  * Created by Osama Khaliq
- * Version (23/03/2016)
  *
- * Responsible for creating, getting and setting a Review object in the
+ * Responsible for creating, getting and setting a AnnualReviewRecord object in the
  * reviews ArrayList in HRDatabase.
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class ReviewController {
 
-    HRDatabaseController hrDatabaseController;
+    private HRDatabaseController hrDatabaseController;
 
     /**
      * Class constructor
@@ -23,7 +25,7 @@ public class ReviewController {
     }
 
     /**
-     * Creates a new Review object with data from controls in CreateAmendReadReviewRecordController.
+     * Creates a new AnnualReviewRecord object with data from controls in CreateAmendReadReviewRecordController.
      * If the review object does not exist then it adds it to the reviews ArrayList in HRDatabaseController.
      *
      * @param year year from txtFieldYear
@@ -48,18 +50,17 @@ public class ReviewController {
                                    String objectives, String achievements, String preview, String reviewComments, String recommendation, String revieweeSignature, String managerDirectorSignature, String secondReviewerSignature, String dateSigned, boolean signed) {
         int returnFlag = 0;
         boolean reviewRecordExists = false;
-        Review newRecord = new Review(year, staffNumber, name, section, managerDirectorName, secondManagerDirectorName, objectives, achievements, preview, reviewComments, recommendation, revieweeSignature, managerDirectorSignature, secondReviewerSignature, dateSigned, signed);
+        AnnualReviewRecord newRecord = new AnnualReviewRecord(year, staffNumber, name, section, managerDirectorName, secondManagerDirectorName, objectives, achievements, preview, reviewComments, recommendation, revieweeSignature, managerDirectorSignature, secondReviewerSignature, dateSigned, signed);
 
-        for (Review review : hrDatabaseController.getHrDatabase().getArrayListReviews()) {
+        for (AnnualReviewRecord annualReviewRecord : hrDatabaseController.getHrDatabase().getArrayListReviews()) {
 
-                if (review.getStaffNumber().equals(staffNumber)) {
-                    if (!review.getYear().equals(year)) {
+                if (annualReviewRecord.getStaffNumber().equals(staffNumber)) {
+                    if (!annualReviewRecord.getYear().equals(year)) {
                         reviewRecordExists = false;
 
                     } else {
                         reviewRecordExists = true;
                     }
-
 
                 }
         }
@@ -78,23 +79,23 @@ public class ReviewController {
      * Gets a review object from a username and a year.
      * @param username username of review object
      * @param year year of review object
-     * @return Review object that matches username and year
+     * @return AnnualReviewRecord object that matches username and year
      */
-    public Review getReviewRecord(String username, String year)
+    public AnnualReviewRecord getReviewRecord(String username, String year)
     {
 
         return hrDatabaseController.getReviewRecord(username, year);
     }
 
     /**
-     * Sets a position in the reviews ArrayList in HRDatabaseController with the passed in review object.
+     * Sets a position in the reviews ArrayList in HRDatabaseController with the passed in annualReviewRecord object.
      * Checks if it matches its staffNumber and year.
      * Writes it to the database.
-     * @param review review object that will replace the existing
-     * @return status of creating a review record and writing it to the database, 1 for success, 0 for failure
+     * @param annualReviewRecord annualReviewRecord object that will replace the existing
+     * @return status of creating a annualReviewRecord record and writing it to the database, 1 for success, 0 for failure
      */
-    public int amendReviewRecord(Review review)
+    public int amendReviewRecord(AnnualReviewRecord annualReviewRecord)
     {
-      return hrDatabaseController.setReviewRecord(review);
+      return hrDatabaseController.setReviewRecord(annualReviewRecord);
     }
 }

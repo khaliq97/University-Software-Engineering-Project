@@ -4,9 +4,11 @@ import project.Database.User.User;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * Responsible for authorizing the User and logs them in
  * Takes a User object and inputted authorization level
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class AuthorizationServer {
 
@@ -20,10 +22,9 @@ public class AuthorizationServer {
     Manager: 4
      */
 
-
-
     /**
      * Class constructor
+     * Empty
      */
     public AuthorizationServer()
     {
