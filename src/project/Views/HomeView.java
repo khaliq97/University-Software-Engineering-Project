@@ -14,19 +14,17 @@ import java.io.IOException;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * GUI class for HomeView
  * Window is shown when the user successfully logs in
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class HomeView
 {
     private LoginView loginView;
 
     private UserSession userSession;
-
-    public PersonalDetailController getPersonalDetailController() {
-        return personalDetailController;
-    }
 
     private PersonalDetailController personalDetailController;
 
@@ -38,7 +36,6 @@ public class HomeView
 
     private CreateAmendReadReviewRecordView createAmendReadReviewRecordView;
 
-
     private HRDatabaseController hrDatabaseController;
 
     private Parent root;
@@ -47,11 +44,9 @@ public class HomeView
     private Scene scene;
     private HomeController homeController;
 
-
-
     /**
      * Constructor for HomeView class
-     * Passes in loginView and User
+     * Sets up and initializes the window
      * @param loginView LoginView instance
      */
     public HomeView(LoginView loginView, UserSession userSession)
@@ -69,7 +64,6 @@ public class HomeView
 
         reviewController = new ReviewController(hrDatabaseController);
         createAmendReadReviewRecordView = new CreateAmendReadReviewRecordView(this, reviewController);
-//        createAmendReadReviewRecordView = new CreateAmendReadReviewRecordView(this, reviewController);
 
         fxmlLoader.setController(homeController);
         try {
@@ -98,34 +92,6 @@ public class HomeView
         readAmendPersonalDetailsView.getReadAmendPersonalDetailsController().getTxtFieldUserName().setText(userSession.getUser().getUsername());
     }
 
-    public HomeController getHomeController()
-    {
-        return homeController;
-    }
-    
-    public UserSession getUserSession()
-    {
-        return userSession;
-    }
-
-
-    public CreatePersonalDetailsView getCreatePersonalDetailsView() {
-        return createPersonalDetailsView;
-    }
-
-    public ReadAmendPersonalDetailsView getReadAmendPersonalDetailsView() {
-        return readAmendPersonalDetailsView;
-    }
-
-    public HRDatabaseController getHrDatabaseController()
-    {
-        return hrDatabaseController;
-    }
-
-    public CreateAmendReadReviewRecordView getCreateAmendReadReviewRecordView() {
-        return createAmendReadReviewRecordView;
-    }
-
     /**
      * Loads the HomeView window
      */
@@ -140,5 +106,64 @@ public class HomeView
     public void closeHomeView()
     {
         stage.close();
+    }
+
+    /**
+     * Returns personalDetailController class
+     * @return personalDetailController
+     */
+    public PersonalDetailController getPersonalDetailController() {
+        return personalDetailController;
+    }
+
+    /**
+     * Returns homeController class
+     * @return homeController
+     */
+    public HomeController getHomeController()
+    {
+        return homeController;
+    }
+
+    /**
+     * Returns UserSession class
+     * @return userSession
+     */
+    public UserSession getUserSession()
+    {
+        return userSession;
+    }
+
+    /**
+     * Returns createPersonalDetailsView class
+     * @return createPersonalDetailsView
+     */
+    public CreatePersonalDetailsView getCreatePersonalDetailsView() {
+        return createPersonalDetailsView;
+    }
+
+    /**
+     * Returns readAmendPersonalDetailsView class
+     * @return readAmendPersonalDetailsView
+     */
+    public ReadAmendPersonalDetailsView getReadAmendPersonalDetailsView() {
+        return readAmendPersonalDetailsView;
+    }
+
+    /**
+     * Returns hrDatabaseController class
+     * @return
+     */
+    public HRDatabaseController getHrDatabaseController()
+    {
+        return hrDatabaseController;
+    }
+
+    /**
+     * Returns createAmendReadReviewRecordView class
+     * @return createAmendReadReviewRecordView
+     */
+    public CreateAmendReadReviewRecordView getCreateAmendReadReviewRecordView() {
+        return createAmendReadReviewRecordView;
     }
 }

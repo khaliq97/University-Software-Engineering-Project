@@ -10,9 +10,11 @@ import project.Database.User_Database.UserSession;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * GUI class for LoginView
  * Responsible for executing login() on GUI side
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class LoginView extends Application {
 
@@ -44,7 +46,7 @@ public class LoginView extends Application {
         root = fxmlLoader.load();
         scene = new Scene(root, 380, 210);
 
-        primaryStage.setTitle("Database");
+        primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
@@ -122,6 +124,11 @@ public class LoginView extends Application {
         primaryStage.close();
     }
 
+    /**
+     * Main method
+     * Applications starts from here
+     * @param args Arguments from command line
+     */
     public static void main(String[] args) {
         launch(args);
     }
