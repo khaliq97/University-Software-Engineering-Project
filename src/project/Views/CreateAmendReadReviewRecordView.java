@@ -50,7 +50,7 @@ public class CreateAmendReadReviewRecordView {
              e.printStackTrace();
          }
 
-        scene = new Scene(root, 414, 583);
+        scene = new Scene(root, 600, 882);
         stage.setTitle("Create Personal Details");
         //stage.setResizable(false);
         stage.setScene(scene);
