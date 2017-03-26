@@ -212,6 +212,51 @@ public class CreateAmendReadReviewRecordController {
     }
 
     /**
+     * Calls createReviewRecord method in ReviewController
+     * Shows the appropriate alert box based on the return value from createReviewRecord in ReviewController
+     */
+    public void createReviewRecord()
+    {
+        int result = createAmendViewReviewRecordView.getReviewController().createReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
+                txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
+                txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(), txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
+
+        if(result == 1)
+        {
+            showSuccessfulReviewRecordCreationAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
+        }else if(result == 0)
+        {
+            showReviewRecordAlreadyExists(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+        }
+    }
+
+    /**
+     * Calls amendReviewRecord in ReviewController
+     * Gets a review record based on the values in txtFieldStaffNumber and txtFieldYear.
+     * Then amends the review object with the data in the textfield's.
+     */
+    public void amendReviewRecord()
+    {
+        if(createAmendViewReviewRecordView.getReviewController().getReviewRecord(txtFieldStaffNumber.getText(), txtFieldYear.getText()) != null)
+        {
+            AnnualReviewRecord annualReviewRecordToSet = new AnnualReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
+                    txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
+                    txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(),
+                    txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
+
+
+            createAmendViewReviewRecordView.getReviewController().amendReviewRecord(annualReviewRecordToSet);
+            showSuccessfulReviewRecordAmendedAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
+            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
+
+        }else
+        {
+            showRecordDoesNotExistAlert(txtFieldStaffNumber.getText(), txtFieldStaffNumber.getText());
+        }
+    }
+
+    /**
      * Populates the textfield's with data from a AnnualReviewRecord object
      * Will not populate textfield's if the review's isSigned is true and isAmendMode is true
      * isReadMode populates normally
@@ -308,51 +353,6 @@ public class CreateAmendReadReviewRecordController {
         }
 
         clearFields();
-    }
-
-    /**
-     * Calls createReviewRecord method in ReviewController
-     * Shows the appropriate alert box based on the return value from createReviewRecord in ReviewController
-     */
-    public void createReviewRecord()
-    {
-        int result = createAmendViewReviewRecordView.getReviewController().createReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
-                txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
-                txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(), txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
-
-        if(result == 1)
-        {
-            showSuccessfulReviewRecordCreationAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
-        }else if(result == 0)
-        {
-            showReviewRecordAlreadyExists(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-        }
-    }
-
-    /**
-     * Calls amendReviewRecord in ReviewController
-     * Gets a review record based on the values in txtFieldStaffNumber and txtFieldYear.
-     * Then amends the review object with the data in the textfield's.
-     */
-    public void amendReviewRecord()
-    {
-        if(createAmendViewReviewRecordView.getReviewController().getReviewRecord(txtFieldStaffNumber.getText(), txtFieldYear.getText()) != null)
-        {
-            AnnualReviewRecord annualReviewRecordToSet = new AnnualReviewRecord(txtFieldYear.getText(), txtFieldStaffNumber.getText(), txtFieldName.getText(), txtFieldSection.getText(), txtFieldManagerDirectorName.getText(),
-                    txtFieldSecondManagerDirectorName.getText(), txtFieldObjectives.getText(), txtFieldAchievement.getText(), txtFieldPreview.getText(),
-                    txtFieldReviewComments.getText(), comboBoxRecommendation.getSelectionModel().getSelectedItem().toString(),
-                    txtFieldRevieweeSignature.getText(), txtFieldManagerDirectorSignature.getText(), txtFieldSecondReviewerSignature.getText(), txtFieldDateSigned.getText(), signedOff);
-
-
-            createAmendViewReviewRecordView.getReviewController().amendReviewRecord(annualReviewRecordToSet);
-            showSuccessfulReviewRecordAmendedAlert(txtFieldStaffNumber.getText(), txtFieldYear.getText());
-            createAmendViewReviewRecordView.closeCreateAmendReadReviewRecordView();
-
-        }else
-        {
-            showRecordDoesNotExistAlert(txtFieldStaffNumber.getText(), txtFieldStaffNumber.getText());
-        }
     }
 
     /**
