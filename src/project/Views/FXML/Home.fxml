@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -37,13 +38,16 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="296.0" layoutY="14.0" prefHeight="446.0" prefWidth="253.0" text="Review Records">
+                        <TitledPane animated="false" collapsible="false" layoutX="296.0" layoutY="14.0" prefHeight="446.0" prefWidth="253.0" text="Review Records">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="249.0" spacing="20.0">
                                        <children>
-                                          <Button fx:id="buttonCreateReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonCreateReviewRecordClick" prefHeight="25.0" prefWidth="198.0" text="Create Review Record" />
+                                          <Button fx:id="buttonCreateReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonCreateReviewRecordClick" prefHeight="25.0" prefWidth="198.0" text="Create Review Record">
+                                             <VBox.margin>
+                                                <Insets top="12.0" />
+                                             </VBox.margin></Button>
                                           <Button fx:id="buttonAmendReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonAmendRecordClick" prefHeight="25.0" prefWidth="198.0" text="Amend Review Record" />
                                           <Button fx:id="buttonReadReviewRecord" mnemonicParsing="false" onMouseClicked="#onButtonReadReviewRecordClick" prefHeight="25.0" prefWidth="198.0" text="Read Review Record" />
                                        </children>
