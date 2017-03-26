@@ -12,25 +12,27 @@ import java.io.IOException;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * GUI class for CreatePersonalDetails
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class CreatePersonalDetailsView {
 
-    HomeView homeView;
+    private HomeView homeView;
 
-    PersonalDetailController personalDetailController;
+    private PersonalDetailController personalDetailController;
 
     private Parent root;
     private Stage stage;
     private FXMLLoader fxmlLoader;
     private Scene scene;
 
-    CreatePersonalDetailsController createPersonalDetailsController;
+    private CreatePersonalDetailsController createPersonalDetailsController;
 
     /**
      * Constructor for class
-     * Passes in homeView
+     * Sets up and initializes the window
      * @param homeView homeView instance
      */
     public CreatePersonalDetailsView(HomeView homeView, PersonalDetailController personalDetailController)
@@ -50,7 +52,7 @@ public class CreatePersonalDetailsView {
 
         scene = new Scene(root, 414, 583);
         stage.setTitle("Create Personal Details");
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.setScene(scene);
     }
 
