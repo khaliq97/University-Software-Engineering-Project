@@ -12,11 +12,13 @@ import java.io.IOException;
 
 /**
  * Created by Osama Khaliq
- * Version (19/02/2016)
  * GUI class for ReadAmendPersonalDetails
+ *
+ * @Author Osama Khaliq
+ * @version (25/03/2017)
  */
 public class ReadAmendPersonalDetailsView {
-    HomeView homeView;
+    private HomeView homeView;
 
     private Parent root;
     private Stage stage;
@@ -25,8 +27,8 @@ public class ReadAmendPersonalDetailsView {
 
     private boolean amendMode;
 
-    PersonalDetailController personalDetailController;
-    ReadAmendPersonalDetailsController readAmendPersonalDetailsController;
+    private PersonalDetailController personalDetailController;
+    private ReadAmendPersonalDetailsController readAmendPersonalDetailsController;
 
     /**
      * Constructor for class
@@ -51,7 +53,7 @@ public class ReadAmendPersonalDetailsView {
 
         scene = new Scene(root, 414, 603);
         stage.setTitle("Read Personal Details");
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.setScene(scene);
 
 
@@ -108,6 +110,8 @@ public class ReadAmendPersonalDetailsView {
     public void loadReadPersonalDetailsView()
     {
         amendMode = false;
+        readAmendPersonalDetailsController.getTxtFieldUserName().setText(homeView.getUserSession().getUser().getUsername());
+        readAmendPersonalDetailsController.readPersonalDetail();
         stage.show();
     }
 
