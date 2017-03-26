@@ -58,20 +58,11 @@ public class HomeController {
      */
     public void checkAuthorization(int auth)
     {
-
+        buttonCreateReviewRecord.setDisable(false);
+        buttonAmendPersonalDetail.setDisable(false);
+        buttonReadReviewRecord.setDisable(false);
 
         if(auth == 3 || auth == 5) {
-            if(auth == 3)
-            {
-                buttonCreateReviewRecord.setDisable(false);
-                buttonAmendReviewRecord.setDisable(false);
-                buttonReadReviewRecord.setDisable(false);
-            }else
-            {
-                buttonCreateReviewRecord.setDisable(true);
-                buttonAmendReviewRecord.setDisable(true);
-                buttonReadReviewRecord.setDisable(true);
-            }
             buttonCreatePersonalDetail.setDisable(false);
             buttonAmendPersonalDetail.setDisable(false);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonLoadPersonalDetail().setDisable(false);
@@ -79,12 +70,6 @@ public class HomeController {
 
         }else
         {
-            buttonCreateReviewRecord.setDisable(true);
-            buttonAmendReviewRecord.setDisable(true);
-            buttonReadReviewRecord.setDisable(true);
-
-            buttonCreatePersonalDetail.setDisable(true);
-            buttonAmendPersonalDetail.setDisable(true);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getButtonLoadPersonalDetail().setDisable(true);
             homeView.getReadAmendPersonalDetailsView().getReadAmendPersonalDetailsController().getTxtFieldUserName().setEditable(false);
         }
